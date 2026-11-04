@@ -6,6 +6,7 @@ import type { PropertyFilters } from "@/lib/types";
 import { getProperties } from "@/services/content";
 import { PropertyCard } from "@/components/property";
 import { SearchForm } from "@/components/search-form";
+import { useFilterDefinitions } from "@/core/filter-context";
 import { PremiumSelect } from "@/components/premium-select";
 
 export const Route = createFileRoute("/propiedades/")({
@@ -33,10 +34,14 @@ function chipsFor(f: PropertyFilters) {
   if (f.dormitorios) c.push({ key: "dormitorios", label: `${f.dormitorios}+ dorm.` });
   if (f.banos) c.push({ key: "banos", label: `${f.banos}+ baños` });
   if (f.piscina) c.push({ key: "piscina", label: "Con piscina" });
+  if (f.moneda) c.push({ key: "moneda", label: f.moneda });
+  if (f.superficieMin) c.push({ key: "superficieMin", label: `${f.superficieMin} m² +` });
+  if (f.caracteristicas?.length) c.push({ key: "caracteristicas", label: f.caracteristicas.join(", ") });
   return c;
 }
 
 function Results() {
+  const sortDefinition = useFilterDefinitions().find(d => d.key === "orden");
   const all = Route.useLoaderData();
   const f = Route.useSearch();
   const navigate = useNavigate({ from: "/propiedades/" });
@@ -53,7 +58,7 @@ function Results() {
           <h1 className="text-4xl lg:text-5xl">Propiedades</h1>
         </div>
         <div className="flex items-center gap-2">
-          <PremiumSelect label="Ordenar" value={f.orden ?? "recientes"} onValueChange={(v) => navigate({ search: (p) => ({ ...p, orden: v as PropertyFilters["orden"] }) })} className="h-10 w-[180px]" options={[{value:"recientes",label:"Más recientes"},{value:"precio-asc",label:"Menor precio"},{value:"precio-desc",label:"Mayor precio"}]} />
+          {sortDefinition?.visible && <PremiumSelect label={sortDefinition.label} value={f.orden ?? "recientes"} onValueChange={(v) => navigate({ search: (p) => ({ ...p, orden: v as PropertyFilters["orden"] }) })} className="h-10 w-[180px]" options={sortDefinition.options} />}
           <div className="flex rounded-full border p-1">
             <button aria-label="Listado" onClick={() => setView("list")} className={`rounded-full p-2 ${view === "list" ? "bg-ink text-ink-foreground" : ""}`}><List className="h-4 w-4" /></button>
             <button aria-label="Mapa" onClick={() => setView("map")} className={`rounded-full p-2 ${view === "map" ? "bg-ink text-ink-foreground" : ""}`}><MapIcon className="h-4 w-4" /></button>

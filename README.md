@@ -22,3 +22,11 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## RIVTON Core — arquitectura administrable
+
+La documentación de Fase 1 está en [docs/rivton/README.md](docs/rivton/README.md): auditoría, contratos, tokens, repositorios, API propuesta, panel, seguridad, SEO, analítica, QA y roadmap de nueve fases. Ver [verification.md](docs/rivton/verification.md) para evidencia ejecutada y limitaciones.
+
+`bun run typecheck`, `bun run test`, `bun run build`. Pruebas de navegador: instalar Chromium con `bunx playwright install chromium`, iniciar Vite en 4173 y ejecutar `bun run test:e2e`.
+
+Trabajar en ramas independientes; no publicar automáticamente en producción. WordPress y las integraciones reales corresponden a las siguientes fases.

@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-04",
+  "baselineCommit": "079f5501c52104d816152c392f2c6531e470bcca",
+  "branch": "codex/rivton-core-phase-1",
+  "playwrightStats": {
+    "startTime": "2026-11-04T07:42:03.560Z",
+    "duration": 122706.269,
+    "expected": 51,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "projects": [
+    {
+      "name": "desktop",
+      "use": null
+    },
+    {
+      "name": "mobile",
+      "use": null
+    },
+    {
+      "name": "short-mobile",
+      "use": null
+    },
+    {
+      "name": "landscape",
+      "use": null
+    }
+  ],
+  "unitTests": {
+    "files": 4,
+    "passed": 29
+  },
+  "typecheck": "passed; app and e2e",
+  "build": "passed; client/SSR/Nitro, original Cloudflare preset",
+  "lint": "passed; src/core and new unit tests",
+  "visualSnapshots": 40,
+  "productionDeployment": false,
+  "dependencyAudit": "findings; see dependencies.md",
+  "artifactWatcherIsolationVerified": true
+}

@@ -57,7 +57,7 @@ export function ScrollStory() {
       if (back) { back.inert = progress < 0.18; back.setAttribute("data-visible", String(progress >= 0.18)); }
       if (returning.current && target === 0 && current < 0.002) {
         returning.current = false;
-        node.querySelector<HTMLInputElement>('input[aria-label="Ubicación"]')?.focus({ preventScroll: true });
+        node.querySelector<HTMLInputElement>('input[data-search-location]')?.focus({ preventScroll: true });
       }
       if (current !== target) frame = requestAnimationFrame(update);
     };

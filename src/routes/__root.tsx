@@ -13,6 +13,9 @@ import { useEffect, type ReactNode } from "react";
 import { SiteShell } from "../components/site";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { getPublicConfiguration } from "@/services/content";
+import { themeVariables } from "@/core/theme";
+import { FilterDefinitionsContext } from "@/core/filter-context";
 
 function NotFoundComponent() {
   return (
@@ -75,6 +78,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  loader: () => getPublicConfiguration(),
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -102,8 +106,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const data = Route.useLoaderData();
   return (
-    <html lang="es">
+    <html lang="es" data-custom-buttons={data?.theme.buttons ? "true" : undefined} style={data ? themeVariables(data.theme) : undefined}>
       <head>
         <HeadContent />
       </head>
@@ -117,13 +122,14 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const { filters } = Route.useLoaderData();
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <SiteShell>
+      <FilterDefinitionsContext.Provider value={filters}><SiteShell>
         <Outlet />
-      </SiteShell>
+      </SiteShell></FilterDefinitionsContext.Provider>
     </QueryClientProvider>
   );
 }

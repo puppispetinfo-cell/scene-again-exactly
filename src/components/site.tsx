@@ -112,7 +112,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
 function Footer() {
   const [s, setSettings] = useState<SiteSettings | null>(null);
-  useEffect(() => { let active = true; void getSettings().then((settings) => { if (active) setSettings(settings); }); return () => { active = false; }; }, []);
+  useEffect(() => { let active = true; void getSettings().then((settings) => { if (active) setSettings(settings); }).catch(() => { if (active) setSettings(null); }); return () => { active = false; }; }, []);
   return (
     <footer className="bg-ink text-ink-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-4 lg:px-8">

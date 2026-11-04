@@ -23,6 +23,7 @@ export interface Property {
   location?: string | undefined;
   code?: string | undefined;
   amenities: string[];
+  featureIds?: string[] | undefined;
   description?: string | undefined;
   images: PropertyImage[];
   featured: boolean;
@@ -30,7 +31,7 @@ export interface Property {
   publishedAt: string; // ISO
   whatsapp?: string | undefined;
   calendlyUrl?: string | undefined;
-  coordinates?: { lat: number | undefined; lng: number };
+  coordinates?: { lat: number | undefined; lng: number } | undefined;
 }
 
 export interface SiteSettings {
@@ -55,5 +56,8 @@ export interface PropertyFilters {
   dormitorios?: number | undefined;
   banos?: number | undefined;
   piscina?: boolean | undefined;
+  moneda?: "USD" | "ARS" | undefined;
+  superficieMin?: number | undefined;
+  caracteristicas?: string[] | undefined;
   orden?: "recientes" | "precio-asc" | "precio-desc" | undefined;
 }
