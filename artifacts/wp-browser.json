@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "passed": [
+    "Public REST returns valid HTTP JSON",
+    "Admin creates and persists draft through REST nonce",
+    "WordPress validates and stores a real JPEG upload",
+    "Media library picker fills validated gallery metadata",
+    "Admin publishes a property with a real gallery image",
+    "Admin duplicate creates independent ID",
+    "Admin archives a property",
+    "Admin saves global structured configuration",
+    "Visual token preview and navigation edit persist through WordPress",
+    "Block editor reorders sections with stable IDs and persists order",
+    "WordPress audit screen displays real administrative actions"
+  ],
+  "errors": []
+}

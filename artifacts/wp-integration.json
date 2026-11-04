@@ -1,0 +1,793 @@
+{
+    "environment": {
+        "wordpress": "6.8.3",
+        "php": "8.3.36",
+        "database": "WordPress Playground SQLite"
+    },
+    "passed": [
+        "plugin loaded",
+        "migration ran",
+        "configuration persisted",
+        "migration idempotent",
+        "public configuration",
+        "admin reads configuration",
+        "configuration requires If-Match",
+        "stale configuration rejected",
+        "configuration validated and saved",
+        "create draft property",
+        "draft excluded from public API",
+        "draft excluded from snapshot",
+        "XSS URL rejected",
+        "unknown fields rejected",
+        "SQL injection slug rejected",
+        "SQL injection resource path rejected",
+        "IDOR other owner read denied",
+        "IDOR other owner update denied",
+        "agent cannot read admin settings",
+        "agent creates own draft",
+        "agent cannot escalate to publisher",
+        "second agent isolated",
+        "publisher publishes property",
+        "published property public",
+        "snapshot includes published only",
+        "stale property write rejected",
+        "stored text sanitized against XSS",
+        "duplicate gets new ID and draft",
+        "archive property",
+        "archived property returns 410",
+        "archived excluded from snapshot",
+        "public listing does not crash",
+        "paginated listing available",
+        "active SVG upload rejected",
+        "anonymous properties admin denied",
+        "anonymous leads denied",
+        "anonymous audit denied",
+        "unconfigured webhook fails closed",
+        "submission without allowed origin rejected",
+        "administrative actions audited",
+        "unit relative URL accepted",
+        "unit unsafe URL rejected: javascript",
+        "unit unsafe URL rejected: data",
+        "unit unsafe URL rejected: ",
+        "unit unsafe URL rejected: https",
+        "unit unsafe URL rejected: ",
+        "unit unsafe URL rejected: http",
+        "unit default theme valid",
+        "unit CSS injection rejected",
+        "unit unknown visual token rejected",
+        "unit token numeric bounds enforced",
+        "create structured page",
+        "draft page is private",
+        "publish structured page",
+        "published page available by slug",
+        "administrator approves privacy reference",
+        "honeypot rejected",
+        "recipient injection rejected",
+        "missing consent rejected",
+        "unapproved submission origin rejected",
+        "lead persisted",
+        "no false email delivery claim",
+        "private lead does not invalidate public catalog revision",
+        "submission replay idempotent",
+        "idempotency payload conflict rejected",
+        "submission rate limit enforced",
+        "lead cannot be read through public property route",
+        "anonymous private lead read denied",
+        "property agent cannot read lead PII",
+        "authorized lead read",
+        "lead state updated with concurrency check",
+        "atomic compare-and-swap rejects second stale writer",
+        "create configurable custom property type",
+        "custom type persists stable ID and legacy family",
+        "publish custom property type",
+        "search by configured type slug",
+        "taxonomy in use cannot be archived",
+        "custom property type accepted in configured filters",
+        "private mutation requires valid REST nonce"
+    ],
+    "lastRestError": {
+        "status": 409,
+        "data": {
+            "code": "estate_reference_in_use",
+            "message": "Published properties reference this taxonomy",
+            "data": {
+                "status": 409
+            }
+        }
+    },
+    "publishedProperty": {
+        "id": "c1df8017-1c8d-4a90-a977-56e5de0fe4a6",
+        "schemaVersion": 1,
+        "revision": 2,
+        "extensions": {},
+        "slug": "integration-fixture",
+        "title": "Integration fixture",
+        "operation": "venta",
+        "type": "casa",
+        "categoryIds": [
+            "category-casa"
+        ],
+        "featureIds": [],
+        "status": "published",
+        "price": null,
+        "amenities": [],
+        "description": "",
+        "images": [
+            {
+                "id": "test-media",
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "src": "https:\/\/example.test\/test.jpg",
+                "alt": "Test fixture only",
+                "width": 640,
+                "height": 480,
+                "kind": "image",
+                "illustrative": true
+            }
+        ],
+        "featured": false,
+        "publishedAt": "2026-11-04",
+        "updatedAt": "2026-11-04T21:15:01Z",
+        "calendly": {
+            "enabled": false,
+            "label": "",
+            "mode": "link"
+        },
+        "seo": {
+            "title": "",
+            "description": "",
+            "index": false,
+            "follow": true,
+            "structuredData": []
+        },
+        "propertyTypeId": "category-casa"
+    },
+    "publishedSnapshot": {
+        "schemaVersion": 1,
+        "revision": "3",
+        "properties": [
+            {
+                "id": "c1df8017-1c8d-4a90-a977-56e5de0fe4a6",
+                "slug": "integration-fixture",
+                "title": "Integration fixture",
+                "operation": "venta",
+                "type": "casa",
+                "featureIds": [],
+                "price": null,
+                "amenities": [],
+                "description": "",
+                "images": [
+                    {
+                        "id": "test-media",
+                        "schemaVersion": 1,
+                        "revision": 0,
+                        "extensions": {},
+                        "src": "https:\/\/example.test\/test.jpg",
+                        "alt": "Test fixture only",
+                        "width": 640,
+                        "height": 480,
+                        "kind": "image",
+                        "illustrative": true
+                    }
+                ],
+                "featured": false,
+                "publishedAt": "2026-11-04"
+            }
+        ],
+        "settings": {
+            "socials": []
+        },
+        "team": {
+            "title": "",
+            "body": "",
+            "image": {
+                "id": "test-media",
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "src": "https:\/\/example.test\/test.jpg",
+                "alt": "Test fixture only",
+                "width": 640,
+                "height": 480,
+                "kind": "image",
+                "illustrative": true
+            }
+        },
+        "theme": {
+            "schemaVersion": 1,
+            "id": "rivton-approved",
+            "revision": 0,
+            "colors": {},
+            "sectionColors": {}
+        },
+        "filters": [
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-operation",
+                "key": "operacion",
+                "label": "Operaci\u00f3n",
+                "presentation": "tabs",
+                "order": 0,
+                "options": [
+                    {
+                        "value": "venta",
+                        "label": "Comprar"
+                    },
+                    {
+                        "value": "alquiler",
+                        "label": "Alquilar"
+                    }
+                ]
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-location",
+                "key": "ubicacion",
+                "label": "Ubicaci\u00f3n",
+                "placeholder": "\u00bfD\u00f3nde busc\u00e1s?",
+                "presentation": "text",
+                "order": 1,
+                "options": []
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-type",
+                "key": "tipo",
+                "label": "Tipo de inmueble",
+                "presentation": "select",
+                "order": 2,
+                "options": [
+                    {
+                        "value": "casa",
+                        "label": "Casa"
+                    },
+                    {
+                        "value": "departamento",
+                        "label": "Departamento"
+                    },
+                    {
+                        "value": "terreno",
+                        "label": "Terreno"
+                    },
+                    {
+                        "value": "local",
+                        "label": "Local"
+                    },
+                    {
+                        "value": "oficina",
+                        "label": "Oficina"
+                    }
+                ]
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-price",
+                "key": "precioMax",
+                "label": "Precio m\u00e1ximo",
+                "emptyLabel": "Sin l\u00edmite de precio",
+                "presentation": "select",
+                "order": 3,
+                "options": [
+                    {
+                        "value": "150000",
+                        "label": "Hasta USD 150.000"
+                    },
+                    {
+                        "value": "250000",
+                        "label": "Hasta USD 250.000"
+                    },
+                    {
+                        "value": "350000",
+                        "label": "Hasta USD 350.000"
+                    },
+                    {
+                        "value": "500000",
+                        "label": "Hasta USD 500.000"
+                    },
+                    {
+                        "value": "750000",
+                        "label": "Hasta USD 750.000"
+                    }
+                ]
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-bedrooms",
+                "key": "dormitorios",
+                "label": "Dormitorios",
+                "presentation": "select",
+                "order": 4,
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1+ dorm."
+                    },
+                    {
+                        "value": "2",
+                        "label": "2+ dorm."
+                    },
+                    {
+                        "value": "3",
+                        "label": "3+ dorm."
+                    },
+                    {
+                        "value": "4",
+                        "label": "4+ dorm."
+                    }
+                ]
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-bathrooms",
+                "key": "banos",
+                "label": "Ba\u00f1os",
+                "presentation": "select",
+                "order": 5,
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1+ ba\u00f1os"
+                    },
+                    {
+                        "value": "2",
+                        "label": "2+ ba\u00f1os"
+                    },
+                    {
+                        "value": "3",
+                        "label": "3+ ba\u00f1os"
+                    },
+                    {
+                        "value": "4",
+                        "label": "4+ ba\u00f1os"
+                    }
+                ]
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-pool",
+                "key": "piscina",
+                "label": "Con piscina",
+                "presentation": "checkbox",
+                "order": 6,
+                "options": []
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-sort",
+                "key": "orden",
+                "label": "Ordenar",
+                "presentation": "select",
+                "order": 7,
+                "options": [
+                    {
+                        "value": "recientes",
+                        "label": "M\u00e1s recientes"
+                    },
+                    {
+                        "value": "precio-asc",
+                        "label": "Menor precio"
+                    },
+                    {
+                        "value": "precio-desc",
+                        "label": "Mayor precio"
+                    }
+                ]
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": false,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-moneda",
+                "key": "moneda",
+                "label": "moneda",
+                "presentation": "select",
+                "order": 8,
+                "options": []
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": false,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-superficieMin",
+                "key": "superficieMin",
+                "label": "superficieMin",
+                "presentation": "number",
+                "order": 9,
+                "options": []
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": false,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-caracteristicas",
+                "key": "caracteristicas",
+                "label": "caracteristicas",
+                "presentation": "multiselect",
+                "order": 10,
+                "options": []
+            }
+        ]
+    },
+    "pluginHashes": {
+        "assets\/admin.css": "0f1c9139db554fa93a41571a293ff16d6474cb2fba7cd7abc364c4a1f34255b4",
+        "assets\/admin.js": "a1fab24cff61b7568c76d5d499796ace22293b4ac5320962d475c3a5380f8041",
+        "includes\/Admin.php": "2226ed9ecb0a0f2e5cd8b2f4a4ef1162473c2b1d70730af35f366b0c35a888b3",
+        "includes\/Lifecycle.php": "d3d4e54a2eb238edb2418402c8c73ad4fc419995a5707f9674e8382383e11fc5",
+        "includes\/Rest.php": "bbf1b6d629643dac97ed3dc33db49c67cb0b2ca010f9af30a805a71c3e4dcd6b",
+        "includes\/Schema.php": "d7f2feeb5316acc939f01e8bbbcd9e2c46f5f441c252404b6cb190e6ef93ca6d",
+        "includes\/Store.php": "4e2a8892112d3efa8aca50b0c5b2acc458e0f0041bfe54a73830fabee442a836",
+        "profiles\/rivton.json": "0c3ac0aad7a7131b6dbcf2e2891f84c141dcfa6350504056f7e93b0eaa074db2",
+        "readme.txt": "5fc4b2d92a963304271b8d683bbb382bc035631b62827066529d1bd70f526fda",
+        "rivton-core.php": "f1931d8967ceb1d1a1beea30052be02aea3bbb5595f97e575a7b7886b29b7294",
+        "schemas\/contracts.json": "77269b22d45ddbfa1ceab27d4a0525f708750078884d4202c9ef93c76219c810",
+        "schemas\/defaults.json": "317111fd3da87ee07b768341d7e1a969fee0d7b4be6d77c71c0dd9e7df3e074d",
+        "uninstall.php": "f3548c2af7fa5fe0dd1c009056727c28d40d72853544ca86a4f1094efe767350"
+    },
+    "success": true,
+    "snapshot": {
+        "schemaVersion": 1,
+        "revision": "10",
+        "properties": [
+            {
+                "id": "fc36c3e3-8e53-4d95-a6cf-9db9c4364363",
+                "slug": "custom-type-fixture",
+                "title": "Integration fixture",
+                "operation": "venta",
+                "type": "casa",
+                "featureIds": [],
+                "price": null,
+                "amenities": [],
+                "description": "",
+                "images": [
+                    {
+                        "id": "test-media",
+                        "schemaVersion": 1,
+                        "revision": 0,
+                        "extensions": {},
+                        "src": "https:\/\/example.test\/test.jpg",
+                        "alt": "Test fixture only",
+                        "width": 640,
+                        "height": 480,
+                        "kind": "image",
+                        "illustrative": true
+                    }
+                ],
+                "featured": false,
+                "publishedAt": "2026-11-04"
+            }
+        ],
+        "settings": {
+            "socials": []
+        },
+        "team": {
+            "title": "",
+            "body": "",
+            "image": {
+                "id": "test-media",
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "src": "https:\/\/example.test\/test.jpg",
+                "alt": "Test fixture only",
+                "width": 640,
+                "height": 480,
+                "kind": "image",
+                "illustrative": true
+            }
+        },
+        "theme": {
+            "schemaVersion": 1,
+            "id": "rivton-approved",
+            "revision": 0,
+            "colors": {},
+            "sectionColors": {}
+        },
+        "filters": [
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-operation",
+                "key": "operacion",
+                "label": "Operaci\u00f3n",
+                "presentation": "tabs",
+                "order": 0,
+                "options": [
+                    {
+                        "value": "venta",
+                        "label": "Comprar"
+                    },
+                    {
+                        "value": "alquiler",
+                        "label": "Alquilar"
+                    }
+                ]
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-location",
+                "key": "ubicacion",
+                "label": "Ubicaci\u00f3n",
+                "placeholder": "\u00bfD\u00f3nde busc\u00e1s?",
+                "presentation": "text",
+                "order": 1,
+                "options": []
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-type",
+                "key": "tipo",
+                "label": "Tipo de inmueble",
+                "presentation": "select",
+                "order": 2,
+                "options": [
+                    {
+                        "value": "casa",
+                        "label": "Casa"
+                    },
+                    {
+                        "value": "departamento",
+                        "label": "Departamento"
+                    },
+                    {
+                        "value": "terreno",
+                        "label": "Terreno"
+                    },
+                    {
+                        "value": "local",
+                        "label": "Local"
+                    },
+                    {
+                        "value": "oficina",
+                        "label": "Oficina"
+                    }
+                ]
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-price",
+                "key": "precioMax",
+                "label": "Precio m\u00e1ximo",
+                "emptyLabel": "Sin l\u00edmite de precio",
+                "presentation": "select",
+                "order": 3,
+                "options": [
+                    {
+                        "value": "150000",
+                        "label": "Hasta USD 150.000"
+                    },
+                    {
+                        "value": "250000",
+                        "label": "Hasta USD 250.000"
+                    },
+                    {
+                        "value": "350000",
+                        "label": "Hasta USD 350.000"
+                    },
+                    {
+                        "value": "500000",
+                        "label": "Hasta USD 500.000"
+                    },
+                    {
+                        "value": "750000",
+                        "label": "Hasta USD 750.000"
+                    }
+                ]
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-bedrooms",
+                "key": "dormitorios",
+                "label": "Dormitorios",
+                "presentation": "select",
+                "order": 4,
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1+ dorm."
+                    },
+                    {
+                        "value": "2",
+                        "label": "2+ dorm."
+                    },
+                    {
+                        "value": "3",
+                        "label": "3+ dorm."
+                    },
+                    {
+                        "value": "4",
+                        "label": "4+ dorm."
+                    }
+                ]
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-bathrooms",
+                "key": "banos",
+                "label": "Ba\u00f1os",
+                "presentation": "select",
+                "order": 5,
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1+ ba\u00f1os"
+                    },
+                    {
+                        "value": "2",
+                        "label": "2+ ba\u00f1os"
+                    },
+                    {
+                        "value": "3",
+                        "label": "3+ ba\u00f1os"
+                    },
+                    {
+                        "value": "4",
+                        "label": "4+ ba\u00f1os"
+                    }
+                ]
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-pool",
+                "key": "piscina",
+                "label": "Con piscina",
+                "presentation": "checkbox",
+                "order": 6,
+                "options": []
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": true,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-sort",
+                "key": "orden",
+                "label": "Ordenar",
+                "presentation": "select",
+                "order": 7,
+                "options": [
+                    {
+                        "value": "recientes",
+                        "label": "M\u00e1s recientes"
+                    },
+                    {
+                        "value": "precio-asc",
+                        "label": "Menor precio"
+                    },
+                    {
+                        "value": "precio-desc",
+                        "label": "Mayor precio"
+                    }
+                ]
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": false,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-moneda",
+                "key": "moneda",
+                "label": "moneda",
+                "presentation": "select",
+                "order": 8,
+                "options": []
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": false,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-superficieMin",
+                "key": "superficieMin",
+                "label": "superficieMin",
+                "presentation": "number",
+                "order": 9,
+                "options": []
+            },
+            {
+                "schemaVersion": 1,
+                "revision": 0,
+                "extensions": {},
+                "visible": false,
+                "categoryIds": [],
+                "featureIds": [],
+                "id": "filter-caracteristicas",
+                "key": "caracteristicas",
+                "label": "caracteristicas",
+                "presentation": "multiselect",
+                "order": 10,
+                "options": []
+            }
+        ]
+    },
+    "lastError": null
+}

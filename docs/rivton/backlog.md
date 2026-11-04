@@ -18,16 +18,18 @@ Estados permitidos: pendiente, preparado para configurar, implementado pendiente
 
 | ID | Descripción / prioridad | Dependencias | Aceptación objetiva | Estado | Pruebas / archivos previstos | Riesgos |
 |---|---|---|---|---|---|---|
-| F2-01 | Plugin/CPT/taxonomías y migraciones P0 | F1-02/06 | instalación/actualización idempotente, IDs preservados, matriz PHP/WP probada | pendiente | plugin/rivton-core/**, tests/php; QA-MIG | compatibilidad |
-| F2-02 | Panel único, roles, auditoría, media P0 | F2-01 | CRUD por capability/recurso, privilegio mínimo, revisión y publish, uploads saneados, MFA | pendiente | plugin/admin/**; QA-PERM/SEC | escalada/PII |
-| F2-03 | API pública/admin/submissions P0 | F2-01/02 | DTO compatible, drafts privados, ETag/If-Match, tamaños/rate limit/CORS/CSRF, idempotencia | pendiente | plugin/rest/**; QA-API/FORM | spam/IDOR |
-| F2-04 | Configuración comercial y destinatarios P1 | F2-02 | identidad, legales borrador, equipo/sucursales, contactos/formularios y secretos separados | pendiente | plugin/settings/**; QA-PERM | información no verificada |
+| F2-01 | Plugin, registros y taxonomías; migraciones P0 | F1-02/06 | ZIP instalado, migración idempotente, IDs preservados; matriz completa en staging | implementado y verificado WP 6.8.3/PHP 8.3/SQLite; MySQL/MariaDB pendiente | wordpress/rivton-core, scripts/test-wp-zip.mjs; QA-MIG | tablas propias según ADR; compatibilidad pendiente |
+| F2-02 | Panel único, roles, auditoría, media P0 | F2-01 | CRUD por capability/recurso, revisión y publish, uploads validados, auditoría | implementado y verificado; MFA depende del entorno y sigue pendiente | 79 checks PHP y 11 navegador; phase-2/verification.md | no certifica infraestructura ni accesibilidad completa |
+| F2-03 | API pública/admin/submissions P0 | F2-01/02 | DTO compatible, drafts privados, ETag/If-Match, límites/CORS/nonce, idempotencia | implementado y verificado en desarrollo | wordpress/tests, phase-2/rest.md; QA-API/FORM | SMTP y webhooks deshabilitados |
+| F2-04 | Configuración comercial P1 | F2-02 | identidad/tokens, menús, filtros, páginas/bloques, SEO, legales borrador, contactos y equipo | implementado y verificado en WordPress; consumo React F3 | assets/admin.js, contratos JSON; QA-PERM | no inventar datos; destinatarios/transporte de notificaciones pendientes |
+
+Evidencia, límites y reproducción: [entrega Fase 2](phase-2/README.md), [verificación](phase-2/verification.md). Esta actualización no cierra los gates de seguridad, publicación o comercialización de las fases posteriores.
 
 ## FASE 3 — Integración React/WordPress
 
 | ID | Descripción / prioridad | Dependencias | Aceptación objetiva | Estado | Pruebas / archivos previstos | Riesgos |
 |---|---|---|---|---|---|---|
-| F3-01 | Conectar snapshot/recursos reales P0 | F2-03 | loader SSR y navegador equivalentes, sin credenciales, caída controlada, invalidación de publicación <60s sin redeploy | bloqueado por plugin futuro | core/repository.ts, services/content.ts; QA-API/E2E | latencia/tamaño |
+| F3-01 | Conectar snapshot/recursos reales P0 | F2-03 | loader SSR y navegador equivalentes, sin credenciales, caída controlada, invalidación de publicación <60s sin redeploy | pendiente; plugin local disponible, staging por configurar | core/repository.ts, services/content.ts; QA-API/E2E | latencia/tamaño |
 | F3-02 | Extraer todo el contenido/UI de matriz P0 | F2-04/F3-01 | logo/menús/header/dock/footer/textos/media/CTA/SEO editables; defaults conservan main | pendiente | components/site/scroll-story, routes/**, core/configuration; QA-VIS | regresión visual |
 | F3-03 | Renderers y editor simple de secciones P1 | F3-02 | crear/reordenar/ocultar/reusar bloques compatible desktop/mobile, preview privado y revisiones | pendiente | core/sections, components/sections/**; QA-VIS/A11Y | DOM/scroll |
 | F3-04 | Filtros integrales de catálogo P0 | F2-01/F3-01 | nombres/opciones/orden/visibilidad, moneda/superficie/features, URL legacy intacta, valores compartidos propiedades | pendiente | filters.ts, search-form, results; QA-SEARCH | monedas/taxonomías |

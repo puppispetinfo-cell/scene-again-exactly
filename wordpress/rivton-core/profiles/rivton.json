@@ -1,0 +1,11 @@
+{
+  "name": "RIVTON Group",
+  "locale": "es-AR",
+  "theme": {
+    "schemaVersion": 1,
+    "id": "rivton-approved",
+    "revision": 0,
+    "colors": {},
+    "sectionColors": {}
+  }
+}

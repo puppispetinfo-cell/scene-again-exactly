@@ -1,0 +1,3473 @@
+{
+  "actionSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "label": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "href": {
+        "type": "string",
+        "maxLength": 2048
+      },
+      "newWindow": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "id",
+      "label",
+      "href"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "idSchema": {
+    "type": "string",
+    "minLength": 1,
+    "maxLength": 128,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "integrationSettingsSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": {},
+        "default": {}
+      },
+      "gtm": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "containerId": {
+            "type": "string",
+            "pattern": "^GTM-[A-Z0-9]+$"
+          }
+        },
+        "required": [
+          "enabled"
+        ],
+        "additionalProperties": false
+      },
+      "ga4": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "measurementId": {
+            "type": "string",
+            "pattern": "^G-[A-Z0-9]+$"
+          }
+        },
+        "required": [
+          "enabled"
+        ],
+        "additionalProperties": false
+      },
+      "googleAds": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "accountId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "enabled"
+        ],
+        "additionalProperties": false
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "pixelId": {
+            "type": "string",
+            "pattern": "^\\d+$"
+          },
+          "serverEventsEnabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "enabled",
+          "serverEventsEnabled"
+        ],
+        "additionalProperties": false
+      },
+      "searchConsole": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "verification": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]+$"
+          }
+        },
+        "required": [
+          "enabled"
+        ],
+        "additionalProperties": false
+      },
+      "consentRequired": {
+        "type": "boolean"
+      },
+      "utmDefaults": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "maxLength": 200
+        }
+      }
+    },
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "gtm",
+      "ga4",
+      "googleAds",
+      "meta",
+      "searchConsole",
+      "consentRequired",
+      "utmDefaults"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "leadSubmissionSchema": {
+    "type": "object",
+    "properties": {
+      "idempotencyKey": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "formId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "propertyId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 254
+      },
+      "phone": {
+        "type": "string",
+        "maxLength": 30
+      },
+      "message": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      },
+      "consent": {
+        "type": "object",
+        "properties": {
+          "privacyRevision": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "accepted": {
+            "type": "boolean",
+            "const": true
+          }
+        },
+        "required": [
+          "privacyRevision",
+          "accepted"
+        ],
+        "additionalProperties": false
+      },
+      "honeypot": {
+        "type": "string",
+        "const": ""
+      }
+    },
+    "required": [
+      "idempotencyKey",
+      "formId",
+      "name",
+      "email",
+      "message",
+      "consent",
+      "honeypot"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "mediaAssetSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": {},
+        "default": {}
+      },
+      "src": {
+        "type": "string",
+        "maxLength": 2048
+      },
+      "alt": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "width": {
+        "type": "integer",
+        "exclusiveMinimum": 0
+      },
+      "height": {
+        "type": "integer",
+        "exclusiveMinimum": 0
+      },
+      "kind": {
+        "type": "string",
+        "enum": [
+          "image",
+          "video"
+        ]
+      },
+      "illustrative": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "src",
+      "alt",
+      "width",
+      "height",
+      "kind"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "navigationMenuSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": {},
+        "default": {}
+      },
+      "location": {
+        "type": "string",
+        "enum": [
+          "header",
+          "mobile",
+          "dock",
+          "footer"
+        ]
+      },
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "label": {
+              "type": "string",
+              "maxLength": 10000
+            },
+            "href": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "newWindow": {
+              "type": "boolean",
+              "default": false
+            },
+            "icon": {
+              "type": "string",
+              "enum": [
+                "home",
+                "search",
+                "heart",
+                "publish",
+                "users",
+                "mail",
+                "external"
+              ]
+            },
+            "visible": {
+              "type": "boolean"
+            },
+            "order": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "label",
+            "href",
+            "icon",
+            "visible",
+            "order"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 30
+      }
+    },
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "location",
+      "items"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "pageDefinitionSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": {},
+        "default": {}
+      },
+      "slug": {
+        "type": "string",
+        "pattern": "^(\\/|[a-z0-9]+(?:-[a-z0-9]+)*)$"
+      },
+      "title": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "draft",
+          "published",
+          "archived"
+        ]
+      },
+      "seo": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "canonical": {
+            "type": "string",
+            "maxLength": 2048
+          },
+          "index": {
+            "type": "boolean"
+          },
+          "follow": {
+            "type": "boolean"
+          },
+          "openGraph": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "image": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "schemaVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "additionalProperties": {},
+                    "default": {}
+                  },
+                  "src": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "alt": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "width": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "illustrative": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "schemaVersion",
+                  "revision",
+                  "src",
+                  "alt",
+                  "width",
+                  "height",
+                  "kind"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "title",
+              "description"
+            ],
+            "additionalProperties": false
+          },
+          "structuredData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "Organization",
+                    "BreadcrumbList",
+                    "RealEstateListing",
+                    "FAQPage"
+                  ]
+                },
+                "sourceIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "sourceIds"
+              ],
+              "additionalProperties": false
+            },
+            "default": []
+          }
+        },
+        "required": [
+          "title",
+          "description",
+          "index",
+          "follow"
+        ],
+        "additionalProperties": false
+      },
+      "sections": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "schemaVersion": {
+              "type": "number",
+              "const": 1
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "extensions": {
+              "type": "object",
+              "additionalProperties": {},
+              "default": {}
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "story",
+                "featured",
+                "categories",
+                "latest",
+                "banner",
+                "team",
+                "text",
+                "faq",
+                "lead-form"
+              ]
+            },
+            "content": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "maxLength": 10000
+              }
+            },
+            "design": {
+              "type": "object",
+              "properties": {
+                "variant": {
+                  "type": "string",
+                  "enum": [
+                    "default",
+                    "dark",
+                    "glass"
+                  ]
+                },
+                "colorScheme": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                }
+              },
+              "required": [
+                "variant"
+              ],
+              "additionalProperties": false
+            },
+            "visible": {
+              "type": "boolean"
+            },
+            "order": {
+              "type": "integer"
+            },
+            "responsive": {
+              "type": "object",
+              "properties": {
+                "mobile": {
+                  "type": "object",
+                  "properties": {
+                    "visible": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "columns": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 6
+                    },
+                    "spacing": {
+                      "type": "string",
+                      "enum": [
+                        "compact",
+                        "normal",
+                        "wide"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "desktop": {
+                  "type": "object",
+                  "properties": {
+                    "visible": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "columns": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 6
+                    },
+                    "spacing": {
+                      "type": "string",
+                      "enum": [
+                        "compact",
+                        "normal",
+                        "wide"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "mobile",
+                "desktop"
+              ],
+              "additionalProperties": false
+            },
+            "actions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "href": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "newWindow": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "label",
+                  "href"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "media": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "schemaVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "additionalProperties": {},
+                    "default": {}
+                  },
+                  "src": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "alt": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "width": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "illustrative": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "schemaVersion",
+                  "revision",
+                  "src",
+                  "alt",
+                  "width",
+                  "height",
+                  "kind"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "id",
+            "schemaVersion",
+            "revision",
+            "type",
+            "content",
+            "design",
+            "visible",
+            "order",
+            "responsive",
+            "actions",
+            "media"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "slug",
+      "title",
+      "status",
+      "seo",
+      "sections"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "pageSectionSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": {},
+        "default": {}
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "story",
+          "featured",
+          "categories",
+          "latest",
+          "banner",
+          "team",
+          "text",
+          "faq",
+          "lead-form"
+        ]
+      },
+      "content": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "maxLength": 10000
+        }
+      },
+      "design": {
+        "type": "object",
+        "properties": {
+          "variant": {
+            "type": "string",
+            "enum": [
+              "default",
+              "dark",
+              "glass"
+            ]
+          },
+          "colorScheme": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "variant"
+        ],
+        "additionalProperties": false
+      },
+      "visible": {
+        "type": "boolean"
+      },
+      "order": {
+        "type": "integer"
+      },
+      "responsive": {
+        "type": "object",
+        "properties": {
+          "mobile": {
+            "type": "object",
+            "properties": {
+              "visible": {
+                "type": "boolean",
+                "default": true
+              },
+              "columns": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 6
+              },
+              "spacing": {
+                "type": "string",
+                "enum": [
+                  "compact",
+                  "normal",
+                  "wide"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "desktop": {
+            "type": "object",
+            "properties": {
+              "visible": {
+                "type": "boolean",
+                "default": true
+              },
+              "columns": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 6
+              },
+              "spacing": {
+                "type": "string",
+                "enum": [
+                  "compact",
+                  "normal",
+                  "wide"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "mobile",
+          "desktop"
+        ],
+        "additionalProperties": false
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "label": {
+              "type": "string",
+              "maxLength": 10000
+            },
+            "href": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "newWindow": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "required": [
+            "id",
+            "label",
+            "href"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "media": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "schemaVersion": {
+              "type": "number",
+              "const": 1
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "extensions": {
+              "type": "object",
+              "additionalProperties": {},
+              "default": {}
+            },
+            "src": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 10000
+            },
+            "width": {
+              "type": "integer",
+              "exclusiveMinimum": 0
+            },
+            "height": {
+              "type": "integer",
+              "exclusiveMinimum": 0
+            },
+            "kind": {
+              "type": "string",
+              "enum": [
+                "image",
+                "video"
+              ]
+            },
+            "illustrative": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "required": [
+            "id",
+            "schemaVersion",
+            "revision",
+            "src",
+            "alt",
+            "width",
+            "height",
+            "kind"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "type",
+      "content",
+      "design",
+      "visible",
+      "order",
+      "responsive",
+      "actions",
+      "media"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "propertyCategorySchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": {},
+        "default": {}
+      },
+      "slug": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "label": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "kind": {
+        "type": "string",
+        "enum": [
+          "operation",
+          "type",
+          "location"
+        ]
+      },
+      "visible": {
+        "type": "boolean"
+      },
+      "order": {
+        "type": "integer"
+      },
+      "legacyType": {
+        "type": "string",
+        "enum": [
+          "casa",
+          "departamento",
+          "terreno",
+          "local",
+          "oficina"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "slug",
+      "label",
+      "kind",
+      "visible",
+      "order"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "propertyFeatureSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": {},
+        "default": {}
+      },
+      "label": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "icon": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "valueType": {
+        "type": "string",
+        "enum": [
+          "boolean",
+          "number",
+          "text"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "label",
+      "valueType"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "propertySchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": {},
+        "default": {}
+      },
+      "slug": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "title": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "operation": {
+        "type": "string",
+        "enum": [
+          "venta",
+          "alquiler"
+        ]
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "casa",
+          "departamento",
+          "terreno",
+          "local",
+          "oficina"
+        ]
+      },
+      "categoryIds": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      },
+      "featureIds": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "published",
+          "reserved",
+          "sold",
+          "rented",
+          "withdrawn"
+        ]
+      },
+      "price": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "minimum": 0
+              },
+              "currency": {
+                "type": "string",
+                "enum": [
+                  "ARS",
+                  "USD"
+                ]
+              }
+            },
+            "required": [
+              "amount",
+              "currency"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "bedrooms": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "bathrooms": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "lotArea": {
+        "type": "number",
+        "minimum": 0
+      },
+      "coveredArea": {
+        "type": "number",
+        "minimum": 0
+      },
+      "location": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "code": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "amenities": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "maxLength": 10000
+        }
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "images": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "schemaVersion": {
+              "type": "number",
+              "const": 1
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "extensions": {
+              "type": "object",
+              "additionalProperties": {},
+              "default": {}
+            },
+            "src": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 10000
+            },
+            "width": {
+              "type": "integer",
+              "exclusiveMinimum": 0
+            },
+            "height": {
+              "type": "integer",
+              "exclusiveMinimum": 0
+            },
+            "kind": {
+              "type": "string",
+              "enum": [
+                "image",
+                "video"
+              ]
+            },
+            "illustrative": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "required": [
+            "id",
+            "schemaVersion",
+            "revision",
+            "src",
+            "alt",
+            "width",
+            "height",
+            "kind"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "featured": {
+        "type": "boolean"
+      },
+      "featuredOrder": {
+        "type": "integer"
+      },
+      "publishedAt": {
+        "type": "string",
+        "format": "date"
+      },
+      "updatedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "whatsapp": {
+        "type": "string",
+        "pattern": "^\\d{6,20}$"
+      },
+      "calendly": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "link",
+              "modal",
+              "embed"
+            ]
+          }
+        },
+        "required": [
+          "enabled",
+          "label",
+          "mode"
+        ],
+        "additionalProperties": false
+      },
+      "seo": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "canonical": {
+            "type": "string",
+            "maxLength": 2048
+          },
+          "index": {
+            "type": "boolean"
+          },
+          "follow": {
+            "type": "boolean"
+          },
+          "openGraph": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "image": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "schemaVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "additionalProperties": {},
+                    "default": {}
+                  },
+                  "src": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "alt": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "width": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "illustrative": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "schemaVersion",
+                  "revision",
+                  "src",
+                  "alt",
+                  "width",
+                  "height",
+                  "kind"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "title",
+              "description"
+            ],
+            "additionalProperties": false
+          },
+          "structuredData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "Organization",
+                    "BreadcrumbList",
+                    "RealEstateListing",
+                    "FAQPage"
+                  ]
+                },
+                "sourceIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "sourceIds"
+              ],
+              "additionalProperties": false
+            },
+            "default": []
+          }
+        },
+        "required": [
+          "title",
+          "description",
+          "index",
+          "follow"
+        ],
+        "additionalProperties": false
+      },
+      "propertyTypeId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      }
+    },
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "slug",
+      "title",
+      "operation",
+      "type",
+      "categoryIds",
+      "featureIds",
+      "status",
+      "price",
+      "amenities",
+      "images",
+      "featured",
+      "publishedAt",
+      "updatedAt",
+      "calendly",
+      "seo"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "searchFilterDefinitionSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": {},
+        "default": {}
+      },
+      "key": {
+        "type": "string",
+        "enum": [
+          "operacion",
+          "tipo",
+          "ubicacion",
+          "precioMax",
+          "moneda",
+          "superficieMin",
+          "dormitorios",
+          "banos",
+          "piscina",
+          "caracteristicas",
+          "orden"
+        ]
+      },
+      "label": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "emptyLabel": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "placeholder": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "presentation": {
+        "type": "string",
+        "enum": [
+          "tabs",
+          "select",
+          "text",
+          "number",
+          "checkbox",
+          "multiselect"
+        ]
+      },
+      "options": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "label": {
+              "type": "string",
+              "maxLength": 10000
+            }
+          },
+          "required": [
+            "value",
+            "label"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "visible": {
+        "type": "boolean"
+      },
+      "order": {
+        "type": "integer"
+      },
+      "categoryIds": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      },
+      "featureIds": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      }
+    },
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "key",
+      "label",
+      "presentation",
+      "options",
+      "visible",
+      "order",
+      "categoryIds",
+      "featureIds"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "seoSettingsSchema": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "maxLength": 200
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 500
+      },
+      "canonical": {
+        "type": "string",
+        "maxLength": 2048
+      },
+      "index": {
+        "type": "boolean"
+      },
+      "follow": {
+        "type": "boolean"
+      },
+      "openGraph": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "image": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "schemaVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "revision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "extensions": {
+                "type": "object",
+                "additionalProperties": {},
+                "default": {}
+              },
+              "src": {
+                "type": "string",
+                "maxLength": 2048
+              },
+              "alt": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "width": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "height": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "image",
+                  "video"
+                ]
+              },
+              "illustrative": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "required": [
+              "id",
+              "schemaVersion",
+              "revision",
+              "src",
+              "alt",
+              "width",
+              "height",
+              "kind"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "title",
+          "description"
+        ],
+        "additionalProperties": false
+      },
+      "structuredData": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Organization",
+                "BreadcrumbList",
+                "RealEstateListing",
+                "FAQPage"
+              ]
+            },
+            "sourceIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            }
+          },
+          "required": [
+            "type",
+            "sourceIds"
+          ],
+          "additionalProperties": false
+        },
+        "default": []
+      }
+    },
+    "required": [
+      "title",
+      "description",
+      "index",
+      "follow"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "siteSettingsSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": {},
+        "default": {}
+      },
+      "name": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "locale": {
+        "type": "string",
+        "maxLength": 35
+      },
+      "currencies": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "ARS",
+            "USD"
+          ]
+        }
+      },
+      "domain": {
+        "type": "string",
+        "format": "uri"
+      },
+      "logo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {},
+            "default": {}
+          },
+          "src": {
+            "type": "string",
+            "maxLength": 2048
+          },
+          "alt": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "width": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          },
+          "height": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "image",
+              "video"
+            ]
+          },
+          "illustrative": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "id",
+          "schemaVersion",
+          "revision",
+          "src",
+          "alt",
+          "width",
+          "height",
+          "kind"
+        ],
+        "additionalProperties": false
+      },
+      "alternateLogo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {},
+            "default": {}
+          },
+          "src": {
+            "type": "string",
+            "maxLength": 2048
+          },
+          "alt": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "width": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          },
+          "height": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "image",
+              "video"
+            ]
+          },
+          "illustrative": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "id",
+          "schemaVersion",
+          "revision",
+          "src",
+          "alt",
+          "width",
+          "height",
+          "kind"
+        ],
+        "additionalProperties": false
+      },
+      "favicon": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {},
+            "default": {}
+          },
+          "src": {
+            "type": "string",
+            "maxLength": 2048
+          },
+          "alt": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "width": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          },
+          "height": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "image",
+              "video"
+            ]
+          },
+          "illustrative": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "id",
+          "schemaVersion",
+          "revision",
+          "src",
+          "alt",
+          "width",
+          "height",
+          "kind"
+        ],
+        "additionalProperties": false
+      },
+      "whatsapp": {
+        "type": "string",
+        "pattern": "^\\d{6,20}$"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "phone": {
+        "type": "string",
+        "maxLength": 40
+      },
+      "address": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "socials": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 10000
+            },
+            "url": {
+              "type": "string",
+              "maxLength": 2048
+            }
+          },
+          "required": [
+            "label",
+            "url"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "footerText": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "legalPageIds": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      }
+    },
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "name",
+      "locale",
+      "currencies",
+      "domain",
+      "socials",
+      "footerText",
+      "legalPageIds"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "teamMemberSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": {},
+        "default": {}
+      },
+      "name": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "role": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "biography": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "photo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {},
+            "default": {}
+          },
+          "src": {
+            "type": "string",
+            "maxLength": 2048
+          },
+          "alt": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "width": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          },
+          "height": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "image",
+              "video"
+            ]
+          },
+          "illustrative": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "id",
+          "schemaVersion",
+          "revision",
+          "src",
+          "alt",
+          "width",
+          "height",
+          "kind"
+        ],
+        "additionalProperties": false
+      },
+      "order": {
+        "type": "integer"
+      },
+      "visible": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "name",
+      "role",
+      "biography",
+      "order",
+      "visible"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "urlSchema": {
+    "type": "string",
+    "maxLength": 2048,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "themeSettingsSchema": {
+    "type": "object",
+    "properties": {
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "colors": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "pattern": "^(#[0-9a-fA-F]{6}|oklch\\((?:0|1|0?\\.\\d+) (?:0|0?\\.\\d+) \\d{1,3}(?: \\/ (?:0|1|0?\\.\\d+))?\\))$"
+        },
+        "propertyNames": {
+          "enum": [
+            "background",
+            "foreground",
+            "card",
+            "card-foreground",
+            "popover",
+            "popover-foreground",
+            "primary",
+            "primary-foreground",
+            "secondary",
+            "secondary-foreground",
+            "muted",
+            "muted-foreground",
+            "accent",
+            "accent-foreground",
+            "destructive",
+            "destructive-foreground",
+            "border",
+            "input",
+            "ring",
+            "ink",
+            "ink-foreground",
+            "graphite",
+            "sand",
+            "stone",
+            "glass-navigation",
+            "glass-dock",
+            "glass-menu",
+            "glass-surface",
+            "glass-light-border",
+            "glass-dark-surface"
+          ]
+        }
+      },
+      "radius": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 3
+      },
+      "contentWidth": {
+        "type": "number",
+        "minimum": 960,
+        "maximum": 1600
+      },
+      "spacingScale": {
+        "type": "number",
+        "minimum": 0.8,
+        "maximum": 1.25
+      },
+      "headingScale": {
+        "type": "number",
+        "minimum": 0.8,
+        "maximum": 1.25
+      },
+      "bodyScale": {
+        "type": "number",
+        "minimum": 0.9,
+        "maximum": 1.2
+      },
+      "glassBlur": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 40
+      },
+      "fonts": {
+        "type": "object",
+        "properties": {
+          "sans": {
+            "type": "string",
+            "enum": [
+              "Inter",
+              "system"
+            ]
+          },
+          "display": {
+            "type": "string",
+            "enum": [
+              "Cormorant Garamond",
+              "system"
+            ]
+          },
+          "weights": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "enum": [
+                400,
+                500,
+                600,
+                700
+              ]
+            }
+          }
+        },
+        "required": [
+          "sans",
+          "display",
+          "weights"
+        ],
+        "additionalProperties": false
+      },
+      "buttons": {
+        "type": "object",
+        "properties": {
+          "radius": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 64
+          },
+          "height": {
+            "type": "number",
+            "minimum": 40,
+            "maximum": 64
+          }
+        },
+        "required": [
+          "radius",
+          "height"
+        ],
+        "additionalProperties": false
+      },
+      "sectionColors": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^(#[0-9a-fA-F]{6}|oklch\\((?:0|1|0?\\.\\d+) (?:0|0?\\.\\d+) \\d{1,3}(?: \\/ (?:0|1|0?\\.\\d+))?\\))$"
+          },
+          "propertyNames": {
+            "enum": [
+              "background",
+              "foreground",
+              "card",
+              "card-foreground",
+              "popover",
+              "popover-foreground",
+              "primary",
+              "primary-foreground",
+              "secondary",
+              "secondary-foreground",
+              "muted",
+              "muted-foreground",
+              "accent",
+              "accent-foreground",
+              "destructive",
+              "destructive-foreground",
+              "border",
+              "input",
+              "ring",
+              "ink",
+              "ink-foreground",
+              "graphite",
+              "sand",
+              "stone",
+              "glass-navigation",
+              "glass-dock",
+              "glass-menu",
+              "glass-surface",
+              "glass-light-border",
+              "glass-dark-surface"
+            ]
+          }
+        },
+        "propertyNames": {
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "default": {}
+      }
+    },
+    "required": [
+      "schemaVersion",
+      "id",
+      "revision",
+      "colors"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "configurationSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "schemaVersion": {
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "site": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {},
+            "default": {}
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "locale": {
+            "type": "string",
+            "maxLength": 35
+          },
+          "currencies": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ARS",
+                "USD"
+              ]
+            }
+          },
+          "domain": {
+            "type": "string",
+            "format": "uri"
+          },
+          "logo": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "schemaVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "revision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "extensions": {
+                "type": "object",
+                "additionalProperties": {},
+                "default": {}
+              },
+              "src": {
+                "type": "string",
+                "maxLength": 2048
+              },
+              "alt": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "width": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "height": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "image",
+                  "video"
+                ]
+              },
+              "illustrative": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "required": [
+              "id",
+              "schemaVersion",
+              "revision",
+              "src",
+              "alt",
+              "width",
+              "height",
+              "kind"
+            ],
+            "additionalProperties": false
+          },
+          "alternateLogo": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "schemaVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "revision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "extensions": {
+                "type": "object",
+                "additionalProperties": {},
+                "default": {}
+              },
+              "src": {
+                "type": "string",
+                "maxLength": 2048
+              },
+              "alt": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "width": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "height": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "image",
+                  "video"
+                ]
+              },
+              "illustrative": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "required": [
+              "id",
+              "schemaVersion",
+              "revision",
+              "src",
+              "alt",
+              "width",
+              "height",
+              "kind"
+            ],
+            "additionalProperties": false
+          },
+          "favicon": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "schemaVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "revision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "extensions": {
+                "type": "object",
+                "additionalProperties": {},
+                "default": {}
+              },
+              "src": {
+                "type": "string",
+                "maxLength": 2048
+              },
+              "alt": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "width": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "height": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "image",
+                  "video"
+                ]
+              },
+              "illustrative": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "required": [
+              "id",
+              "schemaVersion",
+              "revision",
+              "src",
+              "alt",
+              "width",
+              "height",
+              "kind"
+            ],
+            "additionalProperties": false
+          },
+          "whatsapp": {
+            "type": "string",
+            "pattern": "^\\d{6,20}$"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "phone": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "address": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "socials": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "maxLength": 10000
+                },
+                "url": {
+                  "type": "string",
+                  "maxLength": 2048
+                }
+              },
+              "required": [
+                "label",
+                "url"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "footerText": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "legalPageIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        },
+        "required": [
+          "id",
+          "schemaVersion",
+          "revision",
+          "name",
+          "locale",
+          "currencies",
+          "domain",
+          "socials",
+          "footerText",
+          "legalPageIds"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "theme": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "colors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{6}|oklch\\((?:0|1|0?\\.\\d+) (?:0|0?\\.\\d+) \\d{1,3}(?: \\/ (?:0|1|0?\\.\\d+))?\\))$"
+            },
+            "propertyNames": {
+              "enum": [
+                "background",
+                "foreground",
+                "card",
+                "card-foreground",
+                "popover",
+                "popover-foreground",
+                "primary",
+                "primary-foreground",
+                "secondary",
+                "secondary-foreground",
+                "muted",
+                "muted-foreground",
+                "accent",
+                "accent-foreground",
+                "destructive",
+                "destructive-foreground",
+                "border",
+                "input",
+                "ring",
+                "ink",
+                "ink-foreground",
+                "graphite",
+                "sand",
+                "stone",
+                "glass-navigation",
+                "glass-dock",
+                "glass-menu",
+                "glass-surface",
+                "glass-light-border",
+                "glass-dark-surface"
+              ]
+            }
+          },
+          "radius": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "contentWidth": {
+            "type": "number",
+            "minimum": 960,
+            "maximum": 1600
+          },
+          "spacingScale": {
+            "type": "number",
+            "minimum": 0.8,
+            "maximum": 1.25
+          },
+          "headingScale": {
+            "type": "number",
+            "minimum": 0.8,
+            "maximum": 1.25
+          },
+          "bodyScale": {
+            "type": "number",
+            "minimum": 0.9,
+            "maximum": 1.2
+          },
+          "glassBlur": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 40
+          },
+          "fonts": {
+            "type": "object",
+            "properties": {
+              "sans": {
+                "type": "string",
+                "enum": [
+                  "Inter",
+                  "system"
+                ]
+              },
+              "display": {
+                "type": "string",
+                "enum": [
+                  "Cormorant Garamond",
+                  "system"
+                ]
+              },
+              "weights": {
+                "type": "array",
+                "items": {
+                  "type": "number",
+                  "enum": [
+                    400,
+                    500,
+                    600,
+                    700
+                  ]
+                }
+              }
+            },
+            "required": [
+              "sans",
+              "display",
+              "weights"
+            ],
+            "additionalProperties": false
+          },
+          "buttons": {
+            "type": "object",
+            "properties": {
+              "radius": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 64
+              },
+              "height": {
+                "type": "number",
+                "minimum": 40,
+                "maximum": 64
+              }
+            },
+            "required": [
+              "radius",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          "sectionColors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "pattern": "^(#[0-9a-fA-F]{6}|oklch\\((?:0|1|0?\\.\\d+) (?:0|0?\\.\\d+) \\d{1,3}(?: \\/ (?:0|1|0?\\.\\d+))?\\))$"
+              },
+              "propertyNames": {
+                "enum": [
+                  "background",
+                  "foreground",
+                  "card",
+                  "card-foreground",
+                  "popover",
+                  "popover-foreground",
+                  "primary",
+                  "primary-foreground",
+                  "secondary",
+                  "secondary-foreground",
+                  "muted",
+                  "muted-foreground",
+                  "accent",
+                  "accent-foreground",
+                  "destructive",
+                  "destructive-foreground",
+                  "border",
+                  "input",
+                  "ring",
+                  "ink",
+                  "ink-foreground",
+                  "graphite",
+                  "sand",
+                  "stone",
+                  "glass-navigation",
+                  "glass-dock",
+                  "glass-menu",
+                  "glass-surface",
+                  "glass-light-border",
+                  "glass-dark-surface"
+                ]
+              }
+            },
+            "propertyNames": {
+              "pattern": "^[a-z0-9-]+$"
+            },
+            "default": {}
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "id",
+          "revision",
+          "colors"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "menus": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "schemaVersion": {
+              "type": "number",
+              "const": 1
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "extensions": {
+              "type": "object",
+              "additionalProperties": {},
+              "default": {}
+            },
+            "location": {
+              "type": "string",
+              "enum": [
+                "header",
+                "mobile",
+                "dock",
+                "footer"
+              ]
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "href": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "newWindow": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "icon": {
+                    "type": "string",
+                    "enum": [
+                      "home",
+                      "search",
+                      "heart",
+                      "publish",
+                      "users",
+                      "mail",
+                      "external"
+                    ]
+                  },
+                  "visible": {
+                    "type": "boolean"
+                  },
+                  "order": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "id",
+                  "label",
+                  "href",
+                  "icon",
+                  "visible",
+                  "order"
+                ],
+                "additionalProperties": false
+              },
+              "maxItems": 30
+            }
+          },
+          "required": [
+            "id",
+            "schemaVersion",
+            "revision",
+            "location",
+            "items"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "maxItems": 4
+      },
+      "filters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "schemaVersion": {
+              "type": "number",
+              "const": 1
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "extensions": {
+              "type": "object",
+              "additionalProperties": {},
+              "default": {}
+            },
+            "key": {
+              "type": "string",
+              "enum": [
+                "operacion",
+                "tipo",
+                "ubicacion",
+                "precioMax",
+                "moneda",
+                "superficieMin",
+                "dormitorios",
+                "banos",
+                "piscina",
+                "caracteristicas",
+                "orden"
+              ]
+            },
+            "label": {
+              "type": "string",
+              "maxLength": 10000
+            },
+            "emptyLabel": {
+              "type": "string",
+              "maxLength": 10000
+            },
+            "placeholder": {
+              "type": "string",
+              "maxLength": 10000
+            },
+            "presentation": {
+              "type": "string",
+              "enum": [
+                "tabs",
+                "select",
+                "text",
+                "number",
+                "checkbox",
+                "multiselect"
+              ]
+            },
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 10000
+                  }
+                },
+                "required": [
+                  "value",
+                  "label"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "visible": {
+              "type": "boolean"
+            },
+            "order": {
+              "type": "integer"
+            },
+            "categoryIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "featureIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            }
+          },
+          "required": [
+            "id",
+            "schemaVersion",
+            "revision",
+            "key",
+            "label",
+            "presentation",
+            "options",
+            "visible",
+            "order",
+            "categoryIds",
+            "featureIds"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "maxItems": 30
+      },
+      "team": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "body": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "image": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "schemaVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "revision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "extensions": {
+                "type": "object",
+                "additionalProperties": {},
+                "default": {}
+              },
+              "src": {
+                "type": "string",
+                "maxLength": 2048
+              },
+              "alt": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "width": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "height": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "image",
+                  "video"
+                ]
+              },
+              "illustrative": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "required": [
+              "id",
+              "schemaVersion",
+              "revision",
+              "src",
+              "alt",
+              "width",
+              "height",
+              "kind"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "body"
+        ]
+      },
+      "integrations": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {},
+            "default": {}
+          },
+          "gtm": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "containerId": {
+                "type": "string",
+                "pattern": "^GTM-[A-Z0-9]+$"
+              }
+            },
+            "required": [
+              "enabled"
+            ],
+            "additionalProperties": false
+          },
+          "ga4": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "measurementId": {
+                "type": "string",
+                "pattern": "^G-[A-Z0-9]+$"
+              }
+            },
+            "required": [
+              "enabled"
+            ],
+            "additionalProperties": false
+          },
+          "googleAds": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "accountId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "enabled"
+            ],
+            "additionalProperties": false
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "pixelId": {
+                "type": "string",
+                "pattern": "^\\d+$"
+              },
+              "serverEventsEnabled": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "enabled",
+              "serverEventsEnabled"
+            ],
+            "additionalProperties": false
+          },
+          "searchConsole": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "verification": {
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9_-]+$"
+              }
+            },
+            "required": [
+              "enabled"
+            ],
+            "additionalProperties": false
+          },
+          "consentRequired": {
+            "type": "boolean"
+          },
+          "utmDefaults": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "maxLength": 200
+            }
+          }
+        },
+        "required": [
+          "id",
+          "schemaVersion",
+          "revision",
+          "gtm",
+          "ga4",
+          "googleAds",
+          "meta",
+          "searchConsole",
+          "consentRequired",
+          "utmDefaults"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "chrome": {
+        "type": "object",
+        "properties": {
+          "headerHeight": {
+            "type": "integer",
+            "minimum": 48,
+            "maximum": 100
+          },
+          "headerRadius": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 999
+          },
+          "dockRadius": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 64
+          },
+          "menuRadius": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 64
+          },
+          "footerColumns": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "headerHeight",
+          "headerRadius",
+          "dockRadius",
+          "menuRadius",
+          "footerColumns"
+        ]
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "extensions",
+      "site",
+      "theme",
+      "menus",
+      "filters",
+      "team",
+      "integrations",
+      "chrome"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 # Contrato REST inicial RIVTON Core v1
 
-Propuesta de contrato para implementar en Fase 2, NO endpoints existentes. El adaptador recibe la URL completa por configuración; no concatena rutas supuestas ni depende de ACF.
+Documento de diseño de Fase 1. Para los endpoints implementados, cuerpos, permisos, límites y diferencias vigentes consultar el [contrato REST de Fase 2](phase-2/rest.md). Las propuestas de este documento no habilitan integraciones pendientes. El adaptador recibe la URL completa por configuración; no concatena rutas supuestas ni depende de ACF.
 Namespace propuesto `/wp-json/rivton-core/v1`. Versiones mayores incompatibles en namespace nuevo; cambios aditivos compatibles dentro de v1. Proyección snapshot validada por `snapshotSchema` más theme y filters; DTO editorial completo en `contracts.ts`.
 
 | Acceso | Método/recurso propuesto | Respuesta / permiso |
