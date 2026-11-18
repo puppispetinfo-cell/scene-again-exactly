@@ -40,7 +40,10 @@ final class Schema
         }
         $u = wp_parse_url($value);
         return is_array($u) &&
-            ($u["scheme"] ?? "") === "https" &&
+            (($u["scheme"] ?? "") === "https" ||
+                (($u["scheme"] ?? "") === "http" &&
+                    in_array($u["host"] ?? "", ["127.0.0.1", "localhost"], true) &&
+                    wp_get_environment_type() === "local")) &&
             !empty($u["host"]) &&
             !isset($u["user"]) &&
             !isset($u["pass"]);
@@ -247,7 +250,19 @@ final class Schema
         return !$out &&
             in_array(
                 $key,
-                ["extensions", "colors", "sectionColors", "content", "utmDefaults"],
+                [
+                    "extensions",
+                    "colors",
+                    "sectionColors",
+                    "content",
+                    "utmDefaults",
+                    "layout",
+                    "overrides",
+                    "mobile",
+                    "tablet",
+                    "desktop",
+                    "attributes",
+                ],
                 true,
             )
             ? (object) []

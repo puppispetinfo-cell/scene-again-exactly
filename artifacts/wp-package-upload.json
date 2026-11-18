@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "version": "0.3.1",
+  "checks": [
+    "Core plugin ZIP upload succeeds while RIVTON is active",
+    "Core overwrite completes",
+    "Updated plugin remains installed at 0.3.1"
+  ]
+}

@@ -1,5 +1,7 @@
 # RIVTON Core — Fase 2, versión 0.2.0
 
+Informe histórico. La versión posterior y sus herramientas vigentes están en [CMS visual 0.3.0](../visual-cms/README.md).
+
 Primera implementación PHP para WordPress independiente, construida desde `ae7b1a3` (PR #1), en `codex/rivton-core-phase-2`. React, TanStack Start, sus rutas, estilos y proveedor activo no se modifican.
 
 - [ZIP instalable](../../../artifacts/rivton-core-0.2.0.zip) y [SHA-256](../../../artifacts/rivton-core-0.2.0.zip.sha256).

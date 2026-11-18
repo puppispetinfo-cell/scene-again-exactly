@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "passed": [
+    "Authenticated WordPress dashboard loads real counts",
+    "Page tree representative preview and inspector load persisted sections",
+    "Desktop shared text and mobile override save as real protected draft",
+    "Reload preserves independently configured mobile override",
+    "Visual builder publishes actual saved draft",
+    "Revision history restores an actual prior version as draft",
+    "Geography editor creates persistent province",
+    "Tabbed property editor persists dependent geographic selectors",
+    "Native media library selects a real image into persistent gallery",
+    "Intake import UI displays validated real mapping before approval",
+    "Mobile viewport retains usable navigation and page selection",
+    "Network failure retains unsaved editor content and reports error",
+    "Concurrent editing reports 412 without discarding local changes",
+    "Automated WCAG A/AA checks find no violations within CMS panel"
+  ],
+  "errors": [],
+  "browser": "Chromium",
+  "viewports": [
+    "1600x1000",
+    "390x844"
+  ]
+}

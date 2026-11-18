@@ -1,5 +1,7 @@
 # Scene Again Exactly
 
+Versión actual del backend: [RIVTON Core 0.3.0 — CMS visual](docs/rivton/visual-cms/README.md).
+
 Implement exactly the screenshot and nothing else
 
 This project was built with [Lovable](https://lovable.dev).

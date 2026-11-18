@@ -25,6 +25,17 @@ Estados permitidos: pendiente, preparado para configurar, implementado pendiente
 
 Evidencia, límites y reproducción: [entrega Fase 2](phase-2/README.md), [verificación](phase-2/verification.md). Esta actualización no cierra los gates de seguridad, publicación o comercialización de las fases posteriores.
 
+## Evolución del CMS — 0.3.0
+
+| ID | Entrega / prioridad | Dependencias | Aceptación | Estado / evidencia | Archivos | Riesgo restante |
+|---|---|---|---|---|---|---|
+| CMS-01 | Constructor visual P0 | F2-01..04 | seleccionar página/sección, editar base/overrides, guardar, recuperar y publicar documentos reales | implementado y verificado; visual-cms/qa.md | assets/studio.*, Workspace.php, Studio.php | renderer React exacto F3 |
+| CMS-02 | Catálogo y geografía P0 | F2-01/03 | pestañas, relaciones jerárquicas, atributos tipados, medios, integridad y filtros | implementado y verificado en MariaDB | Domain.php, contratos, tests | catálogos grandes requieren indexación adicional |
+| CMS-03 | Perfil RIVTON P0 | CMS-01/02 | preview/aprobación, datos reales, idempotencia, conflictos, respaldos y recuperación | implementado y verificado; intake.md | Import.php, profiles/**, tests | aprobación editorial/legal del cliente |
+| CMS-04 | Actualización y entrega P0 | CMS-01..03 | ZIP instalado limpio y sobre 0.2.0, hashes, PHP/contratos/UI, PR independiente | verificación documentada en visual-cms/qa.md | artifacts/**, scripts/test-native-wp.mjs | staging Hostinger y publicación requieren autorización |
+
+La evidencia MariaDB 11.4.5 de 0.3.0 resuelve el pendiente de motor nativo de la entrega 0.2.0. No cierra los servicios externos ni los gates de producción de Fases 6–9.
+
 ## FASE 3 — Integración React/WordPress
 
 | ID | Descripción / prioridad | Dependencias | Aceptación objetiva | Estado | Pruebas / archivos previstos | Riesgos |

@@ -71,7 +71,7 @@
         "featureIds": [],
         "id": "filter-operation",
         "key": "operacion",
-        "label": "Operación",
+        "label": "Operaci\u00f3n",
         "presentation": "tabs",
         "order": 0,
         "options": [
@@ -94,8 +94,8 @@
         "featureIds": [],
         "id": "filter-location",
         "key": "ubicacion",
-        "label": "Ubicación",
-        "placeholder": "¿Dónde buscás?",
+        "label": "Ubicaci\u00f3n",
+        "placeholder": "\u00bfD\u00f3nde busc\u00e1s?",
         "presentation": "text",
         "order": 1,
         "options": []
@@ -144,8 +144,8 @@
         "featureIds": [],
         "id": "filter-price",
         "key": "precioMax",
-        "label": "Precio máximo",
-        "emptyLabel": "Sin límite de precio",
+        "label": "Precio m\u00e1ximo",
+        "emptyLabel": "Sin l\u00edmite de precio",
         "presentation": "select",
         "order": 3,
         "options": [
@@ -211,25 +211,25 @@
         "featureIds": [],
         "id": "filter-bathrooms",
         "key": "banos",
-        "label": "Baños",
+        "label": "Ba\u00f1os",
         "presentation": "select",
         "order": 5,
         "options": [
           {
             "value": "1",
-            "label": "1+ baños"
+            "label": "1+ ba\u00f1os"
           },
           {
             "value": "2",
-            "label": "2+ baños"
+            "label": "2+ ba\u00f1os"
           },
           {
             "value": "3",
-            "label": "3+ baños"
+            "label": "3+ ba\u00f1os"
           },
           {
             "value": "4",
-            "label": "4+ baños"
+            "label": "4+ ba\u00f1os"
           }
         ]
       },
@@ -262,7 +262,7 @@
         "options": [
           {
             "value": "recientes",
-            "label": "Más recientes"
+            "label": "M\u00e1s recientes"
           },
           {
             "value": "precio-asc",
@@ -420,7 +420,13 @@
     "revision": 0,
     "extensions": {},
     "label": "",
-    "valueType": "boolean"
+    "valueType": "boolean",
+    "group": "amenity",
+    "order": 0,
+    "visible": true,
+    "filterVisible": true,
+    "options": [],
+    "unit": "ninguna"
   },
   "section": {
     "id": "new",
@@ -443,6 +449,39 @@
       }
     },
     "actions": [],
-    "media": []
+    "media": [],
+    "label": "",
+    "layout": {},
+    "overrides": {},
+    "scenes": [],
+    "faqs": []
+  },
+  "location": {
+    "id": "new",
+    "schemaVersion": 1,
+    "revision": 0,
+    "extensions": {},
+    "name": "",
+    "slug": "",
+    "level": "province",
+    "description": "",
+    "order": 0,
+    "active": true,
+    "seo": {
+      "title": "",
+      "description": "",
+      "index": false,
+      "follow": true,
+      "structuredData": []
+    }
+  },
+  "team": {
+    "id": "new",
+    "schemaVersion": 1,
+    "revision": 0,
+    "extensions": {},
+    "name": "",
+    "order": 0,
+    "visible": true
   }
 }

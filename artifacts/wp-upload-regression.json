@@ -1,0 +1,14 @@
+{
+    "success": true,
+    "passed": [
+        "ZIP rejected through media endpoint even with installer parameters",
+        "Installer requires valid nonce",
+        "Authorized core plugin installer accepts ZIP without media size limit",
+        "Installer exemption requires exact uploaded package",
+        "SVG remains blocked",
+        "Oversized image remains blocked",
+        "Allowed image at limit accepted",
+        "Agent cannot use installer exemption"
+    ],
+    "version": "0.3.1"
+}

@@ -1,5 +1,7 @@
 # RIVTON Core — Fase 1
 
+Entrega actual: [RIVTON Core 0.3.0 — CMS visual](visual-cms/README.md), con pruebas nativas MariaDB, constructor y perfil inicial. Los informes siguientes conservan el contexto histórico de sus fases.
+
 La implementación posterior del plugin y su evidencia están en [Fase 2](phase-2/README.md). El resto de este documento describe la entrega histórica de Fase 1; sus pendientes de plugin se actualizan en ese informe.
 
 Estado: entrega de arquitectura y refactorización inicial de Fase 1, con verificación registrada en verification.md. La integración editorial completa está planificada en Fase 3. No es un producto listo para publicar. Rama `codex/rivton-core-phase-1`; base obtenida de main, commit `079f5501c52104d816152c392f2c6531e470bcca`. Fecha: 2026-11-04.

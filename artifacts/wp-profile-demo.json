@@ -1,0 +1,23 @@
+{
+    "success": true,
+    "version": "0.3.0",
+    "environment": "isolated local WordPress \/ MariaDB",
+    "company": "RIVTON Group",
+    "email": "rivtongroup@gmail.com",
+    "whatsapp": "5493513437509",
+    "address": "Luis Jos\u00e9 de Tejeda 3883 local A, C\u00f3rdoba Capital, Argentina",
+    "hours": "Lunes a viernes de 8:30 a 18:00; s\u00e1bados, domingos y feriados cerrado",
+    "team": [
+        "Maximiliano Carpio",
+        "Alejo Carpio",
+        "Tom\u00e1s Colantone",
+        "Antonino Rivilli"
+    ],
+    "properties": 0,
+    "pages": 11,
+    "homeStatus": "draft",
+    "sceneCount": 3,
+    "leadStorageApproved": false,
+    "privacyReviewed": false,
+    "source": "bundled user intake; no test properties"
+}

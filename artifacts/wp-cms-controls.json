@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "passed": [
+    "Intake source cannot be fetched as PHP data or a static JSON file",
+    "Specific FAQ editor persists independent question and answer",
+    "Visual section reordering persists order and preserves stable ID",
+    "Multiple native images persist reordered main image and ALT",
+    "Numeric structural attribute and boolean amenity persist as typed values",
+    "SEO and Open Graph controls persist actual metadata",
+    "Property duplication copies saved working document and gallery to independent draft",
+    "Editable search filter label publishes through configuration API"
+  ],
+  "errors": []
+}

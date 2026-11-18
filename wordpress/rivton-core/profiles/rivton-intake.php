@@ -1,0 +1,181 @@
+<?php
+if (!defined("ABSPATH")) {
+    http_response_code(404);
+    exit();
+}
+return json_decode(
+    <<<'ESTATE_CLIENT_INTAKE_DATA'
+    {
+      "schema": "rivton-client-intake-v1",
+      "source": "relevamiento cliente 2026-11-04",
+      "status": "datos de relevamiento, pendientes de mapeo y aprobación editorial",
+      "raw_answers": {
+        "empresa_nombre": "RIVTON Group",
+        "empresa_bajada": "Conectamos personas con oprotunidades inmobiliarias, ofreciendo confianza, compromiso y soluciones a medida en cada operación.",
+        "empresa_historia": "RIVTON Group nace por la fusión de dos empresas amigas, hace exactamente un año (03/11/2025)",
+        "empresa_diferencial": "lo que diferencia rivton de otras inmobiliarias son 5 pilares:\natencion personalizada\ncompromiso real\nvision integral\ninnovacion\nconfianza y transparencia",
+        "empresa_valores": "Son: confianza, compromiso, profesionalismo, cercania, proyeccion, excelencia",
+        "empresa_tono": "Elegante y profesional",
+        "servicios_operaciones": "Venta, Alquiler, Tasaciones, Administración de alquileres, Asesoramiento a inversores, Comercialización de desarrollos",
+        "servicios_tipos": "Casas, Departamentos, Terrenos, Locales comerciales, Oficinas, Galpones, Complejos, Fondos de comercio",
+        "servicios_otros": "cocheras",
+        "servicios_zonas": "Toda la provincia de cordoba",
+        "servicios_tasaciones": "formulario para comunicarse con asesor por whatsapp directamente",
+        "servicios_publicacion": "como esta en la pagina al dia de hoy... que el formulario te lleve directo a whatsapp",
+        "contacto_whatsapp": "5493513437509",
+        "contacto_telefono": "no",
+        "contacto_email": "rivtongroup@gmail.com",
+        "contacto_direccion": "Luis José de Tejeda 3883 local A",
+        "contacto_horarios": "Lunes a Viernes de 8.30hs a 18hs. Sabados, Domingos y feriados cerrado",
+        "contacto_instagram": "https://www.instagram.com/rivtongroup/",
+        "contacto_facebook": "no",
+        "contacto_otros": "no",
+        "contacto_preferido": "WhatsApp",
+        "home_titular": "como esta",
+        "home_subtitulo": "como esta",
+        "home_destacadas": "las marcamos en wordpress",
+        "home_foto_hero": "las cargamos en wordpress",
+        "home_foto_equipo": "las cargamos a wordpress",
+        "home_publicar_mensaje": "mantener actual",
+        "home_observaciones": "no",
+        "nosotros_presentacion": "",
+        "nosotros_integrantes": "Maximiliano Carpio\nAlejo Carpio\nTomas Colantone\nAntonino Rivilli",
+        "nosotros_fotos": "cargar a wordpress",
+        "nosotros_filosofia": "no entiendo",
+        "nosotros_logros": "no",
+        "lead_datos": "Nombre, Teléfono, Correo, Mensaje, Propiedad de interés, Horario de contacto preferido",
+        "lead_destino": "a whatsapp",
+        "lead_visitas": "hoy se coordina por whatsapp o llamada",
+        "lead_calendly": "No",
+        "lead_publicar_datos": "Nombre, WhatsApp, Email, Tipo de propiedad, Ubicación, Operación (vender/alquilar), Descripción, Fotografías (en etapa posterior)",
+        "lead_respuesta": "Mensaje de exito predeterminado... se puede administrar desde wordpress. pero uno tipico como siempre",
+        "faq_clientes": "cargamos en wordpress",
+        "faq_propietarios": "cargamos en wordpress",
+        "faq_respuestas": "no",
+        "contenido_documentos": "no",
+        "contenido_pendientes": "las cargamos a wordpress",
+        "contenido_aprueba": "alejo",
+        "contenido_otros": "ninguno por ahora"
+      },
+      "approved_business_data": {
+        "commercial_name": "RIVTON Group",
+        "tagline_proposed": "Conectamos personas con oportunidades inmobiliarias, ofreciendo confianza, compromiso y soluciones a medida en cada operación.",
+        "founded_context": "Fusión de dos empresas amigas, 03/11/2025",
+        "differentiators": [
+          "Atención personalizada",
+          "Compromiso real",
+          "Visión integral",
+          "Innovación",
+          "Confianza y transparencia"
+        ],
+        "values": [
+          "Confianza",
+          "Compromiso",
+          "Profesionalismo",
+          "Cercanía",
+          "Proyección",
+          "Excelencia"
+        ],
+        "tone": "Elegante y profesional",
+        "services": [
+          "Venta",
+          "Alquiler",
+          "Tasaciones",
+          "Administración de alquileres",
+          "Asesoramiento a inversores",
+          "Comercialización de desarrollos"
+        ],
+        "property_types": [
+          "Casas",
+          "Departamentos",
+          "Terrenos",
+          "Locales comerciales",
+          "Oficinas",
+          "Galpones",
+          "Complejos",
+          "Fondos de comercio",
+          "Cocheras"
+        ],
+        "coverage": "Toda la provincia de Córdoba",
+        "contact": {
+          "whatsapp_e164_digits": "5493513437509",
+          "whatsapp_url": "https://wa.me/5493513437509",
+          "public_email": "rivtongroup@gmail.com",
+          "phone_secondary": null,
+          "instagram": "https://www.instagram.com/rivtongroup/",
+          "facebook": null,
+          "hours": "Lunes a viernes de 8:30 a 18:00; sábados, domingos y feriados cerrado",
+          "office_address": "Luis José de Tejeda 3883 local A",
+          "preferred_channel": "WhatsApp"
+        },
+        "team_names": [
+          "Maximiliano Carpio",
+          "Alejo Carpio",
+          "Tomás Colantone",
+          "Antonino Rivilli"
+        ],
+        "visit_coordination": "WhatsApp o llamada; Calendly deshabilitado por ahora",
+        "calendly_enabled": false,
+        "content_approver": "Alejo",
+        "site_content_policy": {
+          "home_headline": "preservar contenido actual",
+          "home_subtitle": "preservar contenido actual",
+          "owner_cta": "preservar contenido actual",
+          "featured_properties": "se eligen en WordPress",
+          "hero_images": "se cargan en WordPress",
+          "team_images": "se cargan en WordPress",
+          "faqs": "se cargarán en WordPress"
+        },
+        "forms": {
+          "property_enquiry_fields": [
+            "Nombre",
+            "Teléfono",
+            "Correo",
+            "Mensaje",
+            "Propiedad de interés",
+            "Horario de contacto preferido"
+          ],
+          "owner_submission_fields": [
+            "Nombre",
+            "WhatsApp",
+            "Email",
+            "Tipo de propiedad",
+            "Ubicación",
+            "Operación (vender/alquilar)",
+            "Descripción"
+          ],
+          "owner_photos": "etapa posterior",
+          "delivery": "abrir WhatsApp con mensaje precompletado; confirmar si guardar copia del lead en WordPress",
+          "success_copy": "texto convencional editable desde WordPress, compatible con apertura de WhatsApp sin simular entrega"
+        }
+      },
+      "pending_or_not_confirmed": [
+        "Roles de los cuatro integrantes y presentación institucional",
+        "Fotografías reales de inmuebles, equipo y hero",
+        "Selección de propiedades destacadas",
+        "Contenido final de preguntas frecuentes",
+        "Revisión de términos, privacidad y aviso de tratamiento de datos",
+        "Confirmación de política de almacenamiento de leads y consentimiento antes de transmitir datos a WhatsApp"
+      ],
+      "implementation_notes": [
+        "No sobrescribir el texto actual de la home ni cambiar el diseño aprobado",
+        "Conservar logo, paleta y tipografías existentes",
+        "Los campos editables de WordPress deben poder actualizarse después",
+        "No habilitar Calendly en esta entrega",
+        "No interpretar ruta de WhatsApp como formulario enviado ni lead recibido",
+        "El relevamiento no contiene credenciales, tokens ni IDs de Analytics"
+      ],
+      "inconsistencies_for_review": [],
+      "confirmation_updates": {
+        "office_address": {
+          "value": "Luis José de Tejeda 3883 local A",
+          "confirmed_by": "usuario en conversación posterior al relevamiento",
+          "status": "confirmado"
+        }
+      }
+    }
+
+    ESTATE_CLIENT_INTAKE_DATA
+    ,
+    true,
+);

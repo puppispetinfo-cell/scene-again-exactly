@@ -12,6 +12,8 @@ final class Rest
         "category" => "propertyCategorySchema",
         "feature" => "propertyFeatureSchema",
         "configuration" => "configurationSchema",
+        "location" => "locationSchema",
+        "team" => "teamMemberSchema",
     ];
     public function __construct()
     {
@@ -34,13 +36,14 @@ final class Rest
                     }
                     $response->header("Cache-Control", "no-store");
                 }
+                $response->set_data(Schema::json($response->get_data()));
                 return $response;
             },
             20,
             3,
         );
     }
-    private function route(string $path, string $method, callable $callback, $permission): void
+    public function route(string $path, string $method, callable $callback, $permission): void
     {
         register_rest_route(self::NS, $path, [
             "methods" => $method,
@@ -91,6 +94,8 @@ final class Rest
                 "categories" => "category",
                 "features" => "feature",
                 "leads" => "lead",
+                "locations" => "location",
+                "team" => "team",
             ]
             as $plural => $kind
         ) {
@@ -203,6 +208,8 @@ final class Rest
             "feature" => "estate_manage_settings",
             "configuration" => "estate_manage_settings",
             "lead" => "estate_manage_leads",
+            "location" => "estate_manage_settings",
+            "team" => "estate_edit_content",
         ][$kind];
         return current_user_can($cap)
             ? true
@@ -222,7 +229,7 @@ final class Rest
         }
         return $r;
     }
-    private function redactExtensions($value)
+    public function redactExtensions($value)
     {
         if (!is_array($value)) {
             return $value;
@@ -297,7 +304,7 @@ final class Rest
             false,
         );
     }
-    public function write(string $kind, $r, ?string $fixed = null)
+    public function write(string $kind, $r, ?string $fixed = null, bool $draft = false)
     {
         $old = null;
         if ($fixed || isset($r->get_url_params()["id"])) {
@@ -373,6 +380,18 @@ final class Rest
         if (is_wp_error($semantic)) {
             return $semantic;
         }
+        if (
+            $kind === "configuration" &&
+            !current_user_can("estate_manage_integrations") &&
+            ($checked["integrations"] ?? []) !== (Store::document($old)["integrations"] ?? [])
+        ) {
+            return new \WP_Error("estate_forbidden", "Integration capability required", [
+                "status" => 403,
+            ]);
+        }
+        if ($draft) {
+            return Workspace::save($old, $checked, $r);
+        }
         // Saving a published document changes public content and requires publisher capability too.
         if (
             $old &&
@@ -421,8 +440,12 @@ final class Rest
                 $old ? 200 : 201,
             );
     }
-    private function semantics(string $kind, array $d, ?array $old)
+    public function semantics(string $kind, array &$d, ?array $old)
     {
+        $domain = Domain::validate($kind, $d, $old);
+        if (is_wp_error($domain)) {
+            return $domain;
+        }
         if ($kind === "property") {
             foreach ($d["images"] as $image) {
                 if ($image["kind"] !== "image") {
@@ -570,7 +593,10 @@ final class Rest
                 }
             }
         }
-        if (in_array($kind, ["property", "page", "category"], true) && !empty($d["slug"])) {
+        if (
+            in_array($kind, ["property", "page", "category", "location"], true) &&
+            !empty($d["slug"])
+        ) {
             global $wpdb;
             $existing = $wpdb->get_var(
                 $wpdb->prepare(
@@ -635,6 +661,12 @@ final class Rest
                 }
             }
         }
+        if ($status !== "published") {
+            $blocked = Domain::deactivate($kind, $row);
+            if (is_wp_error($blocked)) {
+                return $blocked;
+            }
+        }
         $semantic = $this->semantics($kind, $d, $row);
         if (is_wp_error($semantic)) {
             return $semantic;
@@ -667,6 +699,15 @@ final class Rest
             return $m;
         }
         $d = Store::document($row);
+        if ($r->get_header("x-draft-revision") !== "") {
+            $pending = Workspace::pending($row["id"]);
+            if ((int) $r->get_header("x-draft-revision") !== (int) ($pending["revision"] ?? 0)) {
+                return Schema::fail("El borrador cambió. Recargá antes de duplicar.", 412);
+            }
+            if ($pending) {
+                $d = json_decode($pending["document"], true);
+            }
+        }
         $d["slug"] = ($d["slug"] ?? "copy") . "-" . substr(wp_generate_uuid4(), 0, 8);
         if ($kind === "page") {
             $d["status"] = "draft";
@@ -687,7 +728,7 @@ final class Rest
     }
     private function publicDoc(array $row): array
     {
-        $d = Store::document($row);
+        $d = Domain::project($row["kind"], Store::document($row));
         if ($row["kind"] === "page") {
             $d["sections"] = array_values(
                 array_filter(
@@ -722,11 +763,16 @@ final class Rest
         if ($row["status"] === "archived" || Store::document($row)["status"] === "withdrawn") {
             return new \WP_Error("estate_gone", "Property withdrawn", ["status" => 410]);
         }
-        return $this->response($this->publicDoc($row), true, Store::etag($row));
+        return $this->response(
+            $this->publicDoc($row),
+            true,
+            '"' . $row["id"] . ":" . $row["revision"] . ":" . Store::revision() . '"',
+        );
     }
     public function read(string $resource, $r)
     {
         $config = $this->config();
+        $config["filters"] = Domain::filters($config["filters"]);
         $etag = '"content-' . Store::revision() . '"';
         if ($r->get_header("if-none-match") === $etag) {
             return $this->response(null, true, $etag, 304);
@@ -754,6 +800,10 @@ final class Rest
                         Store::list("feature", true, 0, 1000),
                     ),
                     "filters" => $config["filters"],
+                    "locations" => array_map(
+                        fn($x) => $this->publicDoc($x),
+                        Store::list("location", true, 0, 1000),
+                    ),
                 ],
                 true,
                 $etag,
@@ -1084,6 +1134,14 @@ final class Rest
         if (!$this->originAllowed($r->get_header("origin"))) {
             return new \WP_Error("estate_origin", "Origin not authorized", ["status" => 403]);
         }
+        $forms = $this->config()["forms"] ?? [];
+        if (empty($forms["leadStorageApproved"]) || empty($forms["privacyReviewed"])) {
+            return new \WP_Error(
+                "estate_consent_unconfigured",
+                "Lead storage and privacy approval are not configured",
+                ["status" => 503],
+            );
+        }
         $body = $this->body($r);
         if (is_wp_error($body)) {
             return $body;
@@ -1214,7 +1272,7 @@ final class Rest
             202,
         );
     }
-    private function originAllowed(?string $origin): bool
+    public function originAllowed(?string $origin): bool
     {
         if (!$origin) {
             return false;

@@ -1,5 +1,5 @@
 <?php
-require_once "/wordpress/wp-load.php";
+require_once (getenv("ESTATE_WP_ROOT") ?: "/wordpress") . "/wp-load.php";
 if (!defined("ESTATE_CORE_TESTING") || !ESTATE_CORE_TESTING) {
     file_put_contents(
         "/estate-results/wp-probe.json",
@@ -19,7 +19,9 @@ $report = [
     "environment" => [
         "wordpress" => get_bloginfo("version"),
         "php" => PHP_VERSION,
-        "database" => "WordPress Playground SQLite",
+        "database" => getenv("ESTATE_WP_ROOT")
+            ? $wpdb->get_var("SELECT VERSION()")
+            : "WordPress Playground SQLite",
     ],
     "passed" => [],
 ];
@@ -27,7 +29,7 @@ register_shutdown_function(function () {
     global $report;
     $report["lastError"] = error_get_last();
     file_put_contents(
-        "/estate-results/wp-integration.json",
+        (getenv("ESTATE_RESULTS") ?: "/estate-results") . "/wp-integration.json",
         wp_json_encode($report, JSON_PRETTY_PRINT),
     );
 });
@@ -75,7 +77,7 @@ function tag($r)
     return $r->get_headers()["ETag"] ?? null;
 }
 check(class_exists("EstateCore\\Rest"), "plugin loaded");
-check((int) get_option("estate_schema_version") === 1, "migration ran");
+check((int) get_option("estate_schema_version") === 3, "migration ran");
 check(EstateCore\Store::get("configuration") !== null, "configuration persisted");
 $before = count(EstateCore\Store::list("category", true, 0, 100));
 EstateCore\Lifecycle::migrate();
@@ -232,7 +234,7 @@ check(
     "administrative actions audited",
 );
 
-require "/estate-tests/unit.php";
+require __DIR__ . "/unit.php";
 wp_set_current_user(1);
 $page = $defaults["page"];
 $page["title"] = "Integration consent fixture";
@@ -255,6 +257,16 @@ check(
 $c = api("GET", "admin/configuration");
 $data = $c->get_data()["document"];
 $data["site"]["legalPageIds"] = [$pageId];
+$data["forms"] = [
+    "leadStorageApproved" => true,
+    "privacyReviewed" => true,
+    "propertyMessage" => "QA",
+    "ownerMessage" => "QA",
+    "successMessage" => "QA",
+    "preferredChannel" => "whatsapp",
+    "propertyFields" => [],
+    "ownerFields" => [],
+];
 $saved = api("PUT", "admin/configuration", $data, tag($c));
 check($saved->get_status() === 200, "administrator approves privacy reference");
 $origin = untrailingslashit(home_url());
@@ -399,14 +411,14 @@ foreach (
 ) {
     if ($file->isFile()) {
         $report["pluginHashes"][
-            substr($file->getPathname(), strlen(ESTATE_CORE_DIR) + 1)
+            str_replace("\\", "/", substr($file->getPathname(), strlen(ESTATE_CORE_DIR) + 1))
         ] = hash_file("sha256", $file->getPathname());
     }
 }
 $report["success"] = true;
 $report["snapshot"] = api("GET", "snapshot")->get_data();
 file_put_contents(
-    "/estate-results/wp-integration.json",
+    (getenv("ESTATE_RESULTS") ?: "/estate-results") . "/wp-integration.json",
     wp_json_encode($report, JSON_PRETTY_PRINT),
 );
 echo wp_json_encode([

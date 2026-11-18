@@ -26,6 +26,7 @@ final class Lifecycle
     public static function migrate(): void
     {
         if ((int) get_option("estate_schema_version", 0) >= 1) {
+            Workspace::migrate();
             return;
         }
         global $wpdb;
@@ -219,5 +220,6 @@ final class Lifecycle
             ]);
         }
         update_option("estate_schema_version", 1, false);
+        Workspace::migrate();
     }
 }

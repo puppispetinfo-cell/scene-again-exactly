@@ -5,6 +5,7 @@ if (!defined("ABSPATH")) {
 }
 final class Store
 {
+    public static bool $batch = false;
     public static function table(): string
     {
         global $wpdb;
@@ -47,7 +48,7 @@ final class Store
             $args[] = "published";
         } elseif (
             !current_user_can("estate_edit_others") &&
-            in_array($kind, ["property", "page", "lead"], true)
+            in_array($kind, ["property", "page", "team", "lead"], true)
         ) {
             $sql .= " AND owner=%d";
             $args[] = get_current_user_id();
@@ -105,7 +106,9 @@ final class Store
             "document" => wp_json_encode($document),
             "updated_at" => gmdate("Y-m-d H:i:s"),
         ];
-        $wpdb->query("START TRANSACTION");
+        if (!self::$batch) {
+            $wpdb->query("START TRANSACTION");
+        }
         if ($old) {
             $ok = $wpdb->update(self::table(), $row, [
                 "id" => $id,
@@ -126,6 +129,12 @@ final class Store
                 return new \WP_Error("estate_storage", "Could not save record", ["status" => 503]);
             }
         }
+        if (!Workspace::capture($row)) {
+            $wpdb->query("ROLLBACK");
+            return new \WP_Error("estate_storage", "Revision persistence failed", [
+                "status" => 503,
+            ]);
+        }
         if (!self::audit($old ? "update" : "create", $id, $rev, $status)) {
             $wpdb->query("ROLLBACK");
             return new \WP_Error("estate_storage", "Audit persistence failed", ["status" => 503]);
@@ -136,7 +145,9 @@ final class Store
         ) {
             self::invalidate();
         }
-        $wpdb->query("COMMIT");
+        if (!self::$batch) {
+            $wpdb->query("COMMIT");
+        }
         return self::get($id);
     }
     public static function audit(string $action, string $id, int $revision, string $status): bool
@@ -161,10 +172,12 @@ final class Store
                 "category" => "estate_manage_settings",
                 "feature" => "estate_manage_settings",
                 "configuration" => "estate_manage_settings",
+                "location" => "estate_manage_settings",
+                "team" => "estate_edit_content",
             ][$row["kind"]] ?? "do_not_allow";
         return current_user_can($cap) &&
             ((int) $row["owner"] === get_current_user_id() ||
                 current_user_can("estate_edit_others") ||
-                in_array($row["kind"], ["category", "feature", "configuration"], true));
+                in_array($row["kind"], ["category", "feature", "location", "configuration"], true));
     }
 }

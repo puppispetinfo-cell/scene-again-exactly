@@ -605,7 +605,16 @@
                 "team",
                 "text",
                 "faq",
-                "lead-form"
+                "lead-form",
+                "hero",
+                "search",
+                "carousel",
+                "cta",
+                "services",
+                "map",
+                "contact",
+                "heading",
+                "footer"
               ]
             },
             "content": {
@@ -793,6 +802,1942 @@
                 ],
                 "additionalProperties": false
               }
+            },
+            "label": {
+              "type": "string",
+              "maxLength": 150
+            },
+            "layout": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "maxLength": 500
+                },
+                "subtitle": {
+                  "type": "string",
+                  "maxLength": 2000
+                },
+                "body": {
+                  "type": "string",
+                  "maxLength": 10000
+                },
+                "align": {
+                  "type": "string",
+                  "enum": [
+                    "left",
+                    "center",
+                    "right"
+                  ]
+                },
+                "focalX": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "focalY": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "height": {
+                  "type": "number",
+                  "minimum": 200,
+                  "maximum": 1200
+                },
+                "fontSize": {
+                  "type": "number",
+                  "minimum": 12,
+                  "maximum": 120
+                },
+                "spacing": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 160
+                },
+                "columns": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 6
+                },
+                "visible": {
+                  "type": "boolean"
+                },
+                "overlay": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "overlayColor": {
+                  "type": "string",
+                  "pattern": "^#[0-9a-fA-F]{6}$"
+                },
+                "transition": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "media": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "schemaVersion": {
+                      "type": "number",
+                      "const": 1
+                    },
+                    "revision": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "extensions": {
+                      "type": "object",
+                      "additionalProperties": {},
+                      "default": {}
+                    },
+                    "src": {
+                      "type": "string",
+                      "maxLength": 2048
+                    },
+                    "alt": {
+                      "type": "string",
+                      "maxLength": 10000
+                    },
+                    "width": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0
+                    },
+                    "height": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "image",
+                        "video"
+                      ]
+                    },
+                    "illustrative": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "schemaVersion",
+                    "revision",
+                    "src",
+                    "alt",
+                    "width",
+                    "height",
+                    "kind"
+                  ],
+                  "additionalProperties": false,
+                  "$schema": "http://json-schema.org/draft-07/schema#"
+                },
+                "background": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "schemaVersion": {
+                      "type": "number",
+                      "const": 1
+                    },
+                    "revision": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "extensions": {
+                      "type": "object",
+                      "additionalProperties": {},
+                      "default": {}
+                    },
+                    "src": {
+                      "type": "string",
+                      "maxLength": 2048
+                    },
+                    "alt": {
+                      "type": "string",
+                      "maxLength": 10000
+                    },
+                    "width": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0
+                    },
+                    "height": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "image",
+                        "video"
+                      ]
+                    },
+                    "illustrative": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "schemaVersion",
+                    "revision",
+                    "src",
+                    "alt",
+                    "width",
+                    "height",
+                    "kind"
+                  ],
+                  "additionalProperties": false,
+                  "$schema": "http://json-schema.org/draft-07/schema#"
+                },
+                "buttonLayout": {
+                  "type": "string",
+                  "enum": [
+                    "row",
+                    "stack"
+                  ]
+                },
+                "carousel": {
+                  "type": "string",
+                  "enum": [
+                    "manual",
+                    "auto"
+                  ]
+                },
+                "interval": {
+                  "type": "number",
+                  "minimum": 2000,
+                  "maximum": 20000
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "overrides": {
+              "type": "object",
+              "properties": {
+                "desktop": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "maxLength": 500
+                    },
+                    "subtitle": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "body": {
+                      "type": "string",
+                      "maxLength": 10000
+                    },
+                    "align": {
+                      "type": "string",
+                      "enum": [
+                        "left",
+                        "center",
+                        "right"
+                      ]
+                    },
+                    "focalX": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "focalY": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "height": {
+                      "type": "number",
+                      "minimum": 200,
+                      "maximum": 1200
+                    },
+                    "fontSize": {
+                      "type": "number",
+                      "minimum": 12,
+                      "maximum": 120
+                    },
+                    "spacing": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 160
+                    },
+                    "columns": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 6
+                    },
+                    "visible": {
+                      "type": "boolean"
+                    },
+                    "overlay": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "overlayColor": {
+                      "type": "string",
+                      "pattern": "^#[0-9a-fA-F]{6}$"
+                    },
+                    "transition": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "media": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "schemaVersion": {
+                          "type": "number",
+                          "const": 1
+                        },
+                        "revision": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "additionalProperties": {},
+                          "default": {}
+                        },
+                        "src": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "width": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "illustrative": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "schemaVersion",
+                        "revision",
+                        "src",
+                        "alt",
+                        "width",
+                        "height",
+                        "kind"
+                      ],
+                      "additionalProperties": false,
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    },
+                    "background": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "schemaVersion": {
+                          "type": "number",
+                          "const": 1
+                        },
+                        "revision": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "additionalProperties": {},
+                          "default": {}
+                        },
+                        "src": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "width": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "illustrative": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "schemaVersion",
+                        "revision",
+                        "src",
+                        "alt",
+                        "width",
+                        "height",
+                        "kind"
+                      ],
+                      "additionalProperties": false,
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    },
+                    "buttonLayout": {
+                      "type": "string",
+                      "enum": [
+                        "row",
+                        "stack"
+                      ]
+                    },
+                    "carousel": {
+                      "type": "string",
+                      "enum": [
+                        "manual",
+                        "auto"
+                      ]
+                    },
+                    "interval": {
+                      "type": "number",
+                      "minimum": 2000,
+                      "maximum": 20000
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": false
+                },
+                "tablet": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "maxLength": 500
+                    },
+                    "subtitle": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "body": {
+                      "type": "string",
+                      "maxLength": 10000
+                    },
+                    "align": {
+                      "type": "string",
+                      "enum": [
+                        "left",
+                        "center",
+                        "right"
+                      ]
+                    },
+                    "focalX": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "focalY": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "height": {
+                      "type": "number",
+                      "minimum": 200,
+                      "maximum": 1200
+                    },
+                    "fontSize": {
+                      "type": "number",
+                      "minimum": 12,
+                      "maximum": 120
+                    },
+                    "spacing": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 160
+                    },
+                    "columns": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 6
+                    },
+                    "visible": {
+                      "type": "boolean"
+                    },
+                    "overlay": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "overlayColor": {
+                      "type": "string",
+                      "pattern": "^#[0-9a-fA-F]{6}$"
+                    },
+                    "transition": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "media": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "schemaVersion": {
+                          "type": "number",
+                          "const": 1
+                        },
+                        "revision": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "additionalProperties": {},
+                          "default": {}
+                        },
+                        "src": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "width": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "illustrative": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "schemaVersion",
+                        "revision",
+                        "src",
+                        "alt",
+                        "width",
+                        "height",
+                        "kind"
+                      ],
+                      "additionalProperties": false,
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    },
+                    "background": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "schemaVersion": {
+                          "type": "number",
+                          "const": 1
+                        },
+                        "revision": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "additionalProperties": {},
+                          "default": {}
+                        },
+                        "src": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "width": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "illustrative": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "schemaVersion",
+                        "revision",
+                        "src",
+                        "alt",
+                        "width",
+                        "height",
+                        "kind"
+                      ],
+                      "additionalProperties": false,
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    },
+                    "buttonLayout": {
+                      "type": "string",
+                      "enum": [
+                        "row",
+                        "stack"
+                      ]
+                    },
+                    "carousel": {
+                      "type": "string",
+                      "enum": [
+                        "manual",
+                        "auto"
+                      ]
+                    },
+                    "interval": {
+                      "type": "number",
+                      "minimum": 2000,
+                      "maximum": 20000
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": false
+                },
+                "mobile": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "maxLength": 500
+                    },
+                    "subtitle": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "body": {
+                      "type": "string",
+                      "maxLength": 10000
+                    },
+                    "align": {
+                      "type": "string",
+                      "enum": [
+                        "left",
+                        "center",
+                        "right"
+                      ]
+                    },
+                    "focalX": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "focalY": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "height": {
+                      "type": "number",
+                      "minimum": 200,
+                      "maximum": 1200
+                    },
+                    "fontSize": {
+                      "type": "number",
+                      "minimum": 12,
+                      "maximum": 120
+                    },
+                    "spacing": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 160
+                    },
+                    "columns": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 6
+                    },
+                    "visible": {
+                      "type": "boolean"
+                    },
+                    "overlay": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "overlayColor": {
+                      "type": "string",
+                      "pattern": "^#[0-9a-fA-F]{6}$"
+                    },
+                    "transition": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "media": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "schemaVersion": {
+                          "type": "number",
+                          "const": 1
+                        },
+                        "revision": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "additionalProperties": {},
+                          "default": {}
+                        },
+                        "src": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "width": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "illustrative": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "schemaVersion",
+                        "revision",
+                        "src",
+                        "alt",
+                        "width",
+                        "height",
+                        "kind"
+                      ],
+                      "additionalProperties": false,
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    },
+                    "background": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "schemaVersion": {
+                          "type": "number",
+                          "const": 1
+                        },
+                        "revision": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "additionalProperties": {},
+                          "default": {}
+                        },
+                        "src": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "width": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "illustrative": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "schemaVersion",
+                        "revision",
+                        "src",
+                        "alt",
+                        "width",
+                        "height",
+                        "kind"
+                      ],
+                      "additionalProperties": false,
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    },
+                    "buttonLayout": {
+                      "type": "string",
+                      "enum": [
+                        "row",
+                        "stack"
+                      ]
+                    },
+                    "carousel": {
+                      "type": "string",
+                      "enum": [
+                        "manual",
+                        "auto"
+                      ]
+                    },
+                    "interval": {
+                      "type": "number",
+                      "minimum": 2000,
+                      "maximum": 20000
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": false
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "scenes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "schemaVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "additionalProperties": {},
+                    "default": {}
+                  },
+                  "title": {
+                    "type": "string",
+                    "maxLength": 500
+                  },
+                  "subtitle": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "media": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128
+                      },
+                      "schemaVersion": {
+                        "type": "number",
+                        "const": 1
+                      },
+                      "revision": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "extensions": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "default": {}
+                      },
+                      "src": {
+                        "type": "string",
+                        "maxLength": 2048
+                      },
+                      "alt": {
+                        "type": "string",
+                        "maxLength": 10000
+                      },
+                      "width": {
+                        "type": "integer",
+                        "exclusiveMinimum": 0
+                      },
+                      "height": {
+                        "type": "integer",
+                        "exclusiveMinimum": 0
+                      },
+                      "kind": {
+                        "type": "string",
+                        "enum": [
+                          "image",
+                          "video"
+                        ]
+                      },
+                      "illustrative": {
+                        "type": "boolean",
+                        "default": false
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "schemaVersion",
+                      "revision",
+                      "src",
+                      "alt",
+                      "width",
+                      "height",
+                      "kind"
+                    ],
+                    "additionalProperties": false,
+                    "$schema": "http://json-schema.org/draft-07/schema#"
+                  },
+                  "layout": {
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "maxLength": 500
+                      },
+                      "subtitle": {
+                        "type": "string",
+                        "maxLength": 2000
+                      },
+                      "body": {
+                        "type": "string",
+                        "maxLength": 10000
+                      },
+                      "align": {
+                        "type": "string",
+                        "enum": [
+                          "left",
+                          "center",
+                          "right"
+                        ]
+                      },
+                      "focalX": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 100
+                      },
+                      "focalY": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 100
+                      },
+                      "height": {
+                        "type": "number",
+                        "minimum": 200,
+                        "maximum": 1200
+                      },
+                      "fontSize": {
+                        "type": "number",
+                        "minimum": 12,
+                        "maximum": 120
+                      },
+                      "spacing": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 160
+                      },
+                      "columns": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 6
+                      },
+                      "visible": {
+                        "type": "boolean"
+                      },
+                      "overlay": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "overlayColor": {
+                        "type": "string",
+                        "pattern": "^#[0-9a-fA-F]{6}$"
+                      },
+                      "transition": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "media": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 128
+                          },
+                          "schemaVersion": {
+                            "type": "number",
+                            "const": 1
+                          },
+                          "revision": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "extensions": {
+                            "type": "object",
+                            "additionalProperties": {},
+                            "default": {}
+                          },
+                          "src": {
+                            "type": "string",
+                            "maxLength": 2048
+                          },
+                          "alt": {
+                            "type": "string",
+                            "maxLength": 10000
+                          },
+                          "width": {
+                            "type": "integer",
+                            "exclusiveMinimum": 0
+                          },
+                          "height": {
+                            "type": "integer",
+                            "exclusiveMinimum": 0
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "image",
+                              "video"
+                            ]
+                          },
+                          "illustrative": {
+                            "type": "boolean",
+                            "default": false
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "schemaVersion",
+                          "revision",
+                          "src",
+                          "alt",
+                          "width",
+                          "height",
+                          "kind"
+                        ],
+                        "additionalProperties": false,
+                        "$schema": "http://json-schema.org/draft-07/schema#"
+                      },
+                      "background": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 128
+                          },
+                          "schemaVersion": {
+                            "type": "number",
+                            "const": 1
+                          },
+                          "revision": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "extensions": {
+                            "type": "object",
+                            "additionalProperties": {},
+                            "default": {}
+                          },
+                          "src": {
+                            "type": "string",
+                            "maxLength": 2048
+                          },
+                          "alt": {
+                            "type": "string",
+                            "maxLength": 10000
+                          },
+                          "width": {
+                            "type": "integer",
+                            "exclusiveMinimum": 0
+                          },
+                          "height": {
+                            "type": "integer",
+                            "exclusiveMinimum": 0
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "image",
+                              "video"
+                            ]
+                          },
+                          "illustrative": {
+                            "type": "boolean",
+                            "default": false
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "schemaVersion",
+                          "revision",
+                          "src",
+                          "alt",
+                          "width",
+                          "height",
+                          "kind"
+                        ],
+                        "additionalProperties": false,
+                        "$schema": "http://json-schema.org/draft-07/schema#"
+                      },
+                      "buttonLayout": {
+                        "type": "string",
+                        "enum": [
+                          "row",
+                          "stack"
+                        ]
+                      },
+                      "carousel": {
+                        "type": "string",
+                        "enum": [
+                          "manual",
+                          "auto"
+                        ]
+                      },
+                      "interval": {
+                        "type": "number",
+                        "minimum": 2000,
+                        "maximum": 20000
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": false
+                  },
+                  "overrides": {
+                    "type": "object",
+                    "properties": {
+                      "desktop": {
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "maxLength": 500
+                          },
+                          "subtitle": {
+                            "type": "string",
+                            "maxLength": 2000
+                          },
+                          "body": {
+                            "type": "string",
+                            "maxLength": 10000
+                          },
+                          "align": {
+                            "type": "string",
+                            "enum": [
+                              "left",
+                              "center",
+                              "right"
+                            ]
+                          },
+                          "focalX": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                          },
+                          "focalY": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                          },
+                          "height": {
+                            "type": "number",
+                            "minimum": 200,
+                            "maximum": 1200
+                          },
+                          "fontSize": {
+                            "type": "number",
+                            "minimum": 12,
+                            "maximum": 120
+                          },
+                          "spacing": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 160
+                          },
+                          "columns": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 6
+                          },
+                          "visible": {
+                            "type": "boolean"
+                          },
+                          "overlay": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "overlayColor": {
+                            "type": "string",
+                            "pattern": "^#[0-9a-fA-F]{6}$"
+                          },
+                          "transition": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "media": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 128
+                              },
+                              "schemaVersion": {
+                                "type": "number",
+                                "const": 1
+                              },
+                              "revision": {
+                                "type": "integer",
+                                "minimum": 0
+                              },
+                              "extensions": {
+                                "type": "object",
+                                "additionalProperties": {},
+                                "default": {}
+                              },
+                              "src": {
+                                "type": "string",
+                                "maxLength": 2048
+                              },
+                              "alt": {
+                                "type": "string",
+                                "maxLength": 10000
+                              },
+                              "width": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0
+                              },
+                              "height": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "image",
+                                  "video"
+                                ]
+                              },
+                              "illustrative": {
+                                "type": "boolean",
+                                "default": false
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "schemaVersion",
+                              "revision",
+                              "src",
+                              "alt",
+                              "width",
+                              "height",
+                              "kind"
+                            ],
+                            "additionalProperties": false,
+                            "$schema": "http://json-schema.org/draft-07/schema#"
+                          },
+                          "background": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 128
+                              },
+                              "schemaVersion": {
+                                "type": "number",
+                                "const": 1
+                              },
+                              "revision": {
+                                "type": "integer",
+                                "minimum": 0
+                              },
+                              "extensions": {
+                                "type": "object",
+                                "additionalProperties": {},
+                                "default": {}
+                              },
+                              "src": {
+                                "type": "string",
+                                "maxLength": 2048
+                              },
+                              "alt": {
+                                "type": "string",
+                                "maxLength": 10000
+                              },
+                              "width": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0
+                              },
+                              "height": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "image",
+                                  "video"
+                                ]
+                              },
+                              "illustrative": {
+                                "type": "boolean",
+                                "default": false
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "schemaVersion",
+                              "revision",
+                              "src",
+                              "alt",
+                              "width",
+                              "height",
+                              "kind"
+                            ],
+                            "additionalProperties": false,
+                            "$schema": "http://json-schema.org/draft-07/schema#"
+                          },
+                          "buttonLayout": {
+                            "type": "string",
+                            "enum": [
+                              "row",
+                              "stack"
+                            ]
+                          },
+                          "carousel": {
+                            "type": "string",
+                            "enum": [
+                              "manual",
+                              "auto"
+                            ]
+                          },
+                          "interval": {
+                            "type": "number",
+                            "minimum": 2000,
+                            "maximum": 20000
+                          }
+                        },
+                        "required": [],
+                        "additionalProperties": false
+                      },
+                      "tablet": {
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "maxLength": 500
+                          },
+                          "subtitle": {
+                            "type": "string",
+                            "maxLength": 2000
+                          },
+                          "body": {
+                            "type": "string",
+                            "maxLength": 10000
+                          },
+                          "align": {
+                            "type": "string",
+                            "enum": [
+                              "left",
+                              "center",
+                              "right"
+                            ]
+                          },
+                          "focalX": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                          },
+                          "focalY": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                          },
+                          "height": {
+                            "type": "number",
+                            "minimum": 200,
+                            "maximum": 1200
+                          },
+                          "fontSize": {
+                            "type": "number",
+                            "minimum": 12,
+                            "maximum": 120
+                          },
+                          "spacing": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 160
+                          },
+                          "columns": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 6
+                          },
+                          "visible": {
+                            "type": "boolean"
+                          },
+                          "overlay": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "overlayColor": {
+                            "type": "string",
+                            "pattern": "^#[0-9a-fA-F]{6}$"
+                          },
+                          "transition": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "media": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 128
+                              },
+                              "schemaVersion": {
+                                "type": "number",
+                                "const": 1
+                              },
+                              "revision": {
+                                "type": "integer",
+                                "minimum": 0
+                              },
+                              "extensions": {
+                                "type": "object",
+                                "additionalProperties": {},
+                                "default": {}
+                              },
+                              "src": {
+                                "type": "string",
+                                "maxLength": 2048
+                              },
+                              "alt": {
+                                "type": "string",
+                                "maxLength": 10000
+                              },
+                              "width": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0
+                              },
+                              "height": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "image",
+                                  "video"
+                                ]
+                              },
+                              "illustrative": {
+                                "type": "boolean",
+                                "default": false
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "schemaVersion",
+                              "revision",
+                              "src",
+                              "alt",
+                              "width",
+                              "height",
+                              "kind"
+                            ],
+                            "additionalProperties": false,
+                            "$schema": "http://json-schema.org/draft-07/schema#"
+                          },
+                          "background": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 128
+                              },
+                              "schemaVersion": {
+                                "type": "number",
+                                "const": 1
+                              },
+                              "revision": {
+                                "type": "integer",
+                                "minimum": 0
+                              },
+                              "extensions": {
+                                "type": "object",
+                                "additionalProperties": {},
+                                "default": {}
+                              },
+                              "src": {
+                                "type": "string",
+                                "maxLength": 2048
+                              },
+                              "alt": {
+                                "type": "string",
+                                "maxLength": 10000
+                              },
+                              "width": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0
+                              },
+                              "height": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "image",
+                                  "video"
+                                ]
+                              },
+                              "illustrative": {
+                                "type": "boolean",
+                                "default": false
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "schemaVersion",
+                              "revision",
+                              "src",
+                              "alt",
+                              "width",
+                              "height",
+                              "kind"
+                            ],
+                            "additionalProperties": false,
+                            "$schema": "http://json-schema.org/draft-07/schema#"
+                          },
+                          "buttonLayout": {
+                            "type": "string",
+                            "enum": [
+                              "row",
+                              "stack"
+                            ]
+                          },
+                          "carousel": {
+                            "type": "string",
+                            "enum": [
+                              "manual",
+                              "auto"
+                            ]
+                          },
+                          "interval": {
+                            "type": "number",
+                            "minimum": 2000,
+                            "maximum": 20000
+                          }
+                        },
+                        "required": [],
+                        "additionalProperties": false
+                      },
+                      "mobile": {
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "maxLength": 500
+                          },
+                          "subtitle": {
+                            "type": "string",
+                            "maxLength": 2000
+                          },
+                          "body": {
+                            "type": "string",
+                            "maxLength": 10000
+                          },
+                          "align": {
+                            "type": "string",
+                            "enum": [
+                              "left",
+                              "center",
+                              "right"
+                            ]
+                          },
+                          "focalX": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                          },
+                          "focalY": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                          },
+                          "height": {
+                            "type": "number",
+                            "minimum": 200,
+                            "maximum": 1200
+                          },
+                          "fontSize": {
+                            "type": "number",
+                            "minimum": 12,
+                            "maximum": 120
+                          },
+                          "spacing": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 160
+                          },
+                          "columns": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 6
+                          },
+                          "visible": {
+                            "type": "boolean"
+                          },
+                          "overlay": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "overlayColor": {
+                            "type": "string",
+                            "pattern": "^#[0-9a-fA-F]{6}$"
+                          },
+                          "transition": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "media": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 128
+                              },
+                              "schemaVersion": {
+                                "type": "number",
+                                "const": 1
+                              },
+                              "revision": {
+                                "type": "integer",
+                                "minimum": 0
+                              },
+                              "extensions": {
+                                "type": "object",
+                                "additionalProperties": {},
+                                "default": {}
+                              },
+                              "src": {
+                                "type": "string",
+                                "maxLength": 2048
+                              },
+                              "alt": {
+                                "type": "string",
+                                "maxLength": 10000
+                              },
+                              "width": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0
+                              },
+                              "height": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "image",
+                                  "video"
+                                ]
+                              },
+                              "illustrative": {
+                                "type": "boolean",
+                                "default": false
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "schemaVersion",
+                              "revision",
+                              "src",
+                              "alt",
+                              "width",
+                              "height",
+                              "kind"
+                            ],
+                            "additionalProperties": false,
+                            "$schema": "http://json-schema.org/draft-07/schema#"
+                          },
+                          "background": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 128
+                              },
+                              "schemaVersion": {
+                                "type": "number",
+                                "const": 1
+                              },
+                              "revision": {
+                                "type": "integer",
+                                "minimum": 0
+                              },
+                              "extensions": {
+                                "type": "object",
+                                "additionalProperties": {},
+                                "default": {}
+                              },
+                              "src": {
+                                "type": "string",
+                                "maxLength": 2048
+                              },
+                              "alt": {
+                                "type": "string",
+                                "maxLength": 10000
+                              },
+                              "width": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0
+                              },
+                              "height": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "image",
+                                  "video"
+                                ]
+                              },
+                              "illustrative": {
+                                "type": "boolean",
+                                "default": false
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "schemaVersion",
+                              "revision",
+                              "src",
+                              "alt",
+                              "width",
+                              "height",
+                              "kind"
+                            ],
+                            "additionalProperties": false,
+                            "$schema": "http://json-schema.org/draft-07/schema#"
+                          },
+                          "buttonLayout": {
+                            "type": "string",
+                            "enum": [
+                              "row",
+                              "stack"
+                            ]
+                          },
+                          "carousel": {
+                            "type": "string",
+                            "enum": [
+                              "manual",
+                              "auto"
+                            ]
+                          },
+                          "interval": {
+                            "type": "number",
+                            "minimum": 2000,
+                            "maximum": 20000
+                          }
+                        },
+                        "required": [],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": false
+                  },
+                  "visible": {
+                    "type": "boolean"
+                  },
+                  "actions": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "label": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "href": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "newWindow": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "label",
+                        "href"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "id",
+                  "schemaVersion",
+                  "revision",
+                  "title",
+                  "subtitle",
+                  "layout",
+                  "overrides",
+                  "visible"
+                ],
+                "additionalProperties": false
+              },
+              "maxItems": 100
+            },
+            "faqs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "maxLength": 128
+                  },
+                  "group": {
+                    "type": "string",
+                    "enum": [
+                      "Compra",
+                      "Venta",
+                      "Alquiler",
+                      "Publicaci\u00f3n",
+                      "Tasaciones",
+                      "Visitas",
+                      "Contacto"
+                    ]
+                  },
+                  "question": {
+                    "type": "string",
+                    "maxLength": 500
+                  },
+                  "answer": {
+                    "type": "string",
+                    "maxLength": 3000
+                  }
+                },
+                "required": [
+                  "id",
+                  "group",
+                  "question",
+                  "answer"
+                ],
+                "additionalProperties": false
+              },
+              "maxItems": 100
             }
           },
           "required": [
@@ -808,7 +2753,8 @@
             "actions",
             "media"
           ],
-          "additionalProperties": false
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
         }
       }
     },
@@ -857,7 +2803,16 @@
           "team",
           "text",
           "faq",
-          "lead-form"
+          "lead-form",
+          "hero",
+          "search",
+          "carousel",
+          "cta",
+          "services",
+          "map",
+          "contact",
+          "heading",
+          "footer"
         ]
       },
       "content": {
@@ -1045,6 +3000,1942 @@
           ],
           "additionalProperties": false
         }
+      },
+      "label": {
+        "type": "string",
+        "maxLength": 150
+      },
+      "layout": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "subtitle": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "body": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "align": {
+            "type": "string",
+            "enum": [
+              "left",
+              "center",
+              "right"
+            ]
+          },
+          "focalX": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "focalY": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "height": {
+            "type": "number",
+            "minimum": 200,
+            "maximum": 1200
+          },
+          "fontSize": {
+            "type": "number",
+            "minimum": 12,
+            "maximum": 120
+          },
+          "spacing": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 160
+          },
+          "columns": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "visible": {
+            "type": "boolean"
+          },
+          "overlay": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "overlayColor": {
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{6}$"
+          },
+          "transition": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "media": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "schemaVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "revision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "extensions": {
+                "type": "object",
+                "additionalProperties": {},
+                "default": {}
+              },
+              "src": {
+                "type": "string",
+                "maxLength": 2048
+              },
+              "alt": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "width": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "height": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "image",
+                  "video"
+                ]
+              },
+              "illustrative": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "required": [
+              "id",
+              "schemaVersion",
+              "revision",
+              "src",
+              "alt",
+              "width",
+              "height",
+              "kind"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          },
+          "background": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "schemaVersion": {
+                "type": "number",
+                "const": 1
+              },
+              "revision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "extensions": {
+                "type": "object",
+                "additionalProperties": {},
+                "default": {}
+              },
+              "src": {
+                "type": "string",
+                "maxLength": 2048
+              },
+              "alt": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "width": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "height": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "image",
+                  "video"
+                ]
+              },
+              "illustrative": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "required": [
+              "id",
+              "schemaVersion",
+              "revision",
+              "src",
+              "alt",
+              "width",
+              "height",
+              "kind"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          },
+          "buttonLayout": {
+            "type": "string",
+            "enum": [
+              "row",
+              "stack"
+            ]
+          },
+          "carousel": {
+            "type": "string",
+            "enum": [
+              "manual",
+              "auto"
+            ]
+          },
+          "interval": {
+            "type": "number",
+            "minimum": 2000,
+            "maximum": 20000
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "overrides": {
+        "type": "object",
+        "properties": {
+          "desktop": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "subtitle": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "body": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "align": {
+                "type": "string",
+                "enum": [
+                  "left",
+                  "center",
+                  "right"
+                ]
+              },
+              "focalX": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "focalY": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "height": {
+                "type": "number",
+                "minimum": 200,
+                "maximum": 1200
+              },
+              "fontSize": {
+                "type": "number",
+                "minimum": 12,
+                "maximum": 120
+              },
+              "spacing": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 160
+              },
+              "columns": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 6
+              },
+              "visible": {
+                "type": "boolean"
+              },
+              "overlay": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "overlayColor": {
+                "type": "string",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "transition": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "media": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "schemaVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "additionalProperties": {},
+                    "default": {}
+                  },
+                  "src": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "alt": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "width": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "illustrative": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "schemaVersion",
+                  "revision",
+                  "src",
+                  "alt",
+                  "width",
+                  "height",
+                  "kind"
+                ],
+                "additionalProperties": false,
+                "$schema": "http://json-schema.org/draft-07/schema#"
+              },
+              "background": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "schemaVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "additionalProperties": {},
+                    "default": {}
+                  },
+                  "src": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "alt": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "width": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "illustrative": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "schemaVersion",
+                  "revision",
+                  "src",
+                  "alt",
+                  "width",
+                  "height",
+                  "kind"
+                ],
+                "additionalProperties": false,
+                "$schema": "http://json-schema.org/draft-07/schema#"
+              },
+              "buttonLayout": {
+                "type": "string",
+                "enum": [
+                  "row",
+                  "stack"
+                ]
+              },
+              "carousel": {
+                "type": "string",
+                "enum": [
+                  "manual",
+                  "auto"
+                ]
+              },
+              "interval": {
+                "type": "number",
+                "minimum": 2000,
+                "maximum": 20000
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "tablet": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "subtitle": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "body": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "align": {
+                "type": "string",
+                "enum": [
+                  "left",
+                  "center",
+                  "right"
+                ]
+              },
+              "focalX": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "focalY": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "height": {
+                "type": "number",
+                "minimum": 200,
+                "maximum": 1200
+              },
+              "fontSize": {
+                "type": "number",
+                "minimum": 12,
+                "maximum": 120
+              },
+              "spacing": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 160
+              },
+              "columns": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 6
+              },
+              "visible": {
+                "type": "boolean"
+              },
+              "overlay": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "overlayColor": {
+                "type": "string",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "transition": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "media": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "schemaVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "additionalProperties": {},
+                    "default": {}
+                  },
+                  "src": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "alt": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "width": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "illustrative": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "schemaVersion",
+                  "revision",
+                  "src",
+                  "alt",
+                  "width",
+                  "height",
+                  "kind"
+                ],
+                "additionalProperties": false,
+                "$schema": "http://json-schema.org/draft-07/schema#"
+              },
+              "background": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "schemaVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "additionalProperties": {},
+                    "default": {}
+                  },
+                  "src": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "alt": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "width": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "illustrative": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "schemaVersion",
+                  "revision",
+                  "src",
+                  "alt",
+                  "width",
+                  "height",
+                  "kind"
+                ],
+                "additionalProperties": false,
+                "$schema": "http://json-schema.org/draft-07/schema#"
+              },
+              "buttonLayout": {
+                "type": "string",
+                "enum": [
+                  "row",
+                  "stack"
+                ]
+              },
+              "carousel": {
+                "type": "string",
+                "enum": [
+                  "manual",
+                  "auto"
+                ]
+              },
+              "interval": {
+                "type": "number",
+                "minimum": 2000,
+                "maximum": 20000
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "mobile": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "subtitle": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "body": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "align": {
+                "type": "string",
+                "enum": [
+                  "left",
+                  "center",
+                  "right"
+                ]
+              },
+              "focalX": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "focalY": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "height": {
+                "type": "number",
+                "minimum": 200,
+                "maximum": 1200
+              },
+              "fontSize": {
+                "type": "number",
+                "minimum": 12,
+                "maximum": 120
+              },
+              "spacing": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 160
+              },
+              "columns": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 6
+              },
+              "visible": {
+                "type": "boolean"
+              },
+              "overlay": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "overlayColor": {
+                "type": "string",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "transition": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "media": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "schemaVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "additionalProperties": {},
+                    "default": {}
+                  },
+                  "src": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "alt": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "width": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "illustrative": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "schemaVersion",
+                  "revision",
+                  "src",
+                  "alt",
+                  "width",
+                  "height",
+                  "kind"
+                ],
+                "additionalProperties": false,
+                "$schema": "http://json-schema.org/draft-07/schema#"
+              },
+              "background": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "schemaVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "additionalProperties": {},
+                    "default": {}
+                  },
+                  "src": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "alt": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "width": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "illustrative": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "schemaVersion",
+                  "revision",
+                  "src",
+                  "alt",
+                  "width",
+                  "height",
+                  "kind"
+                ],
+                "additionalProperties": false,
+                "$schema": "http://json-schema.org/draft-07/schema#"
+              },
+              "buttonLayout": {
+                "type": "string",
+                "enum": [
+                  "row",
+                  "stack"
+                ]
+              },
+              "carousel": {
+                "type": "string",
+                "enum": [
+                  "manual",
+                  "auto"
+                ]
+              },
+              "interval": {
+                "type": "number",
+                "minimum": 2000,
+                "maximum": 20000
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "scenes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "schemaVersion": {
+              "type": "number",
+              "const": 1
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "extensions": {
+              "type": "object",
+              "additionalProperties": {},
+              "default": {}
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 500
+            },
+            "subtitle": {
+              "type": "string",
+              "maxLength": 2000
+            },
+            "media": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                },
+                "schemaVersion": {
+                  "type": "number",
+                  "const": 1
+                },
+                "revision": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "extensions": {
+                  "type": "object",
+                  "additionalProperties": {},
+                  "default": {}
+                },
+                "src": {
+                  "type": "string",
+                  "maxLength": 2048
+                },
+                "alt": {
+                  "type": "string",
+                  "maxLength": 10000
+                },
+                "width": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0
+                },
+                "height": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "image",
+                    "video"
+                  ]
+                },
+                "illustrative": {
+                  "type": "boolean",
+                  "default": false
+                }
+              },
+              "required": [
+                "id",
+                "schemaVersion",
+                "revision",
+                "src",
+                "alt",
+                "width",
+                "height",
+                "kind"
+              ],
+              "additionalProperties": false,
+              "$schema": "http://json-schema.org/draft-07/schema#"
+            },
+            "layout": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "maxLength": 500
+                },
+                "subtitle": {
+                  "type": "string",
+                  "maxLength": 2000
+                },
+                "body": {
+                  "type": "string",
+                  "maxLength": 10000
+                },
+                "align": {
+                  "type": "string",
+                  "enum": [
+                    "left",
+                    "center",
+                    "right"
+                  ]
+                },
+                "focalX": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "focalY": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "height": {
+                  "type": "number",
+                  "minimum": 200,
+                  "maximum": 1200
+                },
+                "fontSize": {
+                  "type": "number",
+                  "minimum": 12,
+                  "maximum": 120
+                },
+                "spacing": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 160
+                },
+                "columns": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 6
+                },
+                "visible": {
+                  "type": "boolean"
+                },
+                "overlay": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "overlayColor": {
+                  "type": "string",
+                  "pattern": "^#[0-9a-fA-F]{6}$"
+                },
+                "transition": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "media": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "schemaVersion": {
+                      "type": "number",
+                      "const": 1
+                    },
+                    "revision": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "extensions": {
+                      "type": "object",
+                      "additionalProperties": {},
+                      "default": {}
+                    },
+                    "src": {
+                      "type": "string",
+                      "maxLength": 2048
+                    },
+                    "alt": {
+                      "type": "string",
+                      "maxLength": 10000
+                    },
+                    "width": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0
+                    },
+                    "height": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "image",
+                        "video"
+                      ]
+                    },
+                    "illustrative": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "schemaVersion",
+                    "revision",
+                    "src",
+                    "alt",
+                    "width",
+                    "height",
+                    "kind"
+                  ],
+                  "additionalProperties": false,
+                  "$schema": "http://json-schema.org/draft-07/schema#"
+                },
+                "background": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "schemaVersion": {
+                      "type": "number",
+                      "const": 1
+                    },
+                    "revision": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "extensions": {
+                      "type": "object",
+                      "additionalProperties": {},
+                      "default": {}
+                    },
+                    "src": {
+                      "type": "string",
+                      "maxLength": 2048
+                    },
+                    "alt": {
+                      "type": "string",
+                      "maxLength": 10000
+                    },
+                    "width": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0
+                    },
+                    "height": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "image",
+                        "video"
+                      ]
+                    },
+                    "illustrative": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "schemaVersion",
+                    "revision",
+                    "src",
+                    "alt",
+                    "width",
+                    "height",
+                    "kind"
+                  ],
+                  "additionalProperties": false,
+                  "$schema": "http://json-schema.org/draft-07/schema#"
+                },
+                "buttonLayout": {
+                  "type": "string",
+                  "enum": [
+                    "row",
+                    "stack"
+                  ]
+                },
+                "carousel": {
+                  "type": "string",
+                  "enum": [
+                    "manual",
+                    "auto"
+                  ]
+                },
+                "interval": {
+                  "type": "number",
+                  "minimum": 2000,
+                  "maximum": 20000
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "overrides": {
+              "type": "object",
+              "properties": {
+                "desktop": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "maxLength": 500
+                    },
+                    "subtitle": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "body": {
+                      "type": "string",
+                      "maxLength": 10000
+                    },
+                    "align": {
+                      "type": "string",
+                      "enum": [
+                        "left",
+                        "center",
+                        "right"
+                      ]
+                    },
+                    "focalX": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "focalY": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "height": {
+                      "type": "number",
+                      "minimum": 200,
+                      "maximum": 1200
+                    },
+                    "fontSize": {
+                      "type": "number",
+                      "minimum": 12,
+                      "maximum": 120
+                    },
+                    "spacing": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 160
+                    },
+                    "columns": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 6
+                    },
+                    "visible": {
+                      "type": "boolean"
+                    },
+                    "overlay": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "overlayColor": {
+                      "type": "string",
+                      "pattern": "^#[0-9a-fA-F]{6}$"
+                    },
+                    "transition": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "media": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "schemaVersion": {
+                          "type": "number",
+                          "const": 1
+                        },
+                        "revision": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "additionalProperties": {},
+                          "default": {}
+                        },
+                        "src": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "width": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "illustrative": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "schemaVersion",
+                        "revision",
+                        "src",
+                        "alt",
+                        "width",
+                        "height",
+                        "kind"
+                      ],
+                      "additionalProperties": false,
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    },
+                    "background": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "schemaVersion": {
+                          "type": "number",
+                          "const": 1
+                        },
+                        "revision": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "additionalProperties": {},
+                          "default": {}
+                        },
+                        "src": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "width": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "illustrative": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "schemaVersion",
+                        "revision",
+                        "src",
+                        "alt",
+                        "width",
+                        "height",
+                        "kind"
+                      ],
+                      "additionalProperties": false,
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    },
+                    "buttonLayout": {
+                      "type": "string",
+                      "enum": [
+                        "row",
+                        "stack"
+                      ]
+                    },
+                    "carousel": {
+                      "type": "string",
+                      "enum": [
+                        "manual",
+                        "auto"
+                      ]
+                    },
+                    "interval": {
+                      "type": "number",
+                      "minimum": 2000,
+                      "maximum": 20000
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": false
+                },
+                "tablet": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "maxLength": 500
+                    },
+                    "subtitle": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "body": {
+                      "type": "string",
+                      "maxLength": 10000
+                    },
+                    "align": {
+                      "type": "string",
+                      "enum": [
+                        "left",
+                        "center",
+                        "right"
+                      ]
+                    },
+                    "focalX": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "focalY": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "height": {
+                      "type": "number",
+                      "minimum": 200,
+                      "maximum": 1200
+                    },
+                    "fontSize": {
+                      "type": "number",
+                      "minimum": 12,
+                      "maximum": 120
+                    },
+                    "spacing": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 160
+                    },
+                    "columns": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 6
+                    },
+                    "visible": {
+                      "type": "boolean"
+                    },
+                    "overlay": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "overlayColor": {
+                      "type": "string",
+                      "pattern": "^#[0-9a-fA-F]{6}$"
+                    },
+                    "transition": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "media": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "schemaVersion": {
+                          "type": "number",
+                          "const": 1
+                        },
+                        "revision": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "additionalProperties": {},
+                          "default": {}
+                        },
+                        "src": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "width": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "illustrative": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "schemaVersion",
+                        "revision",
+                        "src",
+                        "alt",
+                        "width",
+                        "height",
+                        "kind"
+                      ],
+                      "additionalProperties": false,
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    },
+                    "background": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "schemaVersion": {
+                          "type": "number",
+                          "const": 1
+                        },
+                        "revision": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "additionalProperties": {},
+                          "default": {}
+                        },
+                        "src": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "width": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "illustrative": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "schemaVersion",
+                        "revision",
+                        "src",
+                        "alt",
+                        "width",
+                        "height",
+                        "kind"
+                      ],
+                      "additionalProperties": false,
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    },
+                    "buttonLayout": {
+                      "type": "string",
+                      "enum": [
+                        "row",
+                        "stack"
+                      ]
+                    },
+                    "carousel": {
+                      "type": "string",
+                      "enum": [
+                        "manual",
+                        "auto"
+                      ]
+                    },
+                    "interval": {
+                      "type": "number",
+                      "minimum": 2000,
+                      "maximum": 20000
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": false
+                },
+                "mobile": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "maxLength": 500
+                    },
+                    "subtitle": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "body": {
+                      "type": "string",
+                      "maxLength": 10000
+                    },
+                    "align": {
+                      "type": "string",
+                      "enum": [
+                        "left",
+                        "center",
+                        "right"
+                      ]
+                    },
+                    "focalX": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "focalY": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "height": {
+                      "type": "number",
+                      "minimum": 200,
+                      "maximum": 1200
+                    },
+                    "fontSize": {
+                      "type": "number",
+                      "minimum": 12,
+                      "maximum": 120
+                    },
+                    "spacing": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 160
+                    },
+                    "columns": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 6
+                    },
+                    "visible": {
+                      "type": "boolean"
+                    },
+                    "overlay": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "overlayColor": {
+                      "type": "string",
+                      "pattern": "^#[0-9a-fA-F]{6}$"
+                    },
+                    "transition": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "media": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "schemaVersion": {
+                          "type": "number",
+                          "const": 1
+                        },
+                        "revision": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "additionalProperties": {},
+                          "default": {}
+                        },
+                        "src": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "width": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "illustrative": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "schemaVersion",
+                        "revision",
+                        "src",
+                        "alt",
+                        "width",
+                        "height",
+                        "kind"
+                      ],
+                      "additionalProperties": false,
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    },
+                    "background": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 128
+                        },
+                        "schemaVersion": {
+                          "type": "number",
+                          "const": 1
+                        },
+                        "revision": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "additionalProperties": {},
+                          "default": {}
+                        },
+                        "src": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 10000
+                        },
+                        "width": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "integer",
+                          "exclusiveMinimum": 0
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "illustrative": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "schemaVersion",
+                        "revision",
+                        "src",
+                        "alt",
+                        "width",
+                        "height",
+                        "kind"
+                      ],
+                      "additionalProperties": false,
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    },
+                    "buttonLayout": {
+                      "type": "string",
+                      "enum": [
+                        "row",
+                        "stack"
+                      ]
+                    },
+                    "carousel": {
+                      "type": "string",
+                      "enum": [
+                        "manual",
+                        "auto"
+                      ]
+                    },
+                    "interval": {
+                      "type": "number",
+                      "minimum": 2000,
+                      "maximum": 20000
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": false
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "visible": {
+              "type": "boolean"
+            },
+            "actions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "href": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "newWindow": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "label",
+                  "href"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "id",
+            "schemaVersion",
+            "revision",
+            "title",
+            "subtitle",
+            "layout",
+            "overrides",
+            "visible"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 100
+      },
+      "faqs": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "group": {
+              "type": "string",
+              "enum": [
+                "Compra",
+                "Venta",
+                "Alquiler",
+                "Publicaci\u00f3n",
+                "Tasaciones",
+                "Visitas",
+                "Contacto"
+              ]
+            },
+            "question": {
+              "type": "string",
+              "maxLength": 500
+            },
+            "answer": {
+              "type": "string",
+              "maxLength": 3000
+            }
+          },
+          "required": [
+            "id",
+            "group",
+            "question",
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 100
       }
     },
     "required": [
@@ -1158,15 +5049,63 @@
       },
       "icon": {
         "type": "string",
-        "minLength": 1,
-        "maxLength": 128
+        "enum": [
+          "home",
+          "bed",
+          "bath",
+          "area",
+          "car",
+          "pool",
+          "garden",
+          "security",
+          "gym",
+          "balcony",
+          "sun",
+          "building",
+          "check"
+        ]
       },
       "valueType": {
         "type": "string",
         "enum": [
           "boolean",
           "number",
-          "text"
+          "text",
+          "select"
+        ]
+      },
+      "group": {
+        "type": "string",
+        "enum": [
+          "structural",
+          "amenity"
+        ]
+      },
+      "order": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "visible": {
+        "type": "boolean"
+      },
+      "filterVisible": {
+        "type": "boolean"
+      },
+      "options": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "maxLength": 150
+        },
+        "maxItems": 100
+      },
+      "unit": {
+        "type": "string",
+        "enum": [
+          "m\u00b2",
+          "a\u00f1os",
+          "unidades",
+          "ninguna"
         ]
       }
     },
@@ -1571,6 +5510,107 @@
         "type": "string",
         "minLength": 1,
         "maxLength": 128
+      },
+      "provinceId": {
+        "type": "string",
+        "maxLength": 128
+      },
+      "cityId": {
+        "type": "string",
+        "maxLength": 128
+      },
+      "neighborhoodId": {
+        "type": "string",
+        "maxLength": 128
+      },
+      "agentId": {
+        "type": "string",
+        "maxLength": 128
+      },
+      "videos": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "schemaVersion": {
+              "type": "number",
+              "const": 1
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "extensions": {
+              "type": "object",
+              "additionalProperties": {},
+              "default": {}
+            },
+            "src": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 10000
+            },
+            "width": {
+              "type": "integer",
+              "exclusiveMinimum": 0
+            },
+            "height": {
+              "type": "integer",
+              "exclusiveMinimum": 0
+            },
+            "kind": {
+              "type": "string",
+              "enum": [
+                "image",
+                "video"
+              ]
+            },
+            "illustrative": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "required": [
+            "id",
+            "schemaVersion",
+            "revision",
+            "src",
+            "alt",
+            "width",
+            "height",
+            "kind"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "maxItems": 100
+      },
+      "attributes": {
+        "type": "object",
+        "additionalProperties": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 150
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000000
+            },
+            {
+              "type": "boolean"
+            }
+          ]
+        }
       }
     },
     "required": [
@@ -1699,6 +5739,17 @@
           "minLength": 1,
           "maxLength": 128
         }
+      },
+      "source": {
+        "type": "string",
+        "enum": [
+          "manual",
+          "operations",
+          "types",
+          "cities",
+          "neighborhoods",
+          "features"
+        ]
       }
     },
     "required": [
@@ -2244,7 +6295,8 @@
         "additionalProperties": false
       },
       "order": {
-        "type": "integer"
+        "type": "integer",
+        "minimum": 0
       },
       "visible": {
         "type": "boolean"
@@ -2255,8 +6307,6 @@
       "schemaVersion",
       "revision",
       "name",
-      "role",
-      "biography",
       "order",
       "visible"
     ],
@@ -3184,6 +7234,17 @@
                 "minLength": 1,
                 "maxLength": 128
               }
+            },
+            "source": {
+              "type": "string",
+              "enum": [
+                "manual",
+                "operations",
+                "types",
+                "cities",
+                "neighborhoods",
+                "features"
+              ]
             }
           },
           "required": [
@@ -3453,6 +7514,137 @@
           "menuRadius",
           "footerColumns"
         ]
+      },
+      "company": {
+        "type": "object",
+        "properties": {
+          "presentation": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "history": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "tone": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "pillars": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 300
+            },
+            "maxItems": 100
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 300
+            },
+            "maxItems": 100
+          },
+          "services": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 300
+            },
+            "maxItems": 100
+          },
+          "coverage": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "hours": {
+            "type": "string",
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "presentation",
+          "history",
+          "tone",
+          "pillars",
+          "values",
+          "services",
+          "coverage",
+          "hours"
+        ],
+        "additionalProperties": false
+      },
+      "forms": {
+        "type": "object",
+        "properties": {
+          "leadStorageApproved": {
+            "type": "boolean"
+          },
+          "privacyReviewed": {
+            "type": "boolean"
+          },
+          "propertyMessage": {
+            "type": "string",
+            "maxLength": 3000
+          },
+          "ownerMessage": {
+            "type": "string",
+            "maxLength": 3000
+          },
+          "successMessage": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "preferredChannel": {
+            "type": "string",
+            "enum": [
+              "whatsapp"
+            ]
+          },
+          "propertyFields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "name",
+                "phone",
+                "email",
+                "message",
+                "propertyId",
+                "preferredTime"
+              ]
+            },
+            "maxItems": 100
+          },
+          "ownerFields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "name",
+                "phone",
+                "email",
+                "propertyType",
+                "location",
+                "operation",
+                "description"
+              ]
+            },
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "leadStorageApproved",
+          "privacyReviewed",
+          "propertyMessage",
+          "ownerMessage",
+          "successMessage",
+          "preferredChannel",
+          "propertyFields",
+          "ownerFields"
+        ],
+        "additionalProperties": false
       }
     },
     "additionalProperties": false,
@@ -3469,5 +7661,285 @@
       "integrations",
       "chrome"
     ]
+  },
+  "locationSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "schemaVersion": {
+        "type": "number",
+        "const": 1
+      },
+      "revision": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "extensions": {
+        "type": "object",
+        "additionalProperties": {},
+        "default": {}
+      },
+      "name": {
+        "type": "string",
+        "maxLength": 150
+      },
+      "slug": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "level": {
+        "type": "string",
+        "enum": [
+          "province",
+          "city",
+          "neighborhood"
+        ]
+      },
+      "parentId": {
+        "type": "string",
+        "maxLength": 128
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 10000
+      },
+      "image": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {},
+            "default": {}
+          },
+          "src": {
+            "type": "string",
+            "maxLength": 2048
+          },
+          "alt": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "width": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          },
+          "height": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "image",
+              "video"
+            ]
+          },
+          "illustrative": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "id",
+          "schemaVersion",
+          "revision",
+          "src",
+          "alt",
+          "width",
+          "height",
+          "kind"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "latitude": {
+        "type": "number",
+        "minimum": -90,
+        "maximum": 90
+      },
+      "longitude": {
+        "type": "number",
+        "minimum": -180,
+        "maximum": 180
+      },
+      "order": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "active": {
+        "type": "boolean"
+      },
+      "seo": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "canonical": {
+            "type": "string",
+            "maxLength": 2048
+          },
+          "index": {
+            "type": "boolean"
+          },
+          "follow": {
+            "type": "boolean"
+          },
+          "openGraph": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 10000
+              },
+              "image": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "schemaVersion": {
+                    "type": "number",
+                    "const": 1
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "extensions": {
+                    "type": "object",
+                    "additionalProperties": {},
+                    "default": {}
+                  },
+                  "src": {
+                    "type": "string",
+                    "maxLength": 2048
+                  },
+                  "alt": {
+                    "type": "string",
+                    "maxLength": 10000
+                  },
+                  "width": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "illustrative": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "schemaVersion",
+                  "revision",
+                  "src",
+                  "alt",
+                  "width",
+                  "height",
+                  "kind"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "title",
+              "description"
+            ],
+            "additionalProperties": false
+          },
+          "structuredData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "Organization",
+                    "BreadcrumbList",
+                    "RealEstateListing",
+                    "FAQPage"
+                  ]
+                },
+                "sourceIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "sourceIds"
+              ],
+              "additionalProperties": false
+            },
+            "default": []
+          }
+        },
+        "required": [
+          "title",
+          "description",
+          "index",
+          "follow"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    "required": [
+      "id",
+      "schemaVersion",
+      "revision",
+      "name",
+      "slug",
+      "level",
+      "description",
+      "order",
+      "active",
+      "seo"
+    ],
+    "additionalProperties": false
   }
 }

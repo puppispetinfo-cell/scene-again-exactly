@@ -2,7 +2,7 @@
     "environment": {
         "wordpress": "6.8.3",
         "php": "8.3.36",
-        "database": "WordPress Playground SQLite"
+        "database": "11.4.5-MariaDB"
     },
     "passed": [
         "plugin loaded",
@@ -96,7 +96,7 @@
         }
     },
     "publishedProperty": {
-        "id": "c1df8017-1c8d-4a90-a977-56e5de0fe4a6",
+        "id": "894531fd-da98-4cee-ace1-5876a04885c8",
         "schemaVersion": 1,
         "revision": 2,
         "extensions": {},
@@ -128,7 +128,7 @@
         ],
         "featured": false,
         "publishedAt": "2026-11-04",
-        "updatedAt": "2026-11-04T21:15:01Z",
+        "updatedAt": "2026-11-05T01:51:31Z",
         "calendly": {
             "enabled": false,
             "label": "",
@@ -148,7 +148,7 @@
         "revision": "3",
         "properties": [
             {
-                "id": "c1df8017-1c8d-4a90-a977-56e5de0fe4a6",
+                "id": "894531fd-da98-4cee-ace1-5876a04885c8",
                 "slug": "integration-fixture",
                 "title": "Integration fixture",
                 "operation": "venta",
@@ -461,16 +461,28 @@
     "pluginHashes": {
         "assets\/admin.css": "0f1c9139db554fa93a41571a293ff16d6474cb2fba7cd7abc364c4a1f34255b4",
         "assets\/admin.js": "a1fab24cff61b7568c76d5d499796ace22293b4ac5320962d475c3a5380f8041",
-        "includes\/Admin.php": "2226ed9ecb0a0f2e5cd8b2f4a4ef1162473c2b1d70730af35f366b0c35a888b3",
-        "includes\/Lifecycle.php": "d3d4e54a2eb238edb2418402c8c73ad4fc419995a5707f9674e8382383e11fc5",
-        "includes\/Rest.php": "bbf1b6d629643dac97ed3dc33db49c67cb0b2ca010f9af30a805a71c3e4dcd6b",
-        "includes\/Schema.php": "d7f2feeb5316acc939f01e8bbbcd9e2c46f5f441c252404b6cb190e6ef93ca6d",
-        "includes\/Store.php": "4e2a8892112d3efa8aca50b0c5b2acc458e0f0041bfe54a73830fabee442a836",
+        "assets\/studio.css": "1d18d57cfe9f1614cb845c9e710b92f8941ab429120049446a38efa5550e472e",
+        "assets\/studio.js": "5ea571da8659244bd6626f0990b063d93358cb19f2a1279a2cac2aab67efb9f6",
+        "includes\/Admin.php": "38ebb5de1453c1f67b2403cab360e00173dda00c6f43b137b199e78d59c98f07",
+        "includes\/Domain.php": "ff90fc47510bacfb0f2a53448dd1fe5b7578bf945d3b751bfb304bed6e9c16a1",
+        "includes\/Import.php": "be528b83bd982520936d4472947ac2391da3cd14fec440aa03e3d6c53a3289a5",
+        "includes\/Lifecycle.php": "96c85e48850b3d695dc3d3ac941e9cff36d4e64cd74c3cbcad6d205f8c59dfcc",
+        "includes\/Rest.php": "1d0659c63dd45b1e45f88a094e1f90e6aab71de1ff89f6a570986db5b7e6a0de",
+        "includes\/Schema.php": "565acf42a8598da860fc05c7ad5a185c72589894d2d7de80aaa00df46721203d",
+        "includes\/Store.php": "7273c4d480b63345dc25f9c2d6dc3d7428a0dec1ee300fd3b8bd659fa4cb3b8c",
+        "includes\/Studio.php": "c9f089cfc715423bf026b825747fa341590bd17f31d40b518eab6e7ccc8e25a4",
+        "includes\/Workspace.php": "0eaa64177f315bbf155279844145d0e2423fa8d38e83ddc71a8e74ce43992ad4",
+        "profiles\/media\/architecture-strip.jpg": "a992c7c8a322b5880cac382eabf590bff4699d72fecc5275e1def75eecf5de8a",
+        "profiles\/media\/hero-house.jpg": "bc476264a091809510a4364f936557c6813ba2957346329a48019bfed4bcd7f8",
+        "profiles\/media\/interior-living.jpg": "d10fcc785021a0da1825fb8c82ee4d52c509cd5b22e075535e50363102c34c3d",
+        "profiles\/media\/team.jpg": "4e72f9fb449c7a481c9b784ec8045df6c2469c54c5bd24fca6aeaa92b5b5888d",
+        "profiles\/media\/terrace-garden.jpg": "c3b4c182b5f14c20b9bf659ea9ccdd02293bff9c18d658289d0f086b92d7b31c",
+        "profiles\/rivton-intake.php": "f3742669f60f149c344cfdc63b8749b4903bb3fbaa00635d30d3be03156c1227",
         "profiles\/rivton.json": "0c3ac0aad7a7131b6dbcf2e2891f84c141dcfa6350504056f7e93b0eaa074db2",
-        "readme.txt": "5fc4b2d92a963304271b8d683bbb382bc035631b62827066529d1bd70f526fda",
-        "rivton-core.php": "f1931d8967ceb1d1a1beea30052be02aea3bbb5595f97e575a7b7886b29b7294",
-        "schemas\/contracts.json": "77269b22d45ddbfa1ceab27d4a0525f708750078884d4202c9ef93c76219c810",
-        "schemas\/defaults.json": "317111fd3da87ee07b768341d7e1a969fee0d7b4be6d77c71c0dd9e7df3e074d",
+        "readme.txt": "b8291ccf46295300b3a9614ffb65380c64649cca364161732e15e30699fb9de6",
+        "rivton-core.php": "2bb1e25564872630b800a30e40ea4658e1ea8a92a5b52c59611efa44116c5956",
+        "schemas\/contracts.json": "f40478e1171c55b2f7aa1a61d71b4752887d4c91ad0cac08797556bf31106723",
+        "schemas\/defaults.json": "a530e106d3328d9e45600bb480d2b779fd494611c149b2eb2ffb5cc3d0b9411d",
         "uninstall.php": "f3548c2af7fa5fe0dd1c009056727c28d40d72853544ca86a4f1094efe767350"
     },
     "success": true,
@@ -479,7 +491,7 @@
         "revision": "10",
         "properties": [
             {
-                "id": "fc36c3e3-8e53-4d95-a6cf-9db9c4364363",
+                "id": "74988a5f-f834-411a-80da-0bee6004803b",
                 "slug": "custom-type-fixture",
                 "title": "Integration fixture",
                 "operation": "venta",

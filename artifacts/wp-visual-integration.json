@@ -1,0 +1,582 @@
+{
+    "environment": {
+        "wordpress": "6.8.3",
+        "php": "8.3.36",
+        "database": "11.4.5-MariaDB"
+    },
+    "passed": [
+        "clean install migration 3",
+        "bundled intake validates and preview maps real records",
+        "intake is packaged behind PHP guard instead of publicly readable JSON",
+        "clean initial profile maps known defaults without spurious conflicts",
+        "preview includes institutional pages team types and editable amenities",
+        "approved intake persists real records and native media",
+        "confirmed contact preloaded",
+        "lead storage and consent approvals disabled by default",
+        "four team members without invented roles or photos",
+        "profile never creates invented properties",
+        "approved home text preserved in coordinated draft scenes",
+        "approved existing scene image registered in WP media",
+        "second import detects unchanged entities instead of duplicating",
+        "reapplying unchanged import succeeds without duplicates",
+        "idempotent replay adds only its audit report",
+        "unapproved lead storage never accepts a submission",
+        "workspace reads actual page document",
+        "workspace saves independent draft with responsive override",
+        "saving draft leaves live record untouched",
+        "concurrent draft write rejected",
+        "saved workspace publishes through validated API",
+        "published home accessible through public pages API",
+        "published page accepts unpublished working copy",
+        "private working title never replaces public title",
+        "revision history contains durable version snapshots",
+        "restore revision creates recoverable draft",
+        "every saved workspace has recoverable draft history",
+        "historical draft can be restored independently of publication",
+        "protected preview explicitly identifies representative renderer",
+        "anonymous cannot read workspace",
+        "anonymous cannot read version documents",
+        "anonymous cannot preview import",
+        "publish province fixture",
+        "publish city fixture",
+        "publish neighborhood fixture",
+        "incorrect geographic parent rejected",
+        "property persists typed attributes and geographic references",
+        "private catalog finds a title saved only in its workspace",
+        "duplicate explicitly copies latest saved workspace to independent ID",
+        "workspace duplicate never publishes automatically",
+        "stale workspace cannot silently rebase over changed live record",
+        "authorized discard reloads live version without deleting history",
+        "discarded draft remains recoverable in history",
+        "location label derives from linked hierarchy",
+        "numeric feature rejects arbitrary string",
+        "linked location cannot be archived even with draft properties",
+        "renaming geography preserves stable reference ID",
+        "supplemental intake applies only corresponding new entity",
+        "import backup restores prior state and retains new entity ID as trash",
+        "import recovery preserves unrelated property",
+        "unregistered section component rejected",
+        "forged native media reference rejected",
+        "WhatsApp intent disabled until privacy review",
+        "authorized reviewer configures privacy policy reference",
+        "WhatsApp message uses editable template and validated fixed destination",
+        "WhatsApp intent does not pretend delivery or stored lead",
+        "WhatsApp intent rejects unsafe field markup",
+        "client edit stored after import",
+        "reimport detects client modification and refuses overwrite",
+        "rollback refuses to overwrite later client edits",
+        "dashboard computes actual property total",
+        "dashboard has no invented traffic metrics",
+        "agent cannot access another owner workspace by ID",
+        "agent cannot escalate to import",
+        "public team endpoint redacts unregistered extensions",
+        "configuration workspace cannot bypass integration capability"
+    ],
+    "success": true,
+    "documents": {
+        "home": {
+            "id": "page-home",
+            "schemaVersion": 1,
+            "revision": 3,
+            "extensions": {},
+            "slug": "\/",
+            "title": "Inicio",
+            "status": "published",
+            "seo": {
+                "title": "",
+                "description": "",
+                "index": false,
+                "follow": true,
+                "structuredData": []
+            },
+            "sections": [
+                {
+                    "id": "section-escenas-de-inicio",
+                    "schemaVersion": 1,
+                    "revision": 0,
+                    "extensions": {},
+                    "type": "story",
+                    "content": {
+                        "title": "Workspace fixture",
+                        "body": "Propiedades seleccionadas para cada etapa de tu vida."
+                    },
+                    "design": {
+                        "variant": "default"
+                    },
+                    "visible": true,
+                    "order": 0,
+                    "responsive": {
+                        "mobile": {
+                            "visible": true
+                        },
+                        "desktop": {
+                            "visible": true
+                        }
+                    },
+                    "actions": [],
+                    "media": [],
+                    "label": "Escenas de inicio",
+                    "layout": {},
+                    "overrides": {
+                        "mobile": {
+                            "title": "Mobile fixture",
+                            "height": 480
+                        }
+                    },
+                    "scenes": [
+                        {
+                            "id": "scene-1",
+                            "schemaVersion": 1,
+                            "revision": 0,
+                            "extensions": {},
+                            "title": "Encontr\u00e1\ntu propiedad.",
+                            "subtitle": "Propiedades seleccionadas para cada etapa de tu vida.",
+                            "media": {
+                                "id": "wp-media-5",
+                                "schemaVersion": 1,
+                                "revision": 0,
+                                "extensions": {},
+                                "src": "https:\/\/estate-qa.example.invalid\/wp-content\/uploads\/2026\/11\/hero-house.jpg",
+                                "alt": "Casa contempor\u00e1nea con grandes ventanales",
+                                "width": 1280,
+                                "height": 1600,
+                                "kind": "image",
+                                "illustrative": true
+                            },
+                            "layout": {
+                                "focalX": 50,
+                                "focalY": 50,
+                                "overlay": 0.35,
+                                "transition": 0.5
+                            },
+                            "overrides": {},
+                            "visible": true
+                        },
+                        {
+                            "id": "scene-2",
+                            "schemaVersion": 1,
+                            "revision": 0,
+                            "extensions": {},
+                            "title": "Otra forma\nde habitar.",
+                            "subtitle": "Espacios que se sienten propios.\nDesde el primer momento.",
+                            "media": {
+                                "id": "wp-media-6",
+                                "schemaVersion": 1,
+                                "revision": 0,
+                                "extensions": {},
+                                "src": "https:\/\/estate-qa.example.invalid\/wp-content\/uploads\/2026\/11\/interior-living.jpg",
+                                "alt": "Interior residencial luminoso",
+                                "width": 1280,
+                                "height": 896,
+                                "kind": "image",
+                                "illustrative": true
+                            },
+                            "layout": {
+                                "focalX": 50,
+                                "focalY": 50,
+                                "overlay": 0.35,
+                                "transition": 0.5
+                            },
+                            "overrides": {},
+                            "visible": true,
+                            "actions": [
+                                {
+                                    "id": "scene-action-2",
+                                    "label": "Encontr\u00e1 tu lugar",
+                                    "href": "\/propiedades",
+                                    "newWindow": false
+                                }
+                            ]
+                        },
+                        {
+                            "id": "scene-3",
+                            "schemaVersion": 1,
+                            "revision": 0,
+                            "extensions": {},
+                            "title": "Tu espacio.\nTu pr\u00f3xima etapa.",
+                            "subtitle": "Un lugar para disfrutar.\nUna nueva forma de vivir.",
+                            "media": {
+                                "id": "wp-media-7",
+                                "schemaVersion": 1,
+                                "revision": 0,
+                                "extensions": {},
+                                "src": "https:\/\/estate-qa.example.invalid\/wp-content\/uploads\/2026\/11\/terrace-garden.jpg",
+                                "alt": "Terraza residencial abierta al jard\u00edn y la piscina",
+                                "width": 1600,
+                                "height": 1008,
+                                "kind": "image",
+                                "illustrative": true
+                            },
+                            "layout": {
+                                "focalX": 50,
+                                "focalY": 50,
+                                "overlay": 0.35,
+                                "transition": 0.5
+                            },
+                            "overrides": {},
+                            "visible": true,
+                            "actions": [
+                                {
+                                    "id": "scene-action-3",
+                                    "label": "Explorar propiedades",
+                                    "href": "\/propiedades",
+                                    "newWindow": false
+                                }
+                            ]
+                        }
+                    ],
+                    "faqs": []
+                },
+                {
+                    "id": "section-buscador",
+                    "schemaVersion": 1,
+                    "revision": 0,
+                    "extensions": {},
+                    "type": "search",
+                    "content": {
+                        "title": "Encontr\u00e1 tu propiedad",
+                        "body": ""
+                    },
+                    "design": {
+                        "variant": "default"
+                    },
+                    "visible": true,
+                    "order": 1,
+                    "responsive": {
+                        "mobile": {
+                            "visible": true
+                        },
+                        "desktop": {
+                            "visible": true
+                        }
+                    },
+                    "actions": [],
+                    "media": [],
+                    "label": "Buscador",
+                    "layout": {},
+                    "overrides": {},
+                    "scenes": [],
+                    "faqs": []
+                },
+                {
+                    "id": "section-propiedades-destacadas",
+                    "schemaVersion": 1,
+                    "revision": 0,
+                    "extensions": {},
+                    "type": "featured",
+                    "content": {
+                        "title": "Propiedades destacadas",
+                        "body": ""
+                    },
+                    "design": {
+                        "variant": "default"
+                    },
+                    "visible": true,
+                    "order": 2,
+                    "responsive": {
+                        "mobile": {
+                            "visible": true
+                        },
+                        "desktop": {
+                            "visible": true
+                        }
+                    },
+                    "actions": [],
+                    "media": [],
+                    "label": "Propiedades destacadas",
+                    "layout": {},
+                    "overrides": {},
+                    "scenes": [],
+                    "faqs": []
+                },
+                {
+                    "id": "section-categorias",
+                    "schemaVersion": 1,
+                    "revision": 0,
+                    "extensions": {},
+                    "type": "categories",
+                    "content": {
+                        "title": "Explor\u00e1 por tipo de propiedad",
+                        "body": ""
+                    },
+                    "design": {
+                        "variant": "default"
+                    },
+                    "visible": true,
+                    "order": 3,
+                    "responsive": {
+                        "mobile": {
+                            "visible": true
+                        },
+                        "desktop": {
+                            "visible": true
+                        }
+                    },
+                    "actions": [],
+                    "media": [],
+                    "label": "Categor\u00edas",
+                    "layout": {},
+                    "overrides": {},
+                    "scenes": [],
+                    "faqs": []
+                },
+                {
+                    "id": "section-ultimas-propiedades",
+                    "schemaVersion": 1,
+                    "revision": 0,
+                    "extensions": {},
+                    "type": "latest",
+                    "content": {
+                        "title": "\u00daltimas propiedades",
+                        "body": ""
+                    },
+                    "design": {
+                        "variant": "default"
+                    },
+                    "visible": true,
+                    "order": 4,
+                    "responsive": {
+                        "mobile": {
+                            "visible": true
+                        },
+                        "desktop": {
+                            "visible": true
+                        }
+                    },
+                    "actions": [],
+                    "media": [],
+                    "label": "\u00daltimas propiedades",
+                    "layout": {},
+                    "overrides": {},
+                    "scenes": [],
+                    "faqs": []
+                },
+                {
+                    "id": "section-publica-tu-propiedad",
+                    "schemaVersion": 1,
+                    "revision": 0,
+                    "extensions": {},
+                    "type": "banner",
+                    "content": {
+                        "eyebrow": "Public\u00e1 con nosotros",
+                        "title": "Tu propiedad merece una estrategia a su altura.",
+                        "button": "Public\u00e1 tu propiedad"
+                    },
+                    "design": {
+                        "variant": "default"
+                    },
+                    "visible": true,
+                    "order": 5,
+                    "responsive": {
+                        "mobile": {
+                            "visible": true
+                        },
+                        "desktop": {
+                            "visible": true
+                        }
+                    },
+                    "actions": [
+                        {
+                            "id": "action-publish",
+                            "label": "Public\u00e1 tu propiedad",
+                            "href": "\/publicar",
+                            "newWindow": false
+                        }
+                    ],
+                    "media": [
+                        {
+                            "id": "wp-media-8",
+                            "schemaVersion": 1,
+                            "revision": 0,
+                            "extensions": {},
+                            "src": "https:\/\/estate-qa.example.invalid\/wp-content\/uploads\/2026\/11\/architecture-strip.jpg",
+                            "alt": "",
+                            "width": 1600,
+                            "height": 912,
+                            "kind": "image",
+                            "illustrative": true
+                        }
+                    ],
+                    "label": "Public\u00e1 tu propiedad",
+                    "layout": {},
+                    "overrides": {},
+                    "scenes": [],
+                    "faqs": []
+                },
+                {
+                    "id": "section-equipo",
+                    "schemaVersion": 1,
+                    "revision": 0,
+                    "extensions": {},
+                    "type": "team",
+                    "content": {
+                        "title": "Conoc\u00e9 RIVTON Group.",
+                        "body": ""
+                    },
+                    "design": {
+                        "variant": "default"
+                    },
+                    "visible": true,
+                    "order": 6,
+                    "responsive": {
+                        "mobile": {
+                            "visible": true
+                        },
+                        "desktop": {
+                            "visible": true
+                        }
+                    },
+                    "actions": [],
+                    "media": [],
+                    "label": "Equipo",
+                    "layout": {},
+                    "overrides": {},
+                    "scenes": [],
+                    "faqs": []
+                },
+                {
+                    "id": "section-contacto",
+                    "schemaVersion": 1,
+                    "revision": 0,
+                    "extensions": {},
+                    "type": "contact",
+                    "content": {
+                        "title": "Hablemos de tu pr\u00f3xima etapa.",
+                        "body": ""
+                    },
+                    "design": {
+                        "variant": "default"
+                    },
+                    "visible": true,
+                    "order": 7,
+                    "responsive": {
+                        "mobile": {
+                            "visible": true
+                        },
+                        "desktop": {
+                            "visible": true
+                        }
+                    },
+                    "actions": [],
+                    "media": [],
+                    "label": "Contacto",
+                    "layout": {},
+                    "overrides": {},
+                    "scenes": [],
+                    "faqs": []
+                },
+                {
+                    "id": "section-footer",
+                    "schemaVersion": 1,
+                    "revision": 0,
+                    "extensions": {},
+                    "type": "footer",
+                    "content": {
+                        "title": "RIVTON Group",
+                        "body": ""
+                    },
+                    "design": {
+                        "variant": "default"
+                    },
+                    "visible": true,
+                    "order": 8,
+                    "responsive": {
+                        "mobile": {
+                            "visible": true
+                        },
+                        "desktop": {
+                            "visible": true
+                        }
+                    },
+                    "actions": [],
+                    "media": [],
+                    "label": "Footer",
+                    "layout": {},
+                    "overrides": {},
+                    "scenes": [],
+                    "faqs": []
+                }
+            ]
+        },
+        "property": {
+            "id": "4a4d5045-f114-47a0-9401-67e5a90d26a9",
+            "schemaVersion": 1,
+            "revision": 2,
+            "extensions": {},
+            "slug": "visual-qa-property",
+            "title": "Concurrent live property",
+            "operation": "venta",
+            "type": "casa",
+            "categoryIds": [
+                "category-casa"
+            ],
+            "featureIds": [
+                "feature-bedrooms",
+                "feature-pool"
+            ],
+            "status": "published",
+            "price": null,
+            "amenities": [],
+            "description": "",
+            "images": [
+                {
+                    "id": "wp-media-5",
+                    "schemaVersion": 1,
+                    "revision": 0,
+                    "extensions": {},
+                    "src": "https:\/\/estate-qa.example.invalid\/wp-content\/uploads\/2026\/11\/hero-house.jpg",
+                    "alt": "Casa contempor\u00e1nea con grandes ventanales",
+                    "width": 1280,
+                    "height": 1600,
+                    "kind": "image",
+                    "illustrative": true
+                }
+            ],
+            "featured": false,
+            "publishedAt": "2026-11-04",
+            "updatedAt": "2026-11-05T01:51:36Z",
+            "calendly": {
+                "enabled": false,
+                "label": "",
+                "mode": "link"
+            },
+            "seo": {
+                "title": "",
+                "description": "",
+                "index": false,
+                "follow": true,
+                "structuredData": []
+            },
+            "propertyTypeId": "category-casa",
+            "provinceId": "dfb5478f-ef58-41df-87a7-0b3c0526c811",
+            "cityId": "c74f9de9-351b-44ea-8870-cd5965b561c5",
+            "neighborhoodId": "a992d35f-6d5d-430c-a82e-45df19ec3095",
+            "attributes": {
+                "feature-bedrooms": 3,
+                "feature-pool": true
+            },
+            "location": "QA Area, QA City, QA Province"
+        },
+        "location": {
+            "id": "c74f9de9-351b-44ea-8870-cd5965b561c5",
+            "schemaVersion": 1,
+            "revision": 3,
+            "extensions": {},
+            "name": "QA Renamed City",
+            "slug": "qa-city",
+            "level": "city",
+            "description": "",
+            "order": 0,
+            "active": true,
+            "seo": {
+                "title": "",
+                "description": "",
+                "index": false,
+                "follow": true,
+                "structuredData": []
+            },
+            "parentId": "dfb5478f-ef58-41df-87a7-0b3c0526c811"
+        }
+    },
+    "lastError": null
+}

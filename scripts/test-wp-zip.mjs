@@ -11,7 +11,7 @@ await runCLI({
     steps: [
       {
         step: "installPlugin",
-        pluginData: { resource: "vfs", path: "/estate-results/rivton-core-0.2.0.zip" },
+        pluginData: { resource: "vfs", path: "/estate-results/rivton-core-0.3.1.zip" },
         options: { activate: true },
       },
       {
