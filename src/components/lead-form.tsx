@@ -1,12 +1,14 @@
+import {usePublished} from "@/platform/content-context";
+import {ManagedForm} from "@/platform/managed-form";
 import { useState, type ReactNode } from "react";
-import { z } from "zod";
+import { z } from "@/lib/validation";
 import { PremiumSelect } from "@/components/premium-select";
 import { Button } from "@/components/ui/button";
 
 // Validates locally. There is no backend yet, so we never claim the message was sent.
 export type Field = { name: string; label: string; type?: "text" | "email" | "tel" | "textarea" | "select"; options?: string[]; required?: boolean };
 
-export function LeadForm({ fields, submitLabel, defaults = {} }: { fields: Field[]; submitLabel: string; defaults?: Record<string, string> }) {
+function LegacyLeadForm({ fields, submitLabel, defaults = {} }: { fields: Field[]; submitLabel: string; defaults?: Record<string, string> }) {
   const [values, setValues] = useState<Record<string, string>>(defaults);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [done, setDone] = useState(false);
@@ -65,3 +67,5 @@ export function LeadForm({ fields, submitLabel, defaults = {} }: { fields: Field
 const Notice = ({ children }: { children: ReactNode }) => (
   <p role="status" className="rounded-lg bg-secondary p-3 text-sm">{children}</p>
 );
+
+export function LeadForm(props:{fields:Field[];submitLabel:string;defaults?:Record<string,string>;purpose?:string;propertyId?:string|undefined}){const cms=usePublished();return cms?.configuration?<ManagedForm slug={props.purpose??"contacto"} propertyId={props.propertyId}/>:<LegacyLeadForm {...props}/>;}

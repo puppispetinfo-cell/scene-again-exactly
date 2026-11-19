@@ -1,3 +1,5 @@
+@import "./platform/editable.css";
+@import "./platform/editable.css";
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -7,8 +9,8 @@
 /* RIVTON GROUP design system — palette #FFFFFF #E6DED5 #D9D9D9 #2F3131 #000000 */
 
 @theme inline {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: var(--rivton-font-sans, "Inter", ui-sans-serif, system-ui, sans-serif);
+  --font-display: var(--rivton-font-display, "Cormorant Garamond", ui-serif, Georgia, serif);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -113,16 +115,16 @@
 .premium-select-menu { border-radius: 8px; box-shadow: var(--shadow-refined); max-width: calc(100vw - 32px); background: var(--popover); }
 .premium-select-menu [role="option"] { min-height: 44px; margin-block: 2px; padding-inline: 12px 32px; border-radius: 4px; cursor: pointer; transition: background 140ms ease; }
 .premium-select-menu [role="option"][data-state="checked"] { background: var(--muted); font-weight: 600; }
-.site-header { left: 20px; right: 20px; max-width: 1280px; margin-inline: auto; border-radius: 999px; background: var(--glass-navigation); backdrop-filter: blur(24px) saturate(140%); border: 1px solid color-mix(in oklch, var(--ink-foreground) 14%, transparent); box-shadow: var(--shadow-navigation); transition: background 350ms ease, box-shadow 350ms ease, border-color 350ms ease; }
-.site-header[data-scrolled="true"] { background: var(--glass-navigation); backdrop-filter: blur(24px) saturate(140%); border-color: color-mix(in oklch, var(--ink-foreground) 16%, transparent); box-shadow: var(--shadow-navigation); }
-.mobile-dock { left: 20px; right: 20px; bottom: max(12px, env(safe-area-inset-bottom)); border-radius: 24px; overflow: hidden; border: 1px solid var(--glass-light-border); background: var(--glass-dock); backdrop-filter: blur(24px) saturate(140%); box-shadow: var(--shadow-navigation); transition: background 350ms ease; }
-.mobile-dock[data-scrolled="true"] { background: var(--glass-dock); backdrop-filter: blur(24px) saturate(140%); }
-.mobile-menu { inset: 12px 20px auto; max-height: calc(100svh - 24px); overflow-y: auto; border-radius: 28px; border: 1px solid color-mix(in oklch, var(--ink-foreground) 18%, transparent); box-shadow: var(--shadow-navigation); background: var(--glass-menu); backdrop-filter: blur(28px) saturate(130%); }
-.glass-control, .glass-tile { background: var(--glass-surface); border: 1px solid var(--glass-light-border); backdrop-filter: blur(16px) saturate(130%); box-shadow: var(--shadow-refined); }
-.glass-action, .story-caption { background: var(--glass-dark-surface); border: 1px solid color-mix(in oklch, var(--ink-foreground) 30%, transparent); backdrop-filter: blur(20px) saturate(130%); box-shadow: var(--shadow-refined); }
+.site-header { left: 20px; right: 20px; max-width: var(--rivton-content-width, 1280px); margin-inline: auto; border-radius: 999px; background: var(--glass-navigation); backdrop-filter: blur(var(--rivton-glass-blur, 24px)) saturate(140%); border: 1px solid color-mix(in oklch, var(--ink-foreground) 14%, transparent); box-shadow: var(--shadow-navigation); transition: background 350ms ease, box-shadow 350ms ease, border-color 350ms ease; }
+.site-header[data-scrolled="true"] { background: var(--glass-navigation); backdrop-filter: blur(var(--rivton-glass-blur, 24px)) saturate(140%); border-color: color-mix(in oklch, var(--ink-foreground) 16%, transparent); box-shadow: var(--shadow-navigation); }
+.mobile-dock { left: 20px; right: 20px; bottom: max(12px, env(safe-area-inset-bottom)); border-radius: 24px; overflow: hidden; border: 1px solid var(--glass-light-border); background: var(--glass-dock); backdrop-filter: blur(var(--rivton-glass-blur, 24px)) saturate(140%); box-shadow: var(--shadow-navigation); transition: background 350ms ease; }
+.mobile-dock[data-scrolled="true"] { background: var(--glass-dock); backdrop-filter: blur(var(--rivton-glass-blur, 24px)) saturate(140%); }
+.mobile-menu { inset: 12px 20px auto; max-height: calc(100svh - 24px); overflow-y: auto; border-radius: 28px; border: 1px solid color-mix(in oklch, var(--ink-foreground) 18%, transparent); box-shadow: var(--shadow-navigation); background: var(--glass-menu); backdrop-filter: blur(var(--rivton-glass-blur, 28px)) saturate(130%); }
+.glass-control, .glass-tile { background: var(--glass-surface); border: 1px solid var(--glass-light-border); backdrop-filter: blur(var(--rivton-glass-blur, 16px)) saturate(130%); box-shadow: var(--shadow-refined); }
+.glass-action, .story-caption { background: var(--glass-dark-surface); border: 1px solid color-mix(in oklch, var(--ink-foreground) 30%, transparent); backdrop-filter: blur(var(--rivton-glass-blur, 20px)) saturate(130%); box-shadow: var(--shadow-refined); }
 .story-caption { border-radius: 999px; padding: 14px 20px; }
 .category-band { background: var(--category-wash); }
-.safe-carousel { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: max(20px, calc((100% - 1216px) / 2)); padding-block: 4px 20px; }
+.safe-carousel { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: max(20px, calc((100% - (var(--rivton-content-width, 1280px) - 64px)) / 2)); padding-block: 4px 20px; }
 .carousel-item { width: 82%; }
 @media (min-width: 640px) { .carousel-item { width: calc((100% - 16px) / 2); } }
 @media (min-width: 1024px) { .carousel-item { width: calc((100% - 32px) / 3); } }
@@ -144,7 +146,7 @@
 .story-interior { opacity: var(--image-reveal); transform: scale(calc(1.08 - var(--story-progress) * 0.08)); }
 .story-terrace { opacity: var(--third-reveal); transform: scale(calc(1.06 - var(--story-progress) * 0.04)); }
 .story-shade { position: absolute; inset: 0; background: var(--story-shade); }
-.story-intro, .story-second, .story-third { position: absolute; inset: 0; max-width: 1280px; margin-inline: auto; padding: 110px 32px 80px; }
+.story-intro, .story-second, .story-third { position: absolute; inset: 0; max-width: var(--rivton-content-width, 1280px); margin-inline: auto; padding: 110px 32px 80px; }
 .story-intro { display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; gap: 64px; opacity: var(--intro-opacity); transform: translateY(calc(var(--story-progress) * -100px)); visibility: visible; }
 .story-intro[aria-hidden="true"] { visibility: hidden; }
 .story-intro-heading { text-shadow: var(--shadow-navigation); }
@@ -152,11 +154,11 @@
 .story-second[aria-hidden="true"] { visibility: hidden; }
 .story-third { display: flex; flex-direction: column; justify-content: space-between; opacity: var(--third-opacity); transform: translateY(calc((1 - var(--third-opacity)) * 30px)); }
 .story-third[aria-hidden="true"] { visibility: hidden; }
-.story-search-return { position: absolute; z-index: 5; right: max(20px, calc((100% - 1216px) / 2)); top: 178px; height: 44px; background: var(--glass-navigation); border-color: var(--glass-light-border); backdrop-filter: blur(20px); opacity: 0; visibility: hidden; transition: opacity 250ms ease; }
+.story-search-return { position: absolute; z-index: 5; right: max(20px, calc((100% - (var(--rivton-content-width, 1280px) - 64px)) / 2)); top: 178px; height: 44px; background: var(--glass-navigation); border-color: var(--glass-light-border); backdrop-filter: blur(var(--rivton-glass-blur, 20px)); opacity: 0; visibility: hidden; transition: opacity 250ms ease; }
 .story-search-return[data-visible="true"] { opacity: 1; visibility: visible; }
 .story-second .story-caption, .story-third .story-caption { margin-top: 0; }
-.immersive-search { background: var(--glass-dock); border-color: var(--glass-light-border); backdrop-filter: blur(24px) saturate(130%); }
-.story-progress-track { position: absolute; bottom: 30px; left: max(20px, calc((100% - 1216px) / 2)); right: max(20px, calc((100% - 1216px) / 2)); height: 1px; background: color-mix(in oklch, var(--ink-foreground) 30%, transparent); }
+.immersive-search { background: var(--glass-dock); border-color: var(--glass-light-border); backdrop-filter: blur(var(--rivton-glass-blur, 24px)) saturate(130%); }
+.story-progress-track { position: absolute; bottom: 30px; left: max(20px, calc((100% - (var(--rivton-content-width, 1280px) - 64px)) / 2)); right: max(20px, calc((100% - (var(--rivton-content-width, 1280px) - 64px)) / 2)); height: 1px; background: color-mix(in oklch, var(--ink-foreground) 30%, transparent); }
 .story-progress-fill { height: 100%; width: calc(15% + var(--story-progress) * 85%); background: var(--ink-foreground); }
 .story-scroll-cue { display: none; }
 @media (max-width: 1023px) {
@@ -238,3 +240,21 @@
 @utility hero-scrim {
   background: linear-gradient(180deg, oklch(0 0 0 / 0.15) 0%, oklch(0 0 0 / 0.2) 40%, oklch(0 0 0 / 0.85) 100%);
 }
+
+/* Runtime tokens: defaults match the approved Tailwind/CSS values. */
+@theme inline {
+  --text-xs: calc(0.75rem * var(--rivton-body-scale, 1));
+  --text-sm: calc(0.875rem * var(--rivton-body-scale, 1));
+  --text-base: calc(1rem * var(--rivton-body-scale, 1));
+  --text-lg: calc(1.125rem * var(--rivton-body-scale, 1));
+  --text-xl: calc(1.25rem * var(--rivton-heading-scale, 1));
+  --text-2xl: calc(1.5rem * var(--rivton-heading-scale, 1));
+  --text-3xl: calc(1.875rem * var(--rivton-heading-scale, 1));
+  --text-4xl: calc(2.25rem * var(--rivton-heading-scale, 1));
+  --text-5xl: calc(3rem * var(--rivton-heading-scale, 1));
+  --text-6xl: calc(3.75rem * var(--rivton-heading-scale, 1));
+  --text-7xl: calc(4.5rem * var(--rivton-heading-scale, 1));
+  --text-8xl: calc(6rem * var(--rivton-heading-scale, 1));
+}
+.max-w-7xl { max-width: var(--rivton-content-width, 80rem); }
+[data-custom-buttons="true"] .rivton-button { border-radius: var(--rivton-button-radius); height: var(--rivton-button-height); }

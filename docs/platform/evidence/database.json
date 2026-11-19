@@ -1,0 +1,89 @@
+{
+  "engine": "PostgreSQL 18.6 (PGlite 0.5.16) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a), 32-bit",
+  "results": [
+    {
+      "name": "anonymous cannot read drafts",
+      "passed": true
+    },
+    {
+      "name": "anonymous cannot call writes",
+      "passed": true
+    },
+    {
+      "name": "nonmember cannot write via private definer",
+      "passed": true
+    },
+    {
+      "name": "nonmember cannot edit catalogs",
+      "passed": true
+    },
+    {
+      "name": "owner saves real private draft",
+      "passed": true
+    },
+    {
+      "name": "stale revision rejected",
+      "passed": true
+    },
+    {
+      "name": "direct table writes denied even to owner",
+      "passed": true
+    },
+    {
+      "name": "agent cannot read or publish page",
+      "passed": true
+    },
+    {
+      "name": "draft not present in anonymous public API",
+      "passed": true
+    },
+    {
+      "name": "owner publication visible",
+      "passed": true
+    },
+    {
+      "name": "editing published page never leaks working copy",
+      "passed": true
+    },
+    {
+      "name": "history retained for restoration",
+      "passed": true
+    },
+    {
+      "name": "unpublish removes anonymous document",
+      "passed": true
+    },
+    {
+      "name": "leads and history cannot be read publicly",
+      "passed": true
+    },
+    {
+      "name": "member cannot self promote",
+      "passed": true
+    },
+    {
+      "name": "all exposed tables have RLS",
+      "passed": true
+    },
+    {
+      "name": "schema accepts a safe URL and rejects javascript at the database boundary",
+      "passed": true
+    },
+    {
+      "name": "SQL-looking text remains literal data",
+      "passed": true
+    },
+    {
+      "name": "seed is idempotent and never creates properties",
+      "passed": true
+    },
+    {
+      "name": "real property publication preserves privacy, typed values and price-to-consult",
+      "passed": true
+    },
+    {
+      "name": "public form requires consent, stores only approved submissions and deduplicates",
+      "passed": true
+    }
+  ]
+}

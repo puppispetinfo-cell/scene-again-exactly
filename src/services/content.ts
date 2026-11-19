@@ -1,60 +1,37 @@
-// Content service. Today it reads local typed data; set VITE_WP_API_URL later
-// and implement the WordPress adapters below without touching UI components.
-import { localProperties, localSettings, localTeam } from "@/data/properties";
-import type { Property, SiteSettings, TeamInfo } from "@/lib/types";
-
-/** Shape of a WordPress `inmueble` post with ACF fields (to be confirmed). */
-export interface WPProperty {
-  id: number;
-  slug: string;
-  title: { rendered: string };
-  acf: Record<string, unknown>;
-}
-
-export function adaptWPProperty(wp: WPProperty): Property {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const a = wp.acf as any;
-  return {
-    id: String(wp.id),
-    slug: wp.slug,
-    title: wp.title.rendered,
-    operation: a.operacion ?? "venta",
-    type: a.tipo ?? "casa",
-    price: a.precio ? { amount: Number(a.precio), currency: a.moneda ?? "USD" } : null,
-    bedrooms: a.dormitorios ?? undefined,
-    bathrooms: a.banos ?? undefined,
-    lotArea: a.terreno ?? undefined,
-    coveredArea: a.cubiertos ?? undefined,
-    location: a.ubicacion ?? undefined,
-    code: a.codigo ?? undefined,
-    amenities: a.amenities ?? [],
-    description: a.descripcion ?? undefined,
-    images: (a.galeria ?? []).map((g: any) => ({ src: g.url, alt: g.alt ?? wp.title.rendered })),
-    featured: Boolean(a.destacado),
-    featuredOrder: a.orden_destacado ?? undefined,
-    publishedAt: a.fecha ?? new Date().toISOString(),
-    whatsapp: a.whatsapp ?? undefined,
-    calendlyUrl: a.calendly ?? undefined,
-  };
-}
-
-export async function getProperties(): Promise<Property[]> {
-  return localProperties;
+import type { PublicSnapshot } from "@/platform/public-content";
+import { readPublic } from "@/platform/public-content";
+// Every public read passes through server functions; the database enforces published-only access.
+export const getContent = async (): Promise<PublicSnapshot> => JSON.parse(await readPublic());
+export const invalidateContent = () => {}; // Reads are no-store; publication is visible on the next request.
+export async function getProperties() {
+  return (await getContent()).properties;
 }
 export async function getPropertyBySlug(slug: string) {
-  return localProperties.find((p) => p.slug === slug) ?? null;
+  return (await getProperties()).find((p) => p.slug === slug) ?? null;
 }
 export async function getFeatured() {
-  return localProperties
+  return (await getProperties())
     .filter((p) => p.featured)
     .sort((a, b) => (a.featuredOrder ?? 99) - (b.featuredOrder ?? 99));
 }
 export async function getLatest(limit = 4) {
-  return [...localProperties].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).slice(0, limit);
+  return [...(await getProperties())]
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .slice(0, limit);
 }
-export async function getSettings(): Promise<SiteSettings> {
-  return localSettings;
+export async function getSettings() {
+  return (await getContent()).settings;
 }
-export async function getTeam(): Promise<TeamInfo> {
-  return localTeam;
+export async function getTeam() {
+  return (await getContent()).team;
+}
+export async function getTheme() {
+  return (await getContent()).theme;
+}
+export async function getFilterDefinitions() {
+  return (await getContent()).filters;
+}
+export async function getPublicConfiguration() {
+  const snapshot = await getContent();
+  return { theme: snapshot.theme!, filters: snapshot.filters!, cms: snapshot };
 }

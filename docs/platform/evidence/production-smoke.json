@@ -1,0 +1,24 @@
+{
+  "status": 200,
+  "csp": "default-src 'self'; script-src 'self' 'nonce-1c986491cc344d3b8edacd8ace64ddee' https://www.googletagmanager.com https://connect.facebook.net https://www.googleadservices.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' https:; connect-src 'self' https://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googleadservices.com https://*.doubleclick.net https://www.google.com https://www.facebook.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+  "robots": "noindex, nofollow",
+  "cache": "no-store",
+  "inlineScripts": [
+    {
+      "nonce": "1c986491cc344d3b8edacd8ace64ddee",
+      "bytes": 613
+    },
+    {
+      "nonce": "1c986491cc344d3b8edacd8ace64ddee",
+      "bytes": 9201
+    },
+    {
+      "nonce": "1c986491cc344d3b8edacd8ace64ddee",
+      "bytes": 56
+    }
+  ],
+  "errors": [],
+  "violations": [],
+  "hydrated": true,
+  "scope": "localhost production-mode build; explicit regression fixtures, no remote Supabase validation"
+}

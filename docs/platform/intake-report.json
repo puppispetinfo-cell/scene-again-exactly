@@ -1,0 +1,41 @@
+{
+  "confirmed": [
+    "settings:global",
+    "page:/",
+    "page:nosotros",
+    "page:contacto",
+    "page:publicar",
+    "page:propiedades",
+    "page:ficha",
+    "page:favoritos",
+    "team:maximiliano-carpio",
+    "team:alejo-carpio",
+    "team:tomas-colantone",
+    "team:antonino-rivilli",
+    "form:contacto",
+    "form:consulta-propiedad",
+    "form:publicar",
+    "marketing:global"
+  ],
+  "proposed": [
+    "page:preguntas-frecuentes",
+    "page:privacidad",
+    "page:cookies",
+    "page:terminos"
+  ],
+  "pending": [
+    "Roles de los cuatro integrantes y presentación institucional",
+    "Fotografías reales de inmuebles, equipo y hero",
+    "Selección de propiedades destacadas",
+    "Contenido final de preguntas frecuentes",
+    "Revisión de términos, privacidad y aviso de tratamiento de datos",
+    "Confirmación de política de almacenamiento de leads y consentimiento antes de transmitir datos a WhatsApp"
+  ],
+  "properties": 0,
+  "source": "relevamiento cliente 2026-11-04",
+  "discrepancies": [
+    "La dirección se amplía con localidad, provincia y país confirmados en las instrucciones.",
+    "El catálogo inicial incorpora tipos adicionales requeridos por la nueva plataforma; son editables.",
+    "No se migraron cambios posteriores de WordPress ni se consultaron borradores privados."
+  ]
+}

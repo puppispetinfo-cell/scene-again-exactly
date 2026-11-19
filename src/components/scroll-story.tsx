@@ -1,3 +1,5 @@
+import { EditableImage, EditableText } from "@/platform/editable";
+import { useElement } from "@/platform/content-context";
 import { useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Search, ChevronsDown } from "lucide-react";
@@ -8,13 +10,20 @@ import { Button } from "@/components/ui/button";
 import { SearchForm } from "@/components/search-form";
 
 export function ScrollStory() {
+  const second = useElement("/", "scene-2"),
+    third = useElement("/", "scene-3");
   const section = useRef<HTMLElement>(null);
   const returning = useRef(false);
   const returnToSearch = () => {
     const node = section.current;
     if (!node) return;
     returning.current = true;
-    window.scrollTo({ top: node.getBoundingClientRect().top + window.scrollY, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+    window.scrollTo({
+      top: node.getBoundingClientRect().top + window.scrollY,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
   };
   useEffect(() => {
     const node = section.current;
@@ -51,17 +60,33 @@ export function ScrollStory() {
       const scene = node.querySelector<HTMLElement>(".story-second");
       const third = node.querySelector<HTMLElement>(".story-third");
       const back = node.querySelector<HTMLElement>(".story-search-return");
-      if (intro) { intro.inert = introOpacity < 0.05; intro.setAttribute("aria-hidden", String(introOpacity < 0.001)); }
-      if (scene) { scene.inert = secondOpacity < 0.1; scene.setAttribute("aria-hidden", String(secondOpacity < 0.001)); }
-      if (third) { third.inert = thirdOpacity < 0.1; third.setAttribute("aria-hidden", String(thirdOpacity < 0.001)); }
-      if (back) { back.inert = progress < 0.18; back.setAttribute("data-visible", String(progress >= 0.18)); }
+      if (intro) {
+        intro.inert = introOpacity < 0.05;
+        intro.setAttribute("aria-hidden", String(introOpacity < 0.001));
+      }
+      if (scene) {
+        scene.inert = secondOpacity < 0.1;
+        scene.setAttribute("aria-hidden", String(secondOpacity < 0.001));
+      }
+      if (third) {
+        third.inert = thirdOpacity < 0.1;
+        third.setAttribute("aria-hidden", String(thirdOpacity < 0.001));
+      }
+      if (back) {
+        back.inert = progress < 0.18;
+        back.setAttribute("data-visible", String(progress >= 0.18));
+      }
       if (returning.current && target === 0 && current < 0.002) {
         returning.current = false;
-        node.querySelector<HTMLInputElement>('input[aria-label="Ubicación"]')?.focus({ preventScroll: true });
+        node
+          .querySelector<HTMLInputElement>("input[data-search-location]")
+          ?.focus({ preventScroll: true });
       }
       if (current !== target) frame = requestAnimationFrame(update);
     };
-    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
     update();
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
@@ -77,55 +102,161 @@ export function ScrollStory() {
   return (
     <section ref={section} className="scroll-story" aria-label="Espacios RIVTON">
       <div className="story-stage">
-        <img src={exterior} alt="Casa contemporánea con grandes ventanales" fetchPriority="high" className="story-image story-exterior" />
-        <img src={interior} alt="Interior residencial luminoso" loading="lazy" className="story-image story-interior" />
-        <img src={terrace} alt="Terraza residencial abierta al jardín y la piscina" loading="lazy" width={1600} height={1008} className="story-image story-terrace" />
+        <EditableImage
+          page="/"
+          id="scene-1"
+          fallback={exterior}
+          alt="Casa contemporánea con grandes ventanales"
+          priority
+          className="story-image story-exterior"
+        />
+        <EditableImage
+          page="/"
+          id="scene-2"
+          fallback={interior}
+          alt="Interior residencial luminoso"
+          className="story-image story-interior"
+        />
+        <EditableImage
+          page="/"
+          id="scene-3"
+          fallback={terrace}
+          alt="Terraza residencial abierta al jardín y la piscina"
+          width={1600}
+          height={1008}
+          className="story-image story-terrace"
+        />
         <div className="story-shade" />
         <div className="story-intro text-ink-foreground">
           <div className="story-intro-heading">
-            <p className="label-caps mb-4 text-ink-foreground/85">RIVTON Group · Córdoba</p>
-            <h1 className="text-5xl leading-[1.02] lg:text-7xl">Encontrá<br />tu propiedad.</h1>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-foreground/85">Propiedades seleccionadas para cada etapa de tu vida.</p>
+            <p className="label-caps mb-4 text-ink-foreground/85">
+              <EditableText page="/" id="scene-1" field="body" fallback="RIVTON Group · Córdoba" />
+            </p>
+            <h1 className="editable-lines text-5xl leading-[1.02] lg:text-7xl">
+              <EditableText
+                page="/"
+                id="scene-1"
+                field="title"
+                fallback={"Encontrá\ntu propiedad."}
+              />
+            </h1>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-foreground/85">
+              <EditableText
+                page="/"
+                id="scene-1"
+                field="subtitle"
+                fallback={"Propiedades seleccionadas para cada etapa de tu vida."}
+              />
+            </p>
           </div>
-          <div className="text-foreground"><SearchForm immersive /></div>
+          <div className="text-foreground">
+            <SearchForm immersive />
+          </div>
         </div>
         <div className="story-second text-ink-foreground" aria-hidden="true" inert>
           <div className="story-caption flex items-center justify-between gap-3">
-            <p className="label-caps">RIVTON · Espacios para vivir</p>
-            <span className="font-display text-xl" aria-hidden="true">02 / 03</span>
+            <p className="label-caps">
+              <EditableText
+                page="/"
+                id="scene-2"
+                field="body"
+                fallback="RIVTON · Espacios para vivir"
+              />
+            </p>
+            <span className="font-display text-xl" aria-hidden="true">
+              02 / 03
+            </span>
           </div>
           <div className="story-copy">
-            <h2 className="max-w-3xl text-5xl leading-[1.05] sm:text-6xl lg:text-8xl">Otra forma<br />de habitar.</h2>
+            <h2 className="editable-lines max-w-3xl text-5xl leading-[1.05] sm:text-6xl lg:text-8xl">
+              <EditableText
+                page="/"
+                id="scene-2"
+                field="title"
+                fallback={"Otra forma\nde habitar."}
+              />
+            </h2>
             <div className="mt-7 flex flex-wrap items-end justify-between gap-6">
-              <p className="max-w-xs text-sm leading-relaxed text-ink-foreground/85">Espacios que se sienten propios.<br />Desde el primer momento.</p>
-              <Button asChild variant="outline" className="h-12 border-ink-foreground/40 bg-ink/10 px-5 text-ink-foreground backdrop-blur-md hover:bg-ink-foreground hover:text-ink">
-                <Link to="/propiedades">Encontrá tu lugar <ArrowUpRight /></Link>
+              <p className="editable-lines max-w-xs text-sm leading-relaxed text-ink-foreground/85">
+                <EditableText
+                  page="/"
+                  id="scene-2"
+                  field="subtitle"
+                  fallback={"Espacios que se sienten propios.\nDesde el primer momento."}
+                />
+              </p>
+              <Button
+                asChild
+                variant="outline"
+                className="h-12 border-ink-foreground/40 bg-ink/10 px-5 text-ink-foreground backdrop-blur-md hover:bg-ink-foreground hover:text-ink"
+              >
+                <a href={second?.button?.href ?? "/propiedades"}>
+                  {second?.button?.label ?? "Encontrá tu lugar"} <ArrowUpRight />
+                </a>
               </Button>
             </div>
           </div>
         </div>
         <div className="story-third text-ink-foreground" aria-hidden="true" inert>
           <div className="story-caption flex items-center justify-between gap-3">
-            <p className="label-caps">RIVTON · Vivir al aire libre</p>
-            <span className="font-display text-xl" aria-hidden="true">03 / 03</span>
+            <p className="label-caps">
+              <EditableText
+                page="/"
+                id="scene-3"
+                field="body"
+                fallback="RIVTON · Vivir al aire libre"
+              />
+            </p>
+            <span className="font-display text-xl" aria-hidden="true">
+              03 / 03
+            </span>
           </div>
           <div className="story-copy">
-            <h2 className="max-w-3xl text-5xl leading-[1.05] sm:text-6xl lg:text-8xl">Tu espacio.<br />Tu próxima etapa.</h2>
+            <h2 className="editable-lines max-w-3xl text-5xl leading-[1.05] sm:text-6xl lg:text-8xl">
+              <EditableText
+                page="/"
+                id="scene-3"
+                field="title"
+                fallback={"Tu espacio.\nTu próxima etapa."}
+              />
+            </h2>
             <div className="mt-7 flex flex-wrap items-end justify-between gap-6">
-              <p className="max-w-xs text-sm leading-relaxed text-ink-foreground/85">Un lugar para disfrutar.<br />Una nueva forma de vivir.</p>
-              <Button asChild variant="outline" className="h-12 border-ink-foreground/40 bg-ink/10 px-5 text-ink-foreground backdrop-blur-md hover:bg-ink-foreground hover:text-ink">
-                <Link to="/propiedades">Explorar propiedades <ArrowUpRight /></Link>
+              <p className="editable-lines max-w-xs text-sm leading-relaxed text-ink-foreground/85">
+                <EditableText
+                  page="/"
+                  id="scene-3"
+                  field="subtitle"
+                  fallback={"Un lugar para disfrutar.\nUna nueva forma de vivir."}
+                />
+              </p>
+              <Button
+                asChild
+                variant="outline"
+                className="h-12 border-ink-foreground/40 bg-ink/10 px-5 text-ink-foreground backdrop-blur-md hover:bg-ink-foreground hover:text-ink"
+              >
+                <a href={third?.button?.href ?? "/propiedades"}>
+                  {third?.button?.label ?? "Explorar propiedades"} <ArrowUpRight />
+                </a>
               </Button>
             </div>
           </div>
         </div>
-        <Button onClick={returnToSearch} variant="outline" className="story-search-return rounded-full text-ink-foreground" data-visible="false" inert>
+        <Button
+          onClick={returnToSearch}
+          variant="outline"
+          className="story-search-return rounded-full text-ink-foreground"
+          data-visible="false"
+          inert
+        >
           <Search className="h-4 w-4" /> Buscar
         </Button>
         <div className="story-scroll-cue text-ink-foreground" aria-hidden="true">
-          <span>Deslizá para descubrir</span><ChevronsDown className="h-4 w-4 shrink-0" />
+          <span>Deslizá para descubrir</span>
+          <ChevronsDown className="h-4 w-4 shrink-0" />
         </div>
-        <div className="story-progress-track" aria-hidden="true"><div className="story-progress-fill" /></div>
+        <div className="story-progress-track" aria-hidden="true">
+          <div className="story-progress-fill" />
+        </div>
       </div>
     </section>
   );

@@ -1,0 +1,104 @@
+{
+  "schema": "rivton-client-intake-v1",
+  "source": "relevamiento cliente 2026-11-04",
+  "approved_business_data": {
+    "commercial_name": "RIVTON Group",
+    "tagline_proposed": "Conectamos personas con oportunidades inmobiliarias, ofreciendo confianza, compromiso y soluciones a medida en cada operación.",
+    "founded_context": "Fusión de dos empresas amigas, 03/11/2025",
+    "differentiators": [
+      "Atención personalizada",
+      "Compromiso real",
+      "Visión integral",
+      "Innovación",
+      "Confianza y transparencia"
+    ],
+    "values": [
+      "Confianza",
+      "Compromiso",
+      "Profesionalismo",
+      "Cercanía",
+      "Proyección",
+      "Excelencia"
+    ],
+    "tone": "Elegante y profesional",
+    "services": [
+      "Venta",
+      "Alquiler",
+      "Tasaciones",
+      "Administración de alquileres",
+      "Asesoramiento a inversores",
+      "Comercialización de desarrollos"
+    ],
+    "property_types": [
+      "Casas",
+      "Departamentos",
+      "Terrenos",
+      "Locales comerciales",
+      "Oficinas",
+      "Galpones",
+      "Complejos",
+      "Fondos de comercio",
+      "Cocheras"
+    ],
+    "coverage": "Toda la provincia de Córdoba",
+    "contact": {
+      "whatsapp_e164_digits": "5493513437509",
+      "whatsapp_url": "https://wa.me/5493513437509",
+      "public_email": "rivtongroup@gmail.com",
+      "phone_secondary": null,
+      "instagram": "https://www.instagram.com/rivtongroup/",
+      "facebook": null,
+      "hours": "Lunes a viernes de 8:30 a 18:00; sábados, domingos y feriados cerrado",
+      "office_address": "Luis José de Tejeda 3883 local A",
+      "preferred_channel": "WhatsApp"
+    },
+    "team_names": [
+      "Maximiliano Carpio",
+      "Alejo Carpio",
+      "Tomás Colantone",
+      "Antonino Rivilli"
+    ],
+    "visit_coordination": "WhatsApp o llamada; Calendly deshabilitado por ahora",
+    "calendly_enabled": false,
+    "content_approver": "Alejo",
+    "site_content_policy": {
+      "home_headline": "preservar contenido actual",
+      "home_subtitle": "preservar contenido actual",
+      "owner_cta": "preservar contenido actual",
+      "featured_properties": "se eligen en WordPress",
+      "hero_images": "se cargan en WordPress",
+      "team_images": "se cargan en WordPress",
+      "faqs": "se cargarán en WordPress"
+    },
+    "forms": {
+      "property_enquiry_fields": [
+        "Nombre",
+        "Teléfono",
+        "Correo",
+        "Mensaje",
+        "Propiedad de interés",
+        "Horario de contacto preferido"
+      ],
+      "owner_submission_fields": [
+        "Nombre",
+        "WhatsApp",
+        "Email",
+        "Tipo de propiedad",
+        "Ubicación",
+        "Operación (vender/alquilar)",
+        "Descripción"
+      ],
+      "owner_photos": "etapa posterior",
+      "delivery": "abrir WhatsApp con mensaje precompletado; confirmar si guardar copia del lead en WordPress",
+      "success_copy": "texto convencional editable desde WordPress, compatible con apertura de WhatsApp sin simular entrega"
+    }
+  },
+  "pending_or_not_confirmed": [
+    "Roles de los cuatro integrantes y presentación institucional",
+    "Fotografías reales de inmuebles, equipo y hero",
+    "Selección de propiedades destacadas",
+    "Contenido final de preguntas frecuentes",
+    "Revisión de términos, privacidad y aviso de tratamiento de datos",
+    "Confirmación de política de almacenamiento de leads y consentimiento antes de transmitir datos a WhatsApp"
+  ]
+}

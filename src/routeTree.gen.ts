@@ -10,16 +10,36 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PageRouteImport } from './routes/$page'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as FavoritosRouteImport } from './routes/favoritos'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as PublicarRouteImport } from './routes/publicar'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ApiMediaRouteImport } from './routes/api.media'
+import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
+import { Route as PreviewIdRouteImport } from './routes/preview.$id'
+import { Route as PreviewEndRouteImport } from './routes/preview.end'
 import { Route as PropiedadesIndexRouteImport } from './routes/propiedades.index'
 import { Route as PropiedadesSlugRouteImport } from './routes/propiedades.$slug'
+import { Route as ApiMediaIdRouteImport } from './routes/api.media.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PageRoute = PageRouteImport.update({
+  id: '/$page',
+  path: '/$page',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactoRoute = ContactoRouteImport.update({
@@ -32,6 +52,11 @@ const FavoritosRoute = FavoritosRouteImport.update({
   path: '/favoritos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NosotrosRoute = NosotrosRouteImport.update({
   id: '/nosotros',
   path: '/nosotros',
@@ -40,6 +65,36 @@ const NosotrosRoute = NosotrosRouteImport.update({
 const PublicarRoute = PublicarRouteImport.update({
   id: '/publicar',
   path: '/publicar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiMediaRoute = ApiMediaRouteImport.update({
+  id: '/api/media',
+  path: '/api/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/auth/callback',
+  path: '/auth/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreviewIdRoute = PreviewIdRouteImport.update({
+  id: '/preview/$id',
+  path: '/preview/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreviewEndRoute = PreviewEndRouteImport.update({
+  id: '/preview/end',
+  path: '/preview/end',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PropiedadesIndexRoute = PropiedadesIndexRouteImport.update({
@@ -52,71 +107,145 @@ const PropiedadesSlugRoute = PropiedadesSlugRouteImport.update({
   path: '/propiedades/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiMediaIdRoute = ApiMediaIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApiMediaRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$page': typeof PageRoute
+  '/admin': typeof AdminRoute
   '/contacto': typeof ContactoRoute
   '/favoritos': typeof FavoritosRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/nosotros': typeof NosotrosRoute
   '/publicar': typeof PublicarRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/media': typeof ApiMediaRouteWithChildren
+  '/auth/callback': typeof AuthCallbackRoute
+  '/preview/$id': typeof PreviewIdRoute
+  '/preview/end': typeof PreviewEndRoute
   '/propiedades/$slug': typeof PropiedadesSlugRoute
   '/propiedades/': typeof PropiedadesIndexRoute
+  '/api/media/$id': typeof ApiMediaIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$page': typeof PageRoute
+  '/admin': typeof AdminRoute
   '/contacto': typeof ContactoRoute
   '/favoritos': typeof FavoritosRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/nosotros': typeof NosotrosRoute
   '/publicar': typeof PublicarRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/media': typeof ApiMediaRouteWithChildren
+  '/auth/callback': typeof AuthCallbackRoute
+  '/preview/$id': typeof PreviewIdRoute
+  '/preview/end': typeof PreviewEndRoute
   '/propiedades/$slug': typeof PropiedadesSlugRoute
   '/propiedades': typeof PropiedadesIndexRoute
+  '/api/media/$id': typeof ApiMediaIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$page': typeof PageRoute
+  '/admin': typeof AdminRoute
   '/contacto': typeof ContactoRoute
   '/favoritos': typeof FavoritosRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/nosotros': typeof NosotrosRoute
   '/publicar': typeof PublicarRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/media': typeof ApiMediaRouteWithChildren
+  '/auth/callback': typeof AuthCallbackRoute
+  '/preview/$id': typeof PreviewIdRoute
+  '/preview/end': typeof PreviewEndRoute
   '/propiedades/$slug': typeof PropiedadesSlugRoute
   '/propiedades/': typeof PropiedadesIndexRoute
+  '/api/media/$id': typeof ApiMediaIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/$page'
+    | '/admin'
     | '/contacto'
     | '/favoritos'
+    | '/llms.txt'
     | '/nosotros'
     | '/publicar'
+    | '/robots.txt'
+    | '/sitemap.xml'
+    | '/api/media'
+    | '/auth/callback'
+    | '/preview/$id'
+    | '/preview/end'
     | '/propiedades/$slug'
     | '/propiedades/'
+    | '/api/media/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/$page'
+    | '/admin'
     | '/contacto'
     | '/favoritos'
+    | '/llms.txt'
     | '/nosotros'
     | '/publicar'
+    | '/robots.txt'
+    | '/sitemap.xml'
+    | '/api/media'
+    | '/auth/callback'
+    | '/preview/$id'
+    | '/preview/end'
     | '/propiedades/$slug'
     | '/propiedades'
+    | '/api/media/$id'
   id:
     | '__root__'
     | '/'
+    | '/$page'
+    | '/admin'
     | '/contacto'
     | '/favoritos'
+    | '/llms.txt'
     | '/nosotros'
     | '/publicar'
+    | '/robots.txt'
+    | '/sitemap.xml'
+    | '/api/media'
+    | '/auth/callback'
+    | '/preview/$id'
+    | '/preview/end'
     | '/propiedades/$slug'
     | '/propiedades/'
+    | '/api/media/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PageRoute: typeof PageRoute
+  AdminRoute: typeof AdminRoute
   ContactoRoute: typeof ContactoRoute
   FavoritosRoute: typeof FavoritosRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
   NosotrosRoute: typeof NosotrosRoute
   PublicarRoute: typeof PublicarRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiMediaRoute: typeof ApiMediaRouteWithChildren
+  AuthCallbackRoute: typeof AuthCallbackRoute
+  PreviewIdRoute: typeof PreviewIdRoute
+  PreviewEndRoute: typeof PreviewEndRoute
   PropiedadesSlugRoute: typeof PropiedadesSlugRoute
   PropiedadesIndexRoute: typeof PropiedadesIndexRoute
 }
@@ -128,6 +257,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$page': {
+      id: '/$page'
+      path: '/$page'
+      fullPath: '/$page'
+      preLoaderRoute: typeof PageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contacto': {
@@ -144,6 +287,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FavoritosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nosotros': {
       id: '/nosotros'
       path: '/nosotros'
@@ -156,6 +306,48 @@ declare module '@tanstack/react-router' {
       path: '/publicar'
       fullPath: '/publicar'
       preLoaderRoute: typeof PublicarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/media': {
+      id: '/api/media'
+      path: '/api/media'
+      fullPath: '/api/media'
+      preLoaderRoute: typeof ApiMediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/auth/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/preview/$id': {
+      id: '/preview/$id'
+      path: '/preview/$id'
+      fullPath: '/preview/$id'
+      preLoaderRoute: typeof PreviewIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/preview/end': {
+      id: '/preview/end'
+      path: '/preview/end'
+      fullPath: '/preview/end'
+      preLoaderRoute: typeof PreviewEndRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/propiedades/': {
@@ -172,15 +364,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PropiedadesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/media/$id': {
+      id: '/api/media/$id'
+      path: '/$id'
+      fullPath: '/api/media/$id'
+      preLoaderRoute: typeof ApiMediaIdRouteImport
+      parentRoute: typeof ApiMediaRoute
+    }
   }
 }
 
+interface ApiMediaRouteChildren {
+  ApiMediaIdRoute: typeof ApiMediaIdRoute
+}
+
+const ApiMediaRouteChildren: ApiMediaRouteChildren = {
+  ApiMediaIdRoute: ApiMediaIdRoute,
+}
+
+const ApiMediaRouteWithChildren = ApiMediaRoute._addFileChildren(
+  ApiMediaRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PageRoute: PageRoute,
+  AdminRoute: AdminRoute,
   ContactoRoute: ContactoRoute,
   FavoritosRoute: FavoritosRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
   NosotrosRoute: NosotrosRoute,
   PublicarRoute: PublicarRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiMediaRoute: ApiMediaRouteWithChildren,
+  AuthCallbackRoute: AuthCallbackRoute,
+  PreviewIdRoute: PreviewIdRoute,
+  PreviewEndRoute: PreviewEndRoute,
   PropiedadesSlugRoute: PropiedadesSlugRoute,
   PropiedadesIndexRoute: PropiedadesIndexRoute,
 }

@@ -16,6 +16,6 @@ describe("property search", () => {
     expect(formatPrice(null)).toBe("Precio a consultar");
   });
   it("parses filters from the URL and drops invalid values", () => {
-    expect(parseFilters({ operacion: "venta", dormitorios: "3", tipo: "castillo" })).toEqual({ operacion: "venta", dormitorios: 3 });
+    expect(parseFilters({ operacion: "venta", dormitorios: "3", tipo: "<script>" })).toEqual({ operacion: "venta", dormitorios: 3 });
   });
 });

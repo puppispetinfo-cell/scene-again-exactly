@@ -1,0 +1,1 @@
+Checked 24 public assets: no configured preview secret or legacy WordPress endpoint.

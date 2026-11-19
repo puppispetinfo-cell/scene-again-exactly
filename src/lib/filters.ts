@@ -8,24 +8,37 @@ const num = (v: unknown) => {
   return Number.isFinite(n) && n > 0 ? n : undefined;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function parseFilters(raw: Record<string, unknown>): PropertyFilters {
-  const s = raw as any;
+  const s = raw;
   const f: PropertyFilters = {};
-  if (OPS.includes(s.operacion as Operation)) f.operacion = s.operacion as Operation;
-  if (typeof s.ubicacion === "string" && s.ubicacion.trim()) f.ubicacion = s.ubicacion.trim();
-  if (TYPES.includes(s.tipo as PropertyType)) f.tipo = s.tipo as PropertyType;
-  f.precioMax = num(s.precioMax);
-  f.dormitorios = num(s.dormitorios);
-  f.banos = num(s.banos);
-  if (s.piscina === true || s.piscina === "true") f.piscina = true;
-  if (["recientes", "precio-asc", "precio-desc"].includes(s.orden as string))
-    f.orden = s.orden as PropertyFilters["orden"];
+  if (typeof s["operacion"] === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s["operacion"]) && s["operacion"].length<=128) f.operacion = s["operacion"];
+  if (typeof s["ubicacion"] === "string" && s["ubicacion"].trim())
+    f.ubicacion = s["ubicacion"].trim();
+  if (typeof s["tipo"] === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s["tipo"]) && s["tipo"].length<=128) f.tipo = s["tipo"];
+  f.precioMax = num(s["precioMax"]);
+  f.dormitorios = num(s["dormitorios"]);
+  f.banos = num(s["banos"]);
+  if (s["piscina"] === true || s["piscina"] === "true") f.piscina = true;
+  if (["recientes", "precio-asc", "precio-desc"].includes(s["orden"] as string))
+    f.orden = s["orden"] as PropertyFilters["orden"];
+  if (s["moneda"] === "USD" || s["moneda"] === "ARS") f.moneda = s["moneda"];
+  f.superficieMin = num(s["superficieMin"]);
+  const features = s["caracteristicas"];
+  if (Array.isArray(features)) {
+    const ids = features
+      .filter((v): v is string => typeof v === "string" && /^[a-zA-Z0-9_-]{1,128}$/.test(v))
+      .slice(0, 50);
+    if (ids.length) f.caracteristicas = [...new Set(ids)];
+  }
   for (const k of Object.keys(f) as (keyof PropertyFilters)[]) if (f[k] === undefined) delete f[k];
   return f;
 }
 
-const norm = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const norm = (s: string) =>
+  s
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
 
 export function filterProperties(list: Property[], f: PropertyFilters): Property[] {
   const out = list.filter((p) => {
@@ -33,19 +46,27 @@ export function filterProperties(list: Property[], f: PropertyFilters): Property
     if (f.tipo && p.type !== f.tipo) return false;
     if (f.ubicacion) {
       const hay = norm(`${p.title} ${p.location ?? ""}`);
-      if (!hay.includes(norm(f.ubicacion))) return false;
+      if (!hay.includes(norm(f.ubicacion)) && !(p.locationIds??[]).includes(f.ubicacion)) return false;
     }
     // Price-on-request listings are kept out when a max price is set (unknown price).
-    if (f.precioMax && (!p.price || p.price.amount > f.precioMax)) return false;
+    if (
+      f.precioMax &&
+      (!p.price || p.price.currency !== (f.moneda ?? "USD") || p.price.amount > f.precioMax)
+    )
+      return false;
     if (f.dormitorios && (p.bedrooms ?? 0) < f.dormitorios) return false;
     if (f.banos && (p.bathrooms ?? 0) < f.banos) return false;
-    if (f.piscina && !p.amenities.includes("Piscina")) return false;
+    if (f.piscina && !p.amenities.some(a=>["piscina","pileta"].includes(norm(a)))) return false;
+    if (f.moneda && p.price?.currency !== f.moneda) return false;
+    if (f.superficieMin && (p.coveredArea ?? p.lotArea ?? 0) < f.superficieMin) return false;
+    if (f.caracteristicas?.some((id) => !(p.featureIds ?? []).includes(id))) return false;
     return true;
   });
   const price = (p: Property) => p.price?.amount ?? Infinity;
-  if (f.orden === "precio-asc") out.sort((a, b) => price(a) - price(b));
+  const currency=(a:Property,b:Property)=>!a.price||!b.price?Number(!a.price)-Number(!b.price):a.price.currency.localeCompare(b.price.currency);
+  if (f.orden === "precio-asc") out.sort((a, b) => currency(a,b) || price(a) - price(b));
   else if (f.orden === "precio-desc")
-    out.sort((a, b) => (b.price?.amount ?? -1) - (a.price?.amount ?? -1));
+    out.sort((a, b) => currency(a,b) || (b.price?.amount ?? -1) - (a.price?.amount ?? -1));
   else out.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
   return out;
 }
